@@ -22,5 +22,8 @@
   },
   "include": [
     "src"
+  ],
+  "export": [
+    "src/lib/runtime"
   ]
 }
