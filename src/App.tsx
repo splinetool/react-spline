@@ -1,75 +1,133 @@
-import { useRef, MouseEvent, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { Spline, SplineRef } from './lib/Spline';
 
 import './App.css';
-import { SplineEvent } from './lib/runtime/runtime';
+import { SPEObject, SplineEvent } from './lib/runtime/runtime';
+import anime from 'animejs';
 
 function App() {
   const splineRef = useRef<SplineRef>(null);
-
   const [isLoading, setIsLoading] = useState(true);
+  const [isOn, setIsOn] = useState(true);
+
+  const lightRef = useRef<SPEObject>();
+
+  useEffect(() => {
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        setIsOn((current) => !current);
+      }
+    });
+  }, []);
+
+  useEffect(() => {
+    const light = splineRef.current?.findObjectByName('Directional Light');
+    lightRef.current = light;
+  }, [splineRef.current?.findObjectByName]);
+
+  useEffect(() => {
+    if (isOn) {
+      splineRef.current?.emitEventReverse(
+        'mouseDown',
+        '96E5E232-68FD-474E-9F9C-85EF9F8A354A'
+      );
+      anime({
+        targets: lightRef.current,
+        intensity: 0.8,
+        duration: 500,
+      });
+
+      document.documentElement.style.setProperty(
+        '--background',
+        'hsl(229.6, 57.8%, 82.4%)'
+      );
+    } else {
+      splineRef.current?.emitEvent(
+        'mouseDown',
+        '96E5E232-68FD-474E-9F9C-85EF9F8A354A'
+      );
+
+      anime({
+        targets: lightRef.current,
+        intensity: 0,
+        duration: 500,
+      });
+
+      document.documentElement.style.setProperty(
+        '--background',
+        'hsl(229.6, 10.8%, 5.4%)'
+      );
+    }
+  }, [isOn]);
 
   function handleMouseDown(e: SplineEvent) {
-    if (e.target.id === '16D375AA-1D37-43BC-B384-BF2F7E763DAC') {
-      console.log('you clicked the green button');
-    }
-    if (e.target.name === 'Button') {
-      console.log('you clicked a button');
+    if (e.target.name === 'Switch') {
+      setIsOn((current) => !current);
     }
   }
 
-  function handleMouseHover(e: SplineEvent) {
-    console.log(`you hovered on object with object id ${e.target.id}`);
-  }
-
-  function triggerClickGreen(e: MouseEvent) {
-    splineRef.current?.emitEvent(
-      'mouseDown',
-      '16D375AA-1D37-43BC-B384-BF2F7E763DAC'
-    );
-  }
-  function triggerClickPurple(e: MouseEvent) {
-    splineRef.current?.emitEvent(
-      'mouseDown',
-      '8E8C2DDD-18B6-4C54-861D-7ED2519DE20E'
-    );
-  }
-  function triggerClickBlue(e: MouseEvent) {
-    splineRef.current?.emitEvent(
-      'mouseDown',
-      '6E4897B1-2F5C-4605-AA44-6EC1CA1079A1'
-    );
+  function handleMoveLight(direction: 'left' | 'right' | 'up' | 'down') {
+    if (lightRef.current) {
+      switch (direction) {
+        case 'left':
+          lightRef.current.position.x -= 100;
+          break;
+        case 'right':
+          lightRef.current.position.x += 100;
+          break;
+        case 'up':
+          lightRef.current.position.y -= 100;
+          break;
+        case 'down':
+          lightRef.current.position.y += 100;
+          break;
+      }
+    }
   }
 
   return (
-    <div
-      style={{
-        maxWidth: '512px',
-        margin: 'auto',
-      }}
-    >
-      {isLoading && (
-        <div style={{ width: '512px', height: '512px' }}>Loading...</div>
-      )}
+    <>
+      <div
+        style={{
+          maxWidth: '512px',
+          margin: 'auto',
+        }}
+      >
+        {isLoading && (
+          <div style={{ width: '512px', height: '512px' }}>Loading...</div>
+        )}
+        <Spline
+          ref={splineRef}
+          scene="https://draft-dev.spline.design/2Uw-TdfHVr2SkSYA/scene.json"
+          id="myCanvas"
+          onMouseDown={handleMouseDown}
+          onLoad={() => setIsLoading(false)}
+          responsive
+        />
+        <button type="button" onClick={() => setIsOn((current) => !current)}>
+          Switch {isOn ? 'off' : 'on'}
+        </button>{' '}
+        or Press Enter
+        <div>
+          <button type="button" onClick={() => handleMoveLight('left')}>
+            Move light to left
+          </button>
+          <button type="button" onClick={() => handleMoveLight('right')}>
+            Move light to right
+          </button>
+          <button type="button" onClick={() => handleMoveLight('up')}>
+            Move light up
+          </button>
+          <button type="button" onClick={() => handleMoveLight('down')}>
+            Move light down
+          </button>
+        </div>
+      </div>
       <Spline
-        ref={splineRef}
-        scene="/scene.json"
-        id="myCanvas"
-        onMouseDown={handleMouseDown}
-        onMouseHover={handleMouseHover}
-        onLoad={() => setIsLoading(false)}
-        responsive
+        scene="https://draft-dev.spline.design/vOo5inQ2XHPQHSAb/scene.json"
+        id="myCanvas2"
       />
-      <button type="button" onClick={triggerClickGreen}>
-        Trigger green button
-      </button>
-      <button type="button" onClick={triggerClickPurple}>
-        Trigger purple button
-      </button>
-      <button type="button" onClick={triggerClickBlue}>
-        Trigger blue button
-      </button>
-    </div>
+    </>
   );
 }
 

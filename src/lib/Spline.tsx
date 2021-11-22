@@ -1,5 +1,4 @@
 import { Application, SplineEvent } from './runtime/runtime';
-
 import './Spline.css';
 
 import {
@@ -28,9 +27,10 @@ interface SplineProps {
 }
 
 export interface SplineRef {
-  findObjectById: (uuid: string) => any;
-  addEventListener: (eventName: string, cb: (e: any) => void) => void;
-  emitEvent: (eventName: string, uuid: string) => void;
+  findObjectById: Application['findObjectById'];
+  findObjectByName: Application['findObjectByName'];
+  emitEvent: Application['emitEvent'];
+  emitEventReverse: Application['emitEventReverse'];
 }
 
 export const Spline = forwardRef<SplineRef, SplineProps>(
@@ -52,90 +52,104 @@ export const Spline = forwardRef<SplineRef, SplineProps>(
     },
     ref
   ) => {
-    const [app, setApp] = useState<Application | null>(null);
+    const appRef = useRef<{ app: Application | null }>({ app: null });
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const [isLoading, setIsLoading] = useState(true);
 
     // Initialize runtime when component is mounted
     useEffect(() => {
+      setIsLoading(true);
+
+      let speApp: Application;
+      const events = [
+        {
+          name: 'mouseDown',
+          cb: onMouseDown,
+        },
+        {
+          name: 'mouseUp',
+          cb: onMouseUp,
+        },
+        {
+          name: 'mouseHover',
+          cb: onMouseHover,
+        },
+        {
+          name: 'keyDown',
+          cb: onKeyDown,
+        },
+        {
+          name: 'keyUp',
+          cb: onKeyUp,
+        },
+        {
+          name: 'start',
+          cb: onStart,
+        },
+        {
+          name: 'lookAt',
+          cb: onLookAt,
+        },
+        {
+          name: 'follow',
+          cb: onFollow,
+        },
+      ];
+
       if (canvasRef.current) {
-        const speApp = new Application(canvasRef.current);
-        speApp.load(scene).then(() => {
-          // Add event listeners
-          if (onMouseDown) {
-            speApp.addEventListener('mouseDown', onMouseDown);
-          }
-          if (onMouseUp) {
-            speApp.addEventListener('mouseUp', onMouseUp);
-          }
-          if (onMouseHover) {
-            speApp.addEventListener('mouseHover', onMouseHover);
-          }
-          if (onKeyDown) {
-            speApp.addEventListener('keyDown', onKeyDown);
-          }
-          if (onKeyUp) {
-            speApp.addEventListener('keyUp', onKeyUp);
-          }
-          if (onStart) {
-            speApp.addEventListener('start', onStart);
-          }
-          if (onLookAt) {
-            speApp.addEventListener('lookAt', onLookAt);
-          }
-          if (onFollow) {
-            speApp.addEventListener('follow', onFollow);
+        speApp = new Application(canvasRef.current);
+
+        const init = async function () {
+          const response = await fetch(scene);
+          const json = await response.json();
+          await speApp.start(json);
+
+          for (let event of events) {
+            if (event.cb) {
+              speApp.addEventListener(event.name, event.cb);
+            }
           }
 
-          console.log(speApp.getSplineEvents())
-
-          setApp(speApp);
+          appRef.current.app = speApp;
           setIsLoading(false);
           onLoad?.();
-        });
+        };
+
+        init();
       }
 
       return () => {
-        if (onMouseDown) {
-          app?.removeEventListener('mouseDown', onMouseDown);
+        for (let event of events) {
+          if (event.cb) {
+            speApp?.removeEventListener(event.name, event.cb);
+          }
         }
-        if (onMouseUp) {
-          app?.removeEventListener('mouseUp', onMouseUp);
-        }
-        if (onMouseHover) {
-          app?.removeEventListener('mouseHover', onMouseHover);
-        }
-        if (onKeyDown) {
-          app?.removeEventListener('keyDown', onKeyDown);
-        }
-        if (onKeyUp) {
-          app?.removeEventListener('keyUp', onKeyUp);
-        }
-        if (onStart) {
-          app?.removeEventListener('start', onStart);
-        }
-        if (onLookAt) {
-          app?.removeEventListener('lookAt', onLookAt);
-        }
-        if (onFollow) {
-          app?.removeEventListener('follow', onFollow);
-        }
+        speApp?.deactivate();
       };
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     // Expose runtime api methods to parent component
-    useImperativeHandle(ref, () => ({
-      findObjectById: (uuid: string) => {
-        return app?.findObjectById(uuid);
+    useImperativeHandle(
+      ref,
+      () => {
+        return {
+          findObjectById(uuid: string) {
+            return appRef.current.app?.findObjectById(uuid);
+          },
+          findObjectByName(name: string) {
+            return appRef.current.app?.findObjectByName(name);
+          },
+          emitEvent(eventName: string, uuid: string) {
+            appRef.current.app?.emitEvent(eventName, uuid);
+          },
+          emitEventReverse(eventName: string, uuid: string) {
+            appRef.current.app?.emitEventReverse(eventName, uuid);
+          },
+        };
       },
-      addEventListener: (eventName: string, cb: (e: any) => void) => {
-        app?.addEventListener(eventName, cb);
-      },
-      emitEvent: (eventName: string, uuid: string) => {
-        app?.emitEvent(eventName, uuid);
-      },
-    }));
+      []
+    );
 
     return (
       <div

@@ -1,3 +1,8 @@
+:root {
+  --background-light: hsl(229.6, 57.8%, 82.4%);
+  --background-dark: hsl(229.6, 10.8%, 5.4%);
+  --background: hsl(229.6, 57.8%, 82.4%);
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,6 +10,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background, hsl(229.6, 57.8%, 82.4%));
+  transition: background-color 0.25s ease-in-out;
 }
 
 code {
