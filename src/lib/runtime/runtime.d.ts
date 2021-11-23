@@ -1,6 +1,7 @@
 export declare type SPEObject = {
   [key: string]: any;
-  emitEvent: (eventName: keyof InteractionCache) => void;
+  emitEvent: (eventName: SplineEventName) => void;
+  emitEventReverse: (eventName: SplineEventName) => void;
 };
 
 export declare type SplineEvent = {
@@ -10,27 +11,77 @@ export declare type SplineEvent = {
   };
 };
 
+export declare type SplineEventName =
+  | 'mouseDown'
+  | 'mouseUp'
+  | 'mouseHover'
+  | 'keyDown'
+  | 'keyUp'
+  | 'start'
+  | 'lookAt'
+  | 'follow';
+
 export declare class Application {
   canvas: HTMLCanvasElement;
-  constructor(canvas?: HTMLCanvasElement);
+  constructor(canvas?: HTMLCanvasElement, autoRender?: boolean);
   load(path: string): Promise<void>;
-  start(json: JSON): Promise<void>;
-  deactivate(): void;
-  findObjectById(uuid: string): SPEObject | undefined;
-  findObjectByName(name: string): SPEObject | undefined;
+  start(json: any): Promise<void>;
+  /**
+   *  Searches through scene's children and returns the object with that uuid
+   * @param uuid	String to match to the object's uuid
+   * @returns SPEObject
+   */
+  findObjectById(uuid: string): SPEObject | undefined;
+  /**
+   * Searches through scene's children and returns the first object with that name
+   * @param  {string}	name
+   * @returns {Object} SPEObject
+   */
+  findObjectByName(name: string): SPEObject | undefined;
+  /**
+   * Returns an array of Spline events
+   * @returns {Array.<Object>}
+   */
   getSplineEvents(): {
-    [key: string]: CustomEvent<any>;
+    [key: string]: {
+      [key: string]: CustomEvent<any>;
+    };
   };
-  emitEvent(eventName: keyof InteractionCache, uuid: string): void;
-  emitEventReverse(eventName: keyof InteractionCache, uuid: string): void;
-  dispatchEvent(event: Event): void;
+  /**
+   * Triggers a Spline event associated to an object with provided uuid.
+   * Starts from first state to last state.
+   * @param {string} eventName String that matches Spline event's name
+   * @param {string} uuid
+   */
+  emitEvent(eventName: SplineEventName, uuid: string): void;
+  /**
+   * Triggers a Spline event associated to an object with provided uuid in reverse order.
+   * Starts from last state to first state.
+   * @param {string} eventName String that matches Spline event's name
+   * @param {string}	uuid
+   */
+  emitEventReverse(eventName: SplineEventName, uuid: string): void;
+  /**
+   * Add an event listener for Spline events
+   * @param {string} eventName String that matches Spline event's name
+   * @param {function} cb	A callback function with Spline event as parameter
+   */
   addEventListener(
-    eventName: keyof InteractionCache,
+    eventName: SplineEventName,
     cb: (e: SplineEvent) => void
   ): void;
+  /**
+   * Removes the event listener for a Spline event with the same name and callback
+   * @param {string} eventName String that matches Spline event's name
+   * @param {function} cb	A callback function with Spline event as parameter
+   */
   removeEventListener(
-    eventName: keyof InteractionCache,
+    eventName: SplineEventName,
     cb: (e: SplineEvent) => void
   ): void;
+  /**
+   * Deactivates runtime
+   */
+  unmount(): void;
 }
 export {};

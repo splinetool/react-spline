@@ -13,11 +13,15 @@ function App() {
   const lightRef = useRef<SPEObject>();
 
   useEffect(() => {
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
+    document.addEventListener('keydown', handleKeyDown);
+    function handleKeyDown(e: KeyboardEvent) {
+      if (e.key === 'a') {
         setIsOn((current) => !current);
       }
-    });
+    }
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
   }, []);
 
   useEffect(() => {
@@ -107,7 +111,7 @@ function App() {
         <button type="button" onClick={() => setIsOn((current) => !current)}>
           Switch {isOn ? 'off' : 'on'}
         </button>{' '}
-        or Press Enter
+        or Press 'A' keyword
         <div>
           <button type="button" onClick={() => handleMoveLight('left')}>
             Move light to left
@@ -124,7 +128,7 @@ function App() {
         </div>
       </div>
       <Spline
-        scene="https://draft-dev.spline.design/vOo5inQ2XHPQHSAb/scene.json"
+        scene="https://draft-dev.spline.design/OeiLiWHnluCdyLmM/scene.json"
         id="myCanvas2"
       />
     </>

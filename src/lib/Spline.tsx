@@ -1,4 +1,4 @@
-import { Application, SplineEvent } from './runtime/runtime';
+import { Application, SplineEvent, SplineEventName } from './runtime/runtime';
 import './Spline.css';
 
 import {
@@ -61,7 +61,10 @@ export const Spline = forwardRef<SplineRef, SplineProps>(
       setIsLoading(true);
 
       let speApp: Application;
-      const events = [
+      const events: {
+        name: SplineEventName;
+        cb?: (e: SplineEvent) => void;
+      }[] = [
         {
           name: 'mouseDown',
           cb: onMouseDown,
@@ -97,7 +100,7 @@ export const Spline = forwardRef<SplineRef, SplineProps>(
       ];
 
       if (canvasRef.current) {
-        speApp = new Application(canvasRef.current);
+        speApp = new Application(canvasRef.current, true);
 
         const init = async function () {
           const response = await fetch(scene);
@@ -124,7 +127,7 @@ export const Spline = forwardRef<SplineRef, SplineProps>(
             speApp?.removeEventListener(event.name, event.cb);
           }
         }
-        speApp?.deactivate();
+        speApp?.unmount();
       };
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
@@ -140,10 +143,10 @@ export const Spline = forwardRef<SplineRef, SplineProps>(
           findObjectByName(name: string) {
             return appRef.current.app?.findObjectByName(name);
           },
-          emitEvent(eventName: string, uuid: string) {
+          emitEvent(eventName: SplineEventName, uuid: string) {
             appRef.current.app?.emitEvent(eventName, uuid);
           },
-          emitEventReverse(eventName: string, uuid: string) {
+          emitEventReverse(eventName: SplineEventName, uuid: string) {
             appRef.current.app?.emitEventReverse(eventName, uuid);
           },
         };
