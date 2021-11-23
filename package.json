@@ -1,12 +1,14 @@
 {
   "name": "@splinetool/react-spline",
   "version": "0.1.0",
-  "private": true,
+  "main": "build/index.js",
+  "files": [
+    "build"
+  ],
   "dependencies": {
     "@gltf-transform/core": "^1.1.1",
     "@gltf-transform/extensions": "^1.1.1",
     "@gltf-transform/functions": "^1.1.1",
-    "@splinetool/runtime": "^0.6.7",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -22,11 +24,15 @@
     "typescript": "^4.1.2",
     "web-vitals": "^1.0.1"
   },
+  "peerDependencies": {
+    "@splinetool/runtime": "^0.6.7"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build:react-spline": "node --experimental-json-modules ./react-spline.build.mjs && tsc -p ./react-spline.tsconfig.json"
   },
   "eslintConfig": {
     "extends": [
@@ -47,6 +53,8 @@
     ]
   },
   "devDependencies": {
-    "@types/animejs": "^3.1.4"
+    "@types/animejs": "^3.1.4",
+    "esbuild": "^0.13.15",
+    "browserslist-to-esbuild": "^1.0.1"
   }
 }

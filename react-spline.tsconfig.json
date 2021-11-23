@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "allowJs": true,
+    "jsx": "react-jsx",
+    "emitDeclarationOnly": true,
+    "declaration": true,
+    "outDir": "./build"
+  },
+  "include": [
+    "src/lib"
+  ],
+  "exclude": [
+    "src/lib/runtime"
+  ]
+}

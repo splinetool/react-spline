@@ -23,7 +23,7 @@ export declare type SplineEventName =
 
 export declare class Application {
   canvas: HTMLCanvasElement;
-  constructor(canvas?: HTMLCanvasElement, autoRender?: boolean);
+  constructor(canvas?: HTMLCanvasElement, options?: { autoRender?: boolean });
   load(path: string): Promise<void>;
   start(json: any): Promise<void>;
   /**

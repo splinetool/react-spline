@@ -100,7 +100,7 @@ export const Spline = forwardRef<SplineRef, SplineProps>(
       ];
 
       if (canvasRef.current) {
-        speApp = new Application(canvasRef.current, true);
+        speApp = new Application(canvasRef.current, { autoRender: true });
 
         const init = async function () {
           const response = await fetch(scene);

@@ -23,7 +23,7 @@
   "include": [
     "src"
   ],
-  "export": [
+  "exclude": [
     "src/lib/runtime"
   ]
 }
