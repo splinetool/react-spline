@@ -1,4 +1,4 @@
-import { Application, SplineEvent, SplineEventName } from './runtime/runtime';
+import { Application, SplineEvent, SplineEventName } from '@splinetool/runtime';
 import './Spline.css';
 
 import {
@@ -124,10 +124,10 @@ export const Spline = forwardRef<SplineRef, SplineProps>(
       return () => {
         for (let event of events) {
           if (event.cb) {
-            speApp?.removeEventListener(event.name, event.cb);
+            speApp.removeEventListener(event.name, event.cb);
           }
         }
-        speApp?.unmount();
+        speApp.unmount();
       };
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
