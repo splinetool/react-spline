@@ -15,7 +15,7 @@ export default defineConfig({
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled
       // into your library
-      external: ['react', '@splinetool/runtime'],
+      external: ['react', 'react-dom', '@splinetool/runtime'],
       output: {
         // Provide global variables to use in the UMD build
         // for externalized deps
@@ -24,7 +24,11 @@ export default defineConfig({
           '@splinetool/runtime': 'SPRuntime',
         },
         dir: 'dist',
-        format: 'esm',
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.name == 'style.css')
+            return 'Spline.css';
+          return assetInfo.name;
+        },
       },
     },
   },

@@ -5,28 +5,25 @@
     "dist"
   ],
   "types": "./dist/index",
-  "main": "./dist/react-spline.es.js",
+  "main": "./dist/react-spline.umd.js",
   "module": "./dist/react-spline.es.js",
   "exports": {
     ".": {
-      "import": "./dist/react-spline.es.js"
+      "import": "./dist/react-spline.es.js",
+      "require": "./dist/react-spline.umd.js"
     }
   },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "serve": "vite preview",
-    "build:react-spline": ""
+    "serve": "vite preview"
   },
   "dependencies": {
-    "@splinetool/runtime": "link:/Users/claudiabdm/Documents/code/spline/spline/packages/runtime",
-    "@types/animejs": "^3.1.4",
-    "@types/node": "^16.11.9",
-    "animejs": "^3.2.1",
-    "react": "^17.0.0",
-    "react-dom": "^17.0.0"
   },
   "devDependencies": {
+    "animejs": "^3.2.1",
+    "@types/animejs": "^3.1.4",
+    "@types/node": "^16.11.9",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@vitejs/plugin-react": "^1.0.0",
@@ -34,6 +31,8 @@
     "vite": "^2.6.4"
   },
   "peerDependencies": {
-    "@splinetool/runtime": "^0.6.8"
+    "@splinetool/runtime": "link:/Users/claudiabdm/Documents/code/spline/spline/packages/runtime",
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0"
   }
 }
