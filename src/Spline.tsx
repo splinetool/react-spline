@@ -130,7 +130,7 @@ export const Spline = forwardRef<SplineRef, SplineProps>(
         speApp.unmount();
       };
       // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [scene]);
 
     // Expose runtime api methods to parent component
     useImperativeHandle(
