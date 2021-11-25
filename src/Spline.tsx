@@ -12,7 +12,7 @@ import {
 
 interface SplineProps {
   scene: string;
-  id: string;
+  id?: string;
   responsive?: boolean;
   style?: CSSProperties;
   onLoad?: () => void;
