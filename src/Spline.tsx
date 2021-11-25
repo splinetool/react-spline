@@ -1,4 +1,4 @@
-import { Application, SplineEvent, SplineEventName } from '@splinetool/runtime';
+import { Application } from '@splinetool/runtime';
 import './Spline.css';
 
 import {
@@ -9,6 +9,46 @@ import {
   forwardRef,
   CSSProperties,
 } from 'react';
+
+export type SplineEvent = {
+  target: {
+    name: string;
+    id: string;
+  };
+};
+
+export type SplineEventName =
+  | 'mouseDown'
+  | 'mouseUp'
+  | 'mouseHover'
+  | 'keyDown'
+  | 'keyUp'
+  | 'start'
+  | 'lookAt'
+  | 'follow';
+
+export type SPEObject = {
+  name: string;
+  uuid: string;
+  visible: boolean;
+  intensity: number;
+  position: { x: number; y: number; z: number };
+  rotation: { x: number; y: number; z: number };
+  scale: { x: number; y: number; z: number };
+  /**
+   * Triggers a Spline event.
+   * Starts from firt state to last state.
+   * @param {string} eventName String that matches Spline event's name
+   * @param {string}	uuid String to match to the object's uuid
+   */
+  emitEvent: (eventName: SplineEventName) => void;
+  /**
+   * Triggers a Spline event in reverse order.
+   * Starts from last state to first state.
+   * @param {string} eventName String that matches Spline event's name
+   */
+  emitEventReverse: (eventName: SplineEventName) => void;
+};
 
 interface SplineProps {
   scene: string;
@@ -27,10 +67,32 @@ interface SplineProps {
 }
 
 export interface SplineRef {
-  findObjectById: Application['findObjectById'];
-  findObjectByName: Application['findObjectByName'];
-  emitEvent: Application['emitEvent'];
-  emitEventReverse: Application['emitEventReverse'];
+  /**
+   *  Searches through scene's children and returns the object with that uuid
+   * @param uuid	String to match to the object's uuid
+   * @returns SPEOject
+   */
+  findObjectById: (uuid: string) => SPEObject | undefined;
+  /**
+   * Searches through scene's children and returns the first object with that name
+   * @param  {string}	name String to match to the object's name
+   * @returns SPEOject
+   */
+  findObjectByName: (name: string) => SPEObject | undefined;
+  /**
+   * Triggers a Spline event associated to an object with provided uuid.
+   * Starts from first state to last state.
+   * @param {string} eventName String that matches Spline event's name
+   * @param {string} uuid String to match to the object's uuid
+   */
+  emitEvent: (eventName: SplineEventName, uuid: string) => void;
+  /**
+   * Triggers a Spline event associated to an object with provided uuid in reverse order.
+   * Starts from last state to first state.
+   * @param {string} eventName String that matches Spline event's name
+   * @param {string}	uuid String to match to the object's uuid
+   */
+  emitEventReverse: (eventName: SplineEventName, uuid: string) => void;
 }
 
 export const Spline = forwardRef<SplineRef, SplineProps>(
