@@ -1,6 +1,6 @@
 # react-spline
 
-A component to easily run Spline scenes in React Apps.
+A component to easily run Spline scenes in React apps.
 
 
 ## Getting Started
