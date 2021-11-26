@@ -1,5 +1,3 @@
-import { Application } from '@splinetool/runtime';
-
 import {
   useEffect,
   useImperativeHandle,
@@ -8,51 +6,18 @@ import {
   forwardRef,
   CSSProperties,
 } from 'react';
+import { Application } from '@splinetool/runtime';
+import type {
+  SPEObject,
+  SplineEvent,
+  SplineEventName,
+} from '@splinetool/runtime';
 
-export type SplineEvent = {
-  target: {
-    name: string;
-    id: string;
-  };
-};
-
-export type SplineEventName =
-  | 'mouseDown'
-  | 'mouseUp'
-  | 'mouseHover'
-  | 'keyDown'
-  | 'keyUp'
-  | 'start'
-  | 'lookAt'
-  | 'follow';
-
-export type SPEObject = {
-  name: string;
-  uuid: string;
-  visible: boolean;
-  intensity: number;
-  position: { x: number; y: number; z: number };
-  rotation: { x: number; y: number; z: number };
-  scale: { x: number; y: number; z: number };
-  /**
-   * Triggers a Spline event.
-   * Starts from firt state to last state.
-   * @param {string} eventName String that matches Spline event's name
-   * @param {string}	uuid String to match to the object's uuid
-   */
-  emitEvent: (eventName: SplineEventName) => void;
-  /**
-   * Triggers a Spline event in reverse order.
-   * Starts from last state to first state.
-   * @param {string} eventName String that matches Spline event's name
-   */
-  emitEventReverse: (eventName: SplineEventName) => void;
-};
+export type { SPEObject, SplineEvent, SplineEventName };
 
 interface SplineProps {
   scene: string;
   id?: string;
-  responsive?: boolean;
   style?: CSSProperties;
   onLoad?: () => void;
   onMouseDown?: (e: SplineEvent) => void;
@@ -99,7 +64,6 @@ export const Spline = forwardRef<SplineRef, SplineProps>(
     {
       scene,
       id,
-      responsive,
       style,
       onMouseDown,
       onMouseUp,
@@ -219,11 +183,6 @@ export const Spline = forwardRef<SplineRef, SplineProps>(
       <div
         style={{
           display: `${isLoading ? 'none' : 'flex'}`,
-          // TODO this is not working, pass this option to Application.ts instead
-          ...(responsive && {
-            width: '100% !important',
-            height: '100% !important',
-          }),
           ...style,
         }}
       >
