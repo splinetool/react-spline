@@ -17,6 +17,8 @@ export default defineConfig({
       // into your library
       external: ['react', 'react-dom', '@splinetool/runtime'],
       output: {
+        // Override dist folder because root is in the example/ folder
+        dir: 'dist',
         // Provide global variables to use in the UMD build
         // for externalized deps
         globals: {

@@ -219,7 +219,7 @@ export const Spline = forwardRef<SplineRef, SplineProps>(
       <div
         style={{
           display: `${isLoading ? 'none' : 'flex'}`,
-          // TODO pass this option to Application.ts instead
+          // TODO this is not working, pass this option to Application.ts instead
           ...(responsive && {
             width: '100% !important',
             height: '100% !important',
