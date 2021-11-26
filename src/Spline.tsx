@@ -1,5 +1,4 @@
 import { Application } from '@splinetool/runtime';
-import './Spline.css';
 
 import {
   useEffect,
@@ -218,8 +217,15 @@ export const Spline = forwardRef<SplineRef, SplineProps>(
 
     return (
       <div
-        className={responsive ? 'spline-responsive' : ''}
-        style={{ display: `${isLoading ? 'none' : 'flex'}`, ...style }}
+        style={{
+          display: `${isLoading ? 'none' : 'flex'}`,
+          // TODO pass this option to Application.ts instead
+          ...(responsive && {
+            width: '100% !important',
+            height: '100% !important',
+          }),
+          ...style,
+        }}
       >
         <canvas ref={canvasRef} id={id} />
       </div>

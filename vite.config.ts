@@ -8,7 +8,7 @@ export default defineConfig({
   root: 'example',
   build: {
     lib: {
-      entry: path.resolve(__dirname, './src/index.ts'),
+      entry: path.resolve(__dirname, './src/Spline.tsx'),
       name: 'react-spline',
       fileName: (format) => `react-spline.${format}.js`,
     },
@@ -22,12 +22,6 @@ export default defineConfig({
         globals: {
           react: 'React',
           '@splinetool/runtime': 'SPRuntime',
-        },
-        dir: 'dist',
-        assetFileNames: (assetInfo) => {
-          if (assetInfo.name == 'style.css')
-            return 'Spline.css';
-          return assetInfo.name;
         },
       },
     },
