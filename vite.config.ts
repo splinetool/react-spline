@@ -8,7 +8,7 @@ export default defineConfig({
   root: 'example',
   build: {
     lib: {
-      entry: path.resolve(__dirname, './src/index.ts'),
+      entry: path.resolve(__dirname, './src/Spline.tsx'),
       name: 'react-spline',
       fileName: (format) => `react-spline.${format}.js`,
     },
@@ -17,17 +17,13 @@ export default defineConfig({
       // into your library
       external: ['react', 'react-dom', '@splinetool/runtime'],
       output: {
+        // Override dist folder because root is in the example/ folder
+        dir: 'dist',
         // Provide global variables to use in the UMD build
         // for externalized deps
         globals: {
           react: 'React',
           '@splinetool/runtime': 'SPRuntime',
-        },
-        dir: 'dist',
-        assetFileNames: (assetInfo) => {
-          if (assetInfo.name == 'style.css')
-            return 'Spline.css';
-          return assetInfo.name;
         },
       },
     },
