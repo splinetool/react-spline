@@ -1,6 +1,5 @@
 import { useRef, useState, useEffect } from 'react';
 import { Spline, SplineRef } from '..';
-// TODO import these from react-spline
 import type { SPEObject, SplineEvent } from '@splinetool/runtime';
 import anime from 'animejs';
 
@@ -105,7 +104,6 @@ function App() {
           id="myCanvas"
           onMouseDown={handleMouseDown}
           onLoad={() => setIsLoading(false)}
-          responsive
         />
         <button type="button" onClick={() => setIsOn((current) => !current)}>
           Switch {isOn ? 'off' : 'on'}
