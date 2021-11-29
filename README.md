@@ -168,6 +168,8 @@ function App() {
 | ------------- | -------------------------- | --------------------------------------- |
 | scene         | `string`                   | Scene file                              |
 | id?           | `string`                   | Canvas id                               |
+| style?        | `string`                   | CSS style                               |
+| className?    | `string`                   | CSS classes                             |
 | onMouseDown?  | `(e: SplineEvent) => void` | Function handler for Mouse Down events  |
 | onMouseHover? | `(e: SplineEvent) => void` | Function handler for Mouse Hover events |
 | onMouseUp?    | `(e: SplineEvent) => void` | Function handler for Mouse Up events    |

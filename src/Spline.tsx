@@ -19,6 +19,7 @@ interface SplineProps {
   scene: string;
   id?: string;
   style?: CSSProperties;
+  className?: string;
   onLoad?: () => void;
   onMouseDown?: (e: SplineEvent) => void;
   onMouseUp?: (e: SplineEvent) => void;
@@ -65,6 +66,7 @@ export const Spline = forwardRef<SplineRef, SplineProps>(
       scene,
       id,
       style,
+      className,
       onMouseDown,
       onMouseUp,
       onMouseHover,
@@ -185,6 +187,7 @@ export const Spline = forwardRef<SplineRef, SplineProps>(
           display: `${isLoading ? 'none' : 'flex'}`,
           ...style,
         }}
+        className={className}
       >
         <canvas ref={canvasRef} id={id} />
       </div>
