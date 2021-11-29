@@ -32,7 +32,7 @@
     "react-dom": "^17.0.0"
   },
   "peerDependencies": {
-    "@splinetool/runtime": "link:/Users/claudiabdm/Documents/code/spline/spline/packages/runtime",
+    "@splinetool/runtime": "*",
     "react": "^17.0.0",
     "react-dom": "^17.0.0"
   }
