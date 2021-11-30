@@ -1,6 +1,6 @@
 {
   "name": "@splinetool/react-spline",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "files": [
     "dist"
   ],
@@ -19,17 +19,17 @@
     "serve": "vite preview"
   },
   "devDependencies": {
-    "animejs": "^3.2.1",
+    "@splinetool/runtime": "link:/Users/claudiabdm/Documents/code/spline/spline/packages/runtime",
     "@types/animejs": "^3.1.4",
     "@types/node": "^16.11.9",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@vitejs/plugin-react": "^1.0.0",
-    "typescript": "^4.3.2",
-    "vite": "^2.6.4",
-    "@splinetool/runtime": "link:/Users/claudiabdm/Documents/code/spline/spline/packages/runtime",
+    "animejs": "^3.2.1",
     "react": "^17.0.0",
-    "react-dom": "^17.0.0"
+    "react-dom": "^17.0.0",
+    "typescript": "^4.3.2",
+    "vite": "^2.6.4"
   },
   "peerDependencies": {
     "@splinetool/runtime": "*",
