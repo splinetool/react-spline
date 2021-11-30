@@ -215,7 +215,7 @@ yarn dev
 yarn build
 ```
 
-## Publish on npm
+### Publish on npm
 
 ```bash
 yarn deploy
