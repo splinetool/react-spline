@@ -1,6 +1,6 @@
 {
   "name": "@splinetool/react-spline",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "files": [
     "dist"
   ],
@@ -16,7 +16,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "deploy": "yarn build && np"
   },
   "devDependencies": {
     "@splinetool/runtime": "link:/Users/claudiabdm/Documents/code/spline/spline/packages/runtime",
@@ -26,6 +27,7 @@
     "@types/react-dom": "^17.0.0",
     "@vitejs/plugin-react": "^1.0.0",
     "animejs": "^3.2.1",
+    "np": "^7.6.0",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
     "typescript": "^4.3.2",
