@@ -15,7 +15,7 @@ import type {
 
 export type { SPEObject, SplineEvent, SplineEventName };
 
-interface SplineProps {
+export interface SplineProps {
   scene: string;
   id?: string;
   style?: CSSProperties;
