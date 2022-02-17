@@ -131,8 +131,8 @@ export const Spline = forwardRef<SplineRef, SplineProps>(
 
         const init = async function () {
           const response = await fetch(scene);
-          const json = await response.json();
-          await speApp.start(json);
+          const buffer = await response.arrayBuffer();
+          await speApp.start(buffer);
 
           for (let event of events) {
             if (event.cb) {

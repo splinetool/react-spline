@@ -303,7 +303,7 @@
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-4.2.0.tgz#667bfc6186ae7c9e0b45a08960c551437176e1ca"
   integrity sha512-VkE3KLBmJwcCaVARtQpfuKcKv8gcBmUubrfHGF84dXuuW6jgsRYxPtzcIhPyK9WAPpRt2/xY6zkD9MnRaJzSyw==
 
-"@splinetool/runtime@link:../spline/packages/runtime":
+"@splinetool/runtime@link:../spline/spline/packages/runtime":
   version "0.0.0"
   uid ""
 

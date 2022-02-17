@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from 'react';
-import { Spline, SplineRef } from '..';
 import type { SPEObject, SplineEvent } from '@splinetool/runtime';
+import { Spline, SplineRef } from '../src/Spline';
 import anime from 'animejs';
 
 function App() {
@@ -95,6 +95,8 @@ function App() {
           margin: 'auto',
         }}
       >
+        {/* 
+        Commented this because example scene needs to be .spline and I only have the .json for now.
         {isLoading && (
           <div style={{ width: '512px', height: '512px' }}>Loading...</div>
         )}
@@ -122,10 +124,11 @@ function App() {
           <button type="button" onClick={() => handleMoveLight('down')}>
             Move light down
           </button>
-        </div>
+        </div> */}
       </div>
+      {/* Working fine with local file (./scene.spline) which was downloaded from web content but not from url */}
       <Spline
-        scene="https://draft-dev.spline.design/OeiLiWHnluCdyLmM/scene.json"
+        scene="https://draft-dev.spline.design/1vYXL8gMu7ZEiUzs/scene.spline"
         id="myCanvas2"
       />
     </>
