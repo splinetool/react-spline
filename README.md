@@ -8,7 +8,8 @@
 - [Usage](#usage)
 
   - [Generate scene link](#generate-scene-link)
-  - [Start using react-spline component in React App](#start-using-react-spline-component-in-react-app)
+  - [Start using react-spline component in React](#start-using-react-spline-component-in-react)
+  - [Start using react-spline component in Next.js](#start-using-react-spline-component-in-next.js)
   - [Listen to react-spline events](#listen-to-react-spline-events)
   - [Trigger scene events from outside](#trigger-scene-events-from-outside)
   - [Read and modify spline objects](#read-and-modify-spline-objects)
@@ -40,7 +41,7 @@ npm install @splinetool/react-spline @splinetool/runtime
    2. All previous drafts are stored under the "Drafts" tab.
    3. You can use the drafts to try ideas, and once you are ready, you can promote your changes to production.
 
-### Start using react-spline component in your React App
+### Start using react-spline component in React
 
 ```jsx
 import { Spline } from '@splinetool/react-spline';
@@ -53,6 +54,44 @@ function App() {
   );
 }
 ```
+
+### Start using react-spline component in Next.js
+
+1. Create a wrapped component to be able to use ref.
+
+   ```jsx
+   import { Spline } from '@splinetool/react-spline';
+   import { Ref } from 'react';
+
+   export function WrappedSpline({ splineRef, ...props }) {
+     return <Spline ref={splineRef} {...props} />;
+   }
+   ```
+
+2. Use [next/dynamic](https://nextjs.org/docs/advanced-features/dynamic-import) to import client-side component.
+
+   ```jsx
+   import dynamic from 'next/dynamic';
+
+   const WrappedSpline = dynamic(
+     () => import('./WrappedSpline').then((mod) => mod.WrappedSpline),
+     {
+       ssr: false,
+     }
+   );
+
+   const Spline = forwardRef((props, ref) => {
+     return <WrappedSpline {...props} splineRef={ref} />;
+   });
+
+   function App() {
+     return (
+       <main>
+         <Spline scene="[DRAFT OR PROD URL]" />
+       </main>
+     );
+   }
+   ```
 
 ### Listen to react-spline events
 
