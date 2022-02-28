@@ -9,7 +9,7 @@
 
   - [Generate scene link](#generate-scene-link)
   - [Start using react-spline component in React](#start-using-react-spline-component-in-react)
-  - [Start using react-spline component in Next.js](#start-using-react-spline-component-in-next.js)
+  - [Start using react-spline component in Next.js](#start-using-react-spline-component-in-nextjs)
   - [Listen to react-spline events](#listen-to-react-spline-events)
   - [Trigger scene events from outside](#trigger-scene-events-from-outside)
   - [Read and modify spline objects](#read-and-modify-spline-objects)
@@ -55,7 +55,7 @@ function App() {
 }
 ```
 
-### Start using react-spline component in Next.js
+### Start using react-spline component in Nextjs
 
 1. Create a wrapped component to be able to use ref.
 
