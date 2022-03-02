@@ -20,7 +20,7 @@
     "deploy": "yarn build && np"
   },
   "devDependencies": {
-    "@splinetool/runtime": "^0.6.17",
+    "@splinetool/runtime": "link:/Users/claudiabenito/Documents/code/spline/spline/packages/runtime",
     "@types/animejs": "^3.1.4",
     "@types/node": "^16.11.9",
     "@types/react": "^17.0.0",
@@ -34,7 +34,7 @@
     "vite": "^2.6.4"
   },
   "peerDependencies": {
-    "@splinetool/runtime": "*",
+    "@splinetool/runtime": "link:/Users/claudiabenito/Documents/code/spline/spline/packages/runtime",
     "react": "^17.0.0",
     "react-dom": "^17.0.0"
   }
