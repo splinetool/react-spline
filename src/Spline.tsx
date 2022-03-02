@@ -154,7 +154,7 @@ export const Spline = forwardRef<SplineRef, SplineProps>(
             speApp.removeEventListener(event.name, event.cb);
           }
         }
-        speApp.unmount();
+        speApp.dispose();
       };
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [scene]);
