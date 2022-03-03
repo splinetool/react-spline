@@ -62,7 +62,7 @@ export interface SplineRef {
    * Sets the zoom of the scene.
    * @param {number} zoomValue The new value of the zoom.
    */
-  setZoom: (zoomValue: SplineEventName) => void;
+  setZoom: (zoomValue: number) => void;
 }
 
 export const Spline = forwardRef<SplineRef, SplineProps>(
