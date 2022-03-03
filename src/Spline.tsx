@@ -58,6 +58,11 @@ export interface SplineRef {
    * @param {string}	uuid String to match to the object's uuid
    */
   emitEventReverse: (eventName: SplineEventName, uuid: string) => void;
+  /**
+   * Sets the zoom of the scene.
+   * @param {number} zoomValue The new value of the zoom.
+   */
+  setZoom: (zoomValue: SplineEventName) => void;
 }
 
 export const Spline = forwardRef<SplineRef, SplineProps>(
@@ -175,6 +180,10 @@ export const Spline = forwardRef<SplineRef, SplineProps>(
           },
           emitEventReverse(eventName: SplineEventName, uuid: string) {
             appRef.current.app?.emitEventReverse(eventName, uuid);
+          },
+          setZoom(zoomValue: number) {
+            // TEMP use zoom out until we have proper zooming API
+            appRef.current.app?._controls.zoomOut(zoomValue);
           },
         };
       },
