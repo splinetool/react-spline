@@ -29,6 +29,7 @@ export interface SplineProps {
   onStart?: (e: SplineEvent) => void;
   onLookAt?: (e: SplineEvent) => void;
   onFollow?: (e: SplineEvent) => void;
+  autoRender?: boolean;
 }
 
 export interface SplineRef {
@@ -81,6 +82,7 @@ export const Spline = forwardRef<SplineRef, SplineProps>(
       onLookAt,
       onFollow,
       onLoad,
+      autoRender = false,
     },
     ref
   ) => {
@@ -132,7 +134,7 @@ export const Spline = forwardRef<SplineRef, SplineProps>(
       ];
 
       if (canvasRef.current) {
-        speApp = new Application(canvasRef.current, { autoRender: true });
+        speApp = new Application(canvasRef.current, { autoRender });
 
         const init = async function () {
           const response = await fetch(scene);
