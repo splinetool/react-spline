@@ -1,6 +1,8 @@
 # react-spline
 
-> A component to easily run Spline scenes in React apps.
+🌈 [Spline](https://spline.design/) is a friendly 3d collaborative design tool for the web.
+
+**react-spline** allows you to export and use spline scenes directly in your React websites.
 
 ## Table of Contents
 
@@ -37,9 +39,11 @@ npm install @splinetool/react-spline @splinetool/runtime
 
 1. Go to the Export panel and select "React Component", then press "Export".
 2. Spline generates a link for Development (Drafts) and Production.
-   1. Drafts are generated each time you press on "Generate Draft". This will create a new link.
-   2. All previous drafts are stored under the "Drafts" tab.
-   3. You can use the drafts to try ideas, and once you are ready, you can promote your changes to production.
+   - Drafts are generated each time you press on "Generate Draft". This will create a new link.
+   - All previous drafts are stored under the "Drafts" tab.
+   - You can use the drafts to try ideas, and once you are ready, you can promote your changes to production.
+
+<img src="./.github/screenshots/react-export-pane.png" width="250">
 
 ### Start using react-spline component in React
 
@@ -217,6 +221,7 @@ function App() {
 | onStart?      | `(e: SplineEvent) => void` | Function handler for Start events       |
 | onLookAt?     | `(e: SplineEvent) => void` | Function handler for Look At events     |
 | onFollow?     | `(e: SplineEvent) => void` | Function handler for Mouse Up events    |
+| onScroll?     | `(e: SplineEvent) => void` | Function handler for Scroll events      |
 
 ### Spline Container Ref Methods
 
@@ -234,11 +239,6 @@ We use [yarn](https://yarnpkg.com/), install the dependencies like this:
 ```bash
 yarn
 ```
-
-For now, you need to use also:
-
-- `yarn add link:path/to/runtime` in order to use the updated version that is merge in dev.
-- `yarn link` and then `yarn link @splinetool/react-spline`.
 
 ### Development
 
