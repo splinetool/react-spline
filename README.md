@@ -4,6 +4,11 @@
 
 **react-spline** allows you to export and use spline scenes directly in your React websites.
 
+[Website](https://spline.design/) &mdash;
+[Twitter](https://twitter.com/splinetool) &mdash;
+[Discord](https://discord.gg/M9hNDMqvnw) &mdash;
+[Documentation](https://docs.spline.design/)
+
 ## Table of Contents
 
 - [Install](#install)
