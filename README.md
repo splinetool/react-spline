@@ -129,21 +129,24 @@ _(You can get the ID of the object in the `Develop` pane of the right sidebar)._
 import { Spline } from '@splinetool/react-spline'
 
 function App() {
-const splineRef = useRef()
+  const [spline, setSpline] = useState()
 
-function triggerAnimation() {
-  const spline = splineRef.current
-  spline.emitEvent('mouseHover', '8E8C2DDD-18B6-4C54-861D-7ED2519DE20E')
-}
+  function onLoad(spline) {
+    setSpline(spline)
+  }
 
-return (
-  <main>
-    <Spline ref={splineRef} scene="[DRAFT OR PROD URL]"/>
-    <button type="button" onClick={triggerAnimation}/>
-      Trigger Spline Animation
-    </button>
-  </main>
-)
+  function triggerAnimation() {
+    spline.emitEvent('mouseHover', '8E8C2DDD-18B6-4C54-861D-7ED2519DE20E')
+  }
+
+  return (
+    <main>
+      <Spline scene="[DRAFT OR PROD URL]" onLoad={onLoad} />
+      <button type="button" onClick={triggerAnimation}/>
+        Trigger Spline Animation
+      </button>
+    </main>
+  )
 }
 
 ```
