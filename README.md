@@ -72,7 +72,7 @@ function App() {
   const [myObj, setMyObj] = useState(null)
 
   function onLoad(spline) {
-    const obj = spline.findObjectById('my-object-id')
+    const obj = spline.findObjectById('8E8C2DDD-18B6-4C54-861D-7ED2519DE20E')
     // or
     // const obj = spline.findObjectByName('my object')
 
@@ -106,7 +106,7 @@ import { Spline } from '@splinetool/react-spline';
 
 function App() {
   function onMouseDown(e) {
-    if (e.target.id === 'my-object-id') {
+    if (e.target.id === '8E8C2DDD-18B6-4C54-861D-7ED2519DE20E') {
       // doSomething();
     }
   }
@@ -134,17 +134,17 @@ function App() {
 const splineRef = useRef()
 
 function triggerAnimation() {
- const spline = splineRef.current
- spline.emitEvent('mouseHover', 'my-object-id')
+  const spline = splineRef.current
+  spline.emitEvent('mouseHover', '8E8C2DDD-18B6-4C54-861D-7ED2519DE20E')
 }
 
 return (
- <main>
-   <Spline ref={splineRef} scene="[DRAFT OR PROD URL]"/>
-   <button type="button" onClick={triggerAnimation}/>
-     Trigger Spline Animation
-   </button>
- </main>
+  <main>
+    <Spline ref={splineRef} scene="[DRAFT OR PROD URL]"/>
+    <button type="button" onClick={triggerAnimation}/>
+      Trigger Spline Animation
+    </button>
+  </main>
 )
 }
 
@@ -159,7 +159,7 @@ function App() {
   const [objectToAnimate, setObjectToAnimate] = useState(null)
 
   function onLoad(spline) {
-    const obj = spline.findObjectById('my-object-id')
+    const obj = spline.findObjectById('8E8C2DDD-18B6-4C54-861D-7ED2519DE20E')
     setObjectToAnimate(obj)
   }
 
