@@ -61,21 +61,21 @@ function App() {
 
 ### Listen to events
 
-You can listen to any common event on the Spline canvas just by attaching a listener to the Spline component.
+You can listen to any Spline Event you set in the Events panel of the editor by attaching a listener to the Spline component.
 
 ```jsx
 import { Spline } from '@splinetool/react-spline';
 
 function App() {
-  function handleMouseDown(e) {
+  function onMouseDown(e) {
     if (e.target.id === 'my-object-id') {
-      doSomething();
+      // doSomething();
     }
   }
 
   return (
     <main>
-      <Spline scene="[DRAFT OR PROD URL]" onMouseDown={handleMouseDown} />
+      <Spline scene="[DRAFT OR PROD URL]" onMouseDown={onMouseDown} />
     </main>
   );
 }
