@@ -35,17 +35,17 @@ npm install @splinetool/react-spline @splinetool/runtime
 
 ## Usage
 
-### Generate scene link from the Spline Editor
+To use react-spline, first you have to go to the Spline editor, click on the Export button and select "**React Component**".
 
-1. Go to the Export panel and select "React Component", then press "Export".
-2. Spline generates a link for Development (Drafts) and Production.
-   - Drafts are generated each time you press on "Generate Draft". This will create a new link.
-   - All previous drafts are stored under the "Drafts" tab.
-   - You can use the drafts to try ideas, and once you are ready, you can promote your changes to production.
+Spline generates links for Development (Drafts) and Production.
+
+Drafts are generated each time you press on "**Generate Draft**". This will create a new link with the current content of the scene. All previous drafts are stored under the "**Drafts**" tab.
+
+You can use the drafts to try ideas, and once you are ready, you can **promote your drafts to production**.
 
 <img src="./.github/screenshots/react-export-pane.png" width="250">
 
-### Start using react-spline component in React
+Once you have a draft or production URL, you can start using the react-spline component in React.
 
 ```jsx
 import { Spline } from '@splinetool/react-spline';
@@ -59,13 +59,76 @@ function App() {
 }
 ```
 
-### Start using react-spline component in Nextjs
+### Listen to events
 
-1. Create a wrapped component to be able to use ref.
+You can listen to any common event on the Spline canvas just by attaching a listener to the Spline component.
+
+```jsx
+import { Spline } from '@splinetool/react-spline';
+
+function App() {
+  function handleMouseDown(e) {
+    if (e.target.id === 'my-object-id') {
+      doSomething();
+    }
+  }
+
+  return (
+    <main>
+      <Spline scene="[DRAFT OR PROD URL]" onMouseDown={handleMouseDown} />
+    </main>
+  );
+}
+```
+
+### Read and modify Spline objects
+
+You can query any Spline object via `findObjectById` or `findObjectByName`.
+
+_(You can get the ID of the object in the `Develop` pane of the right sidebar)._
+
+```jsx
+import { Spline } from '@splinetool/react-spline'
+
+function App() {
+  const splineRef = useRef()
+  const [myObj, setMyObj] = useState(null)
+
+  useEffect(() => {
+    const obj = splineRef.current.findObjectById('my-object-id')
+    // or
+    // const obj = splineRef.current.findObjectByName('my object')
+
+    setMyObj(obj)
+  }, [splineRef.current])
+
+  function moveObj() {
+    console.log(myObj) // Spline Object => { name: 'my object', id: '8E8C2DDD-18B6-4C54-861D-7ED2519DE20E', position: {}, ... }
+
+    // move the object in 3D space
+    myObj.position.x += 10
+  }
+
+  return (
+    <main>
+      <Spline ref={splineRef} scene="[DRAFT OR PROD URL]"/>
+      <button type="button" onClick={moveObj}/>
+        Move {myObj.name}
+      </button>
+    </main>
+  )
+}
+```
+
+**NOTE**: if you're using [Next.js](https://nextjs.org/), to be albe to use the `ref`, you have to wrap `<Spline />` in a component and load it with [next/dynamic](https://nextjs.org/docs/advanced-features/dynamic-import).
+
+<details>
+<summary>See Next.js usage example</summary>
+
+1. Create a wrapped component.
 
    ```jsx
    import { Spline } from '@splinetool/react-spline';
-   import { Ref } from 'react';
 
    export function WrappedSpline({ splineRef, ...props }) {
      return <Spline ref={splineRef} {...props} />;
@@ -89,117 +152,82 @@ function App() {
    });
 
    function App() {
+     const splineRef = useRef();
+
+     useEffect(() => {
+       // you can access splineRef.current here
+     }, [splineRef.current]);
+
      return (
        <main>
-         <Spline scene="[DRAFT OR PROD URL]" />
+         <Spline scene="[DRAFT OR PROD URL]" ref={splineRef} />
        </main>
      );
    }
    ```
 
-### Listen to react-spline events
+</details>
 
-Spline is in charged of adding events and user just need to add handler function.
+### Trigger Spline events from outside
+
+You can trigger any animation Event you set in the Events panel in the Spline Editor.
+
+You can use the `emitEvent` function via the spline ref, passing the event type and the ID of your object.
+
+_(You can get the ID of the object in the `Develop` pane of the right sidebar)._
 
 ```jsx
-import { Spline } from '@splinetool/react-spline';
+import { Spline } from '@splinetool/react-spline'
 
 function App() {
-  function handleMouseDown(e) {
-    if (e.target.id === 'my-object-id') {
-      doSomething();
-    }
+  const splineRef = useRef()
+
+  function triggerAnimation() {
+    const spline = splineRef.current
+    spline.emitEvent('mouseHover', 'my-object-id')
   }
 
   return (
     <main>
-      <Spline scene="[DRAFT OR PROD URL]" onMouseDown={handleMouseDown} />
+      <Spline ref={splineRef} scene="[DRAFT OR PROD URL]"/>
+      <button type="button" onClick={triggerAnimation}/>
+        Trigger Spline Animation
+      </button>
     </main>
-  );
+  )
 }
+
 ```
 
-### Trigger scene events from outside
-
-- Option 1: Using emitEvent with event name and object id.
-
-  ```jsx
-  import { Spline } from '@splinetool/react-spline';
-
-  function App() {
-  	const splineRef = useRef();
-
-  	function handleTriggerButtonClick() {
-  		splineRef.current.emitEvent('mouseHover', 'my-object-id');
-  	}
-
-  	return (
-  		<main>
-  			<Spline ref={splineRef} scene="[DRAFT OR PROD URL]"/>
-  			<button type="button" onClick={handleTriggerButtonClick}/>
-  				Trigger Button
-  			</button>
-  		</main>
-  	)
-  }
-
-  ```
-
-- Option 2: Querying object and trigger event using emitEvent object method.
-
-  ```jsx
-  import { Spline } from '@splinetool/react-spline';
-
-  function App() {
-  	const splineRef = useRef();
-  	const [myObj, setMyObj] = useState(null);
-
-  	useEffect(() => {
-  		const obj = splineRef.current.findObjectById('my-object-id')
-  		setMyObj(obj)
-  	}, [splineRef])
-
-  	function handleTriggerButtonClick() {
-  		myObj.emitEvent('mouseHover');
-  	}
-
-  	return (
-  		<main>
-  			<Spline ref={splineRef} scene="[DRAFT OR PROD URL]"/>
-  			<button type="button" onClick={handleTriggerButtonClick}/>
-  				Trigger Button
-  			</button>
-  		</main>
-  	)
-  }
-  ```
-
-### Read and modify spline objects
+Or you can query the spline object first, and then trigger the event:
 
 ```jsx
-import { Spline } from '@splinetool/react-spline';
+import { Spline } from '@splinetool/react-spline'
 
 function App() {
-	const splineRef = useRef();
-	const [myObj, setMyObj] = useState(null);
+  const splineRef = useRef()
+  const [objectToAnimate, setObjectToAnimate] = useState(null)
 
-	useEffect(() => {
-		const obj = splineRef.current.findObjectById('my-object-id')
-		setMyObj(obj)
-	}, [splineRef])
+  // once loaded, get the object with id: 'my-object-id'
+  useEffect(() => {
+    const spline = splineRef.current
 
-	function handleClick() {
-		console.log(myObj) // SPE Proxy Object => { name: 'my object', id: '8E8C2DDD-18B6-4C54-861D-7ED2519DE20E', ... }
-	}
+    const obj = spline.findObjectById('my-object-id')
+    setObjectToAnimate(obj)
+  }, [splineRef.current])
 
-	return (
-		<main>
-			<Spline ref={splineRef} scene="[DRAFT OR PROD URL]"/>
-			<button type="button" onClick={handleClick}/>
-				Log {myObj.name} info
-			</button>
-		</main>
-	)
+  function triggerAnimation() {
+    objectToAnimate.emitEvent('mouseHover')
+  }
+
+  return (
+    <main>
+      <Spline ref={splineRef} scene="[DRAFT OR PROD URL]"/>
+      <button type="button" onClick={triggerAnimation}/>
+        Trigger Spline Animation
+      </button>
+    </main>
+  )
 }
 ```
 
@@ -207,30 +235,31 @@ function App() {
 
 ### Spline Component Props
 
-| Name          | Type                       | Description                             |
-| ------------- | -------------------------- | --------------------------------------- |
-| scene         | `string`                   | Scene file                              |
-| id?           | `string`                   | Canvas id                               |
-| style?        | `string`                   | CSS style                               |
-| className?    | `string`                   | CSS classes                             |
-| onMouseDown?  | `(e: SplineEvent) => void` | Function handler for Mouse Down events  |
-| onMouseHover? | `(e: SplineEvent) => void` | Function handler for Mouse Hover events |
-| onMouseUp?    | `(e: SplineEvent) => void` | Function handler for Mouse Up events    |
-| onKeyDown?    | `(e: SplineEvent) => void` | Function handler for Key Down events    |
-| onKeyUp?      | `(e: SplineEvent) => void` | Function handler for Key Up events      |
-| onStart?      | `(e: SplineEvent) => void` | Function handler for Start events       |
-| onLookAt?     | `(e: SplineEvent) => void` | Function handler for Look At events     |
-| onFollow?     | `(e: SplineEvent) => void` | Function handler for Mouse Up events    |
-| onScroll?     | `(e: SplineEvent) => void` | Function handler for Scroll events      |
+| Name            | Type                       | Description                             |
+| --------------- | -------------------------- | --------------------------------------- |
+| `scene`         | `string`                   | Scene file                              |
+| `className?`    | `string`                   | CSS classes                             |
+| `style?`        | `string`                   | CSS style                               |
+| `id?`           | `string`                   | Canvas id                               |
+| `onMouseDown?`  | `(e: SplineEvent) => void` | Function handler for Mouse Down events  |
+| `onMouseHover?` | `(e: SplineEvent) => void` | Function handler for Mouse Hover events |
+| `onMouseUp?`    | `(e: SplineEvent) => void` | Function handler for Mouse Up events    |
+| `onKeyDown?`    | `(e: SplineEvent) => void` | Function handler for Key Down events    |
+| `onKeyUp?`      | `(e: SplineEvent) => void` | Function handler for Key Up events      |
+| `onStart?`      | `(e: SplineEvent) => void` | Function handler for Start events       |
+| `onLookAt?`     | `(e: SplineEvent) => void` | Function handler for Look At events     |
+| `onFollow?`     | `(e: SplineEvent) => void` | Function handler for Mouse Up events    |
+| `onScroll?`     | `(e: SplineEvent) => void` | Function handler for Scroll events      |
 
-### Spline Container Ref Methods
+### Spline Ref Methods
 
-| Name             | Type                                     | Description                                                                                                                 |
-| ---------------- | ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| emitEvent        | (eventName: string, uuid:string) => void | Triggers a Spline event associated to an object with provided uuid in reverse order. Starts from first state to last state. |
-| emitEventReverse | (eventName: string, uuid:string) => void | Triggers a Spline event associated to an object with provided uuid in reverse order. Starts from last state to first state. |
-| findObjectById   | (uuid: string) => SPEObject              | Searches through scene's children and returns the object with that uuid.                                                    |
-| findObjectByName | (name: string) => SPEObject              | Searches through scene's children and returns the first object with that name                                               |
+| Name               | Type                                                 | Description                                                                                                                 |
+| ------------------ | ---------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `emitEvent`        | `(eventName: SplineEventName, uuid: string) => void` | Triggers a Spline event associated to an object with provided uuid in reverse order. Starts from first state to last state. |
+| `emitEventReverse` | `(eventName: SplineEventName, uuid: string) => void` | Triggers a Spline event associated to an object with provided uuid in reverse order. Starts from last state to first state. |
+| `findObjectById`   | `(uuid: string) => SPEObject`                        | Searches through scene's children and returns the object with that uuid.                                                    |
+| `findObjectByName` | `(name: string) => SPEObject`                        | Searches through scene's children and returns the first object with that name                                               |
+| `setZoom`          | `(zoom: number) => void`                             | Sets the initial zoom of the scene.                                                                                         |
 
 ## Contributing
 
