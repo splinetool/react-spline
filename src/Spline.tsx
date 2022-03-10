@@ -29,7 +29,7 @@ export interface SplineProps {
   onStart?: (e: SplineEvent) => void;
   onLookAt?: (e: SplineEvent) => void;
   onFollow?: (e: SplineEvent) => void;
-  onScroll?: (e: SplineEvent) => void;
+  onWheel?: (e: SplineEvent) => void;
   autoRender?: boolean;
 }
 
@@ -82,7 +82,7 @@ export const Spline = forwardRef<SplineRef, SplineProps>(
       onStart,
       onLookAt,
       onFollow,
-      onScroll,
+      onWheel,
       onLoad,
       autoRender = false,
     },
@@ -135,7 +135,7 @@ export const Spline = forwardRef<SplineRef, SplineProps>(
         },
         {
           name: 'scroll',
-          cb: onScroll,
+          cb: onWheel,
         },
       ];
 

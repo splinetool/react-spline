@@ -94,13 +94,15 @@ function App() {
   const splineRef = useRef()
   const [myObj, setMyObj] = useState(null)
 
-  useEffect(() => {
-    const obj = splineRef.current.findObjectById('my-object-id')
+  function onLoad() {
+    const spline = splineRef.current
+
+    const obj = spline.findObjectById('my-object-id')
     // or
-    // const obj = splineRef.current.findObjectByName('my object')
+    // const obj = spline.findObjectByName('my object')
 
     setMyObj(obj)
-  }, [splineRef.current])
+  }
 
   function moveObj() {
     console.log(myObj) // Spline Object => { name: 'my object', id: '8E8C2DDD-18B6-4C54-861D-7ED2519DE20E', position: {}, ... }
@@ -111,7 +113,7 @@ function App() {
 
   return (
     <main>
-      <Spline ref={splineRef} scene="[DRAFT OR PROD URL]"/>
+      <Spline scene="[DRAFT OR PROD URL]" ref={splineRef} onLoad={onLoad}/>
       <button type="button" onClick={moveObj}/>
         Move {myObj.name}
       </button>
@@ -150,17 +152,19 @@ function App() {
    const Spline = forwardRef((props, ref) => {
      return <WrappedSpline {...props} splineRef={ref} />;
    });
+   ```
 
+   ```jsx
    function App() {
      const splineRef = useRef();
 
-     useEffect(() => {
+     function onLoad() {
        // you can access splineRef.current here
-     }, [splineRef.current]);
+     }
 
      return (
        <main>
-         <Spline scene="[DRAFT OR PROD URL]" ref={splineRef} />
+         <Spline scene="[DRAFT OR PROD URL]" ref={splineRef} onLoad={onLoad} />
        </main>
      );
    }
@@ -180,21 +184,21 @@ _(You can get the ID of the object in the `Develop` pane of the right sidebar)._
 import { Spline } from '@splinetool/react-spline'
 
 function App() {
-  const splineRef = useRef()
+const splineRef = useRef()
 
-  function triggerAnimation() {
-    const spline = splineRef.current
-    spline.emitEvent('mouseHover', 'my-object-id')
-  }
+function triggerAnimation() {
+ const spline = splineRef.current
+ spline.emitEvent('mouseHover', 'my-object-id')
+}
 
-  return (
-    <main>
-      <Spline ref={splineRef} scene="[DRAFT OR PROD URL]"/>
-      <button type="button" onClick={triggerAnimation}/>
-        Trigger Spline Animation
-      </button>
-    </main>
-  )
+return (
+ <main>
+   <Spline ref={splineRef} scene="[DRAFT OR PROD URL]"/>
+   <button type="button" onClick={triggerAnimation}/>
+     Trigger Spline Animation
+   </button>
+ </main>
+)
 }
 
 ```
@@ -208,13 +212,12 @@ function App() {
   const splineRef = useRef()
   const [objectToAnimate, setObjectToAnimate] = useState(null)
 
-  // once loaded, get the object with id: 'my-object-id'
-  useEffect(() => {
+  function onLoad() {
     const spline = splineRef.current
 
     const obj = spline.findObjectById('my-object-id')
     setObjectToAnimate(obj)
-  }, [splineRef.current])
+  }
 
   function triggerAnimation() {
     objectToAnimate.emitEvent('mouseHover')
@@ -222,7 +225,7 @@ function App() {
 
   return (
     <main>
-      <Spline ref={splineRef} scene="[DRAFT OR PROD URL]"/>
+      <Spline scene="[DRAFT OR PROD URL]" ref={splineRef} onLoad={onLoad} />
       <button type="button" onClick={triggerAnimation}/>
         Trigger Spline Animation
       </button>
@@ -235,23 +238,29 @@ function App() {
 
 ### Spline Component Props
 
-| Name            | Type                       | Description                             |
-| --------------- | -------------------------- | --------------------------------------- |
-| `scene`         | `string`                   | Scene file                              |
-| `className?`    | `string`                   | CSS classes                             |
-| `style?`        | `string`                   | CSS style                               |
-| `id?`           | `string`                   | Canvas id                               |
-| `onMouseDown?`  | `(e: SplineEvent) => void` | Function handler for Mouse Down events  |
-| `onMouseHover?` | `(e: SplineEvent) => void` | Function handler for Mouse Hover events |
-| `onMouseUp?`    | `(e: SplineEvent) => void` | Function handler for Mouse Up events    |
-| `onKeyDown?`    | `(e: SplineEvent) => void` | Function handler for Key Down events    |
-| `onKeyUp?`      | `(e: SplineEvent) => void` | Function handler for Key Up events      |
-| `onStart?`      | `(e: SplineEvent) => void` | Function handler for Start events       |
-| `onLookAt?`     | `(e: SplineEvent) => void` | Function handler for Look At events     |
-| `onFollow?`     | `(e: SplineEvent) => void` | Function handler for Mouse Up events    |
-| `onScroll?`     | `(e: SplineEvent) => void` | Function handler for Scroll events      |
+These are all the props you can pass to the `<Spline />` component.
+
+| Name            | Type                       | Description                                                                                                            |
+| --------------- | -------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `scene`         | `string`                   | Scene file                                                                                                             |
+| `className?`    | `string`                   | CSS classes                                                                                                            |
+| `style?`        | `string`                   | CSS style                                                                                                              |
+| `id?`           | `string`                   | Canvas id                                                                                                              |
+| `ref?`          | `React.Ref`                | A ref pointing to the Spline object.                                                                                   |
+| `onLoad?`       | `() => void`               | Gets called once the scene has loaded                                                                                  |
+| `onWheel?`      | `(e: SplineEvent) => void` | Gets called on the [`wheel`](https://developer.mozilla.org/en-US/docs/Web/API/Element/wheel_event) event on the canvas |
+| `onMouseDown?`  | `(e: SplineEvent) => void` | Gets called once a Spline `Mouse Down` event is fired                                                                  |
+| `onMouseHover?` | `(e: SplineEvent) => void` | Gets called once a Spline `Mouse Hover` event is fired                                                                 |
+| `onMouseUp?`    | `(e: SplineEvent) => void` | Gets called once a Spline `Mouse Up` event is fired                                                                    |
+| `onKeyDown?`    | `(e: SplineEvent) => void` | Gets called once a Spline `Key Down` event is fired                                                                    |
+| `onKeyUp?`      | `(e: SplineEvent) => void` | Gets called once a Spline `Key Up` event is fired                                                                      |
+| `onStart?`      | `(e: SplineEvent) => void` | Gets called once a Spline `Start` event is fired                                                                       |
+| `onLookAt?`     | `(e: SplineEvent) => void` | Gets called once a Spline `Look At` event is fired                                                                     |
+| `onFollow?`     | `(e: SplineEvent) => void` | Gets called once a Spline `Mouse Up` event is fired                                                                    |
 
 ### Spline Ref Methods
+
+These are all the methods available in the `ref={splineRef}` object.
 
 | Name               | Type                                                 | Description                                                                                                                 |
 | ------------------ | ---------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
