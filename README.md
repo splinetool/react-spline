@@ -59,28 +59,6 @@ function App() {
 }
 ```
 
-### Listen to events
-
-You can listen to any Spline Event you set in the Events panel of the editor by attaching a listener to the Spline component.
-
-```jsx
-import { Spline } from '@splinetool/react-spline';
-
-function App() {
-  function onMouseDown(e) {
-    if (e.target.id === 'my-object-id') {
-      // doSomething();
-    }
-  }
-
-  return (
-    <main>
-      <Spline scene="[DRAFT OR PROD URL]" onMouseDown={onMouseDown} />
-    </main>
-  );
-}
-```
-
 ### Read and modify Spline objects
 
 You can query any Spline object via `findObjectById` or `findObjectByName`.
@@ -116,6 +94,28 @@ function App() {
       </button>
     </main>
   )
+}
+```
+
+### Listen to events
+
+You can listen to any Spline Event you set in the Events panel of the editor by attaching a listener to the Spline component.
+
+```jsx
+import { Spline } from '@splinetool/react-spline';
+
+function App() {
+  function onMouseDown(e) {
+    if (e.target.id === 'my-object-id') {
+      // doSomething();
+    }
+  }
+
+  return (
+    <main>
+      <Spline scene="[DRAFT OR PROD URL]" onMouseDown={onMouseDown} />
+    </main>
+  );
 }
 ```
 
