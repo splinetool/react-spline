@@ -119,11 +119,13 @@ function App() {
 }
 ```
 
+You can find a list of all of the Spline Event listeners in the [Spline Component Props](#spline-component-props) section.
+
 ### Trigger Spline events from outside
 
 You can trigger any animation Event you set in the Events panel in the Spline Editor.
 
-You can use the `emitEvent` function via the spline ref, passing the event type and the ID of your object.
+You can use the `emitEvent` function via the spline ref, passing the [event type](#spline-events) and the ID of your object.
 
 _(You can get the ID of the object in the `Develop` pane of the right sidebar)._
 
@@ -178,6 +180,8 @@ function App() {
 }
 ```
 
+You can find a list of all of the Spline Events you can pass to the `emitEvent` funtcion in the [Spline Events](#spline-events) section.
+
 ## API
 
 ### Spline Component Props
@@ -213,6 +217,21 @@ These are all the methods available in the `ref={splineRef}` object.
 | `findObjectById`   | `(uuid: string) => SPEObject`                        | Searches through scene's children and returns the object with that uuid.                                                    |
 | `findObjectByName` | `(name: string) => SPEObject`                        | Searches through scene's children and returns the first object with that name                                               |
 | `setZoom`          | `(zoom: number) => void`                             | Sets the initial zoom of the scene.                                                                                         |
+
+### Spline Events
+
+These are all the Spline event types that you can pass to the `emitEvent` or `emitEventReverse` function.
+
+| Name         | Description                                   |
+| ------------ | --------------------------------------------- |
+| `mouseDown`  | Refers to the Spline `Mouse Down` event type  |
+| `mouseHover` | Refers to the Spline `Mouse Hover` event type |
+| `mouseUp`    | Refers to the Spline `Mouse Up` event type    |
+| `keyDown`    | Refers to the Spline `Key Down` event type    |
+| `keyUp`      | Refers to the Spline `Key Up` event type      |
+| `start`      | Refers to the Spline `Start` event type       |
+| `lookAt`     | Refers to the Spline `Look At` event type     |
+| `follow`     | Refers to the Spline `Mouse Up` event type    |
 
 ## Contributing
 
