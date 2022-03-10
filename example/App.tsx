@@ -1,19 +1,25 @@
-import { useRef, useState, useEffect } from 'react';
-import type { SPEObject, SplineEvent } from '@splinetool/runtime';
-import { Spline, SplineRef } from '../src/Spline';
+import { useEffect, useRef, useState } from 'react';
+import type { Application, SPEObject } from '@splinetool/runtime';
+import { Spline } from '../src/Spline';
 import anime from 'animejs';
 
 function App() {
-  const splineRef = useRef<SplineRef>(null);
-  const [isLoading, setIsLoading] = useState(true);
-
+  const [spline, setSpline] = useState<Application>(null);
+  const canvasParent = useRef<HTMLDivElement>(null);
   const tileRef = useRef<SPEObject>();
+
   useEffect(() => {
-    const tile = splineRef.current?.findObjectById(
-      '7ba78968-2a55-48f2-b14c-5191da3e075e'
-    );
-    tileRef.current = tile;
-  }, [splineRef.current]);
+    if (spline) {
+      const tile = spline.findObjectById(
+        '7ba78968-2a55-48f2-b14c-5191da3e075e'
+      );
+      tileRef.current = tile;
+    }
+  }, [spline]);
+
+  function handleLoad(e: Application) {
+    setSpline(e);
+  }
 
   function handleMoveTile(direction: 'left' | 'right' | 'up' | 'down') {
     if (tileRef.current) {
@@ -42,7 +48,7 @@ function App() {
 
   return (
     <>
-      <div className='buttons'>
+      <div className="buttons">
         <button type="button" onClick={() => handleMoveTile('left')}>
           Move tile to left
         </button>
@@ -57,12 +63,10 @@ function App() {
         </button>
       </div>
       <Spline
-        ref={splineRef}
+        ref={canvasParent}
         autoRender
         scene="https://prod.spline.design/ft9KFAMYebCiRXbC/scene.spline"
-        onLoad={() => {
-          setIsLoading(false);
-        }}
+        onLoad={handleLoad}
       />
     </>
   );
