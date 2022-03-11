@@ -20,7 +20,7 @@
     "deploy": "yarn build && np"
   },
   "devDependencies": {
-    "@splinetool/runtime": "^0.6.22",
+    "@splinetool/runtime": "^0.9.8",
     "@types/animejs": "^3.1.4",
     "@types/node": "^16.11.9",
     "@types/react": "^17.0.0",

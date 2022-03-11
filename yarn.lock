@@ -303,10 +303,10 @@
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-4.2.0.tgz#667bfc6186ae7c9e0b45a08960c551437176e1ca"
   integrity sha512-VkE3KLBmJwcCaVARtQpfuKcKv8gcBmUubrfHGF84dXuuW6jgsRYxPtzcIhPyK9WAPpRt2/xY6zkD9MnRaJzSyw==
 
-"@splinetool/runtime@^0.6.22":
-  version "0.6.22"
-  resolved "https://registry.yarnpkg.com/@splinetool/runtime/-/runtime-0.6.22.tgz#b952a3bd2cd27cdae679f129ede0547234d515ef"
-  integrity sha512-+3aC+yuhwplSDb6pL0xxJPs4BPhNjhEV6AvyQ+hTCYMEVCLVnogQn9Z9b/GpgzyGF1B5ogStAQ456I8EYiQh5Q==
+"@splinetool/runtime@^0.9.8":
+  version "0.9.8"
+  resolved "https://registry.yarnpkg.com/@splinetool/runtime/-/runtime-0.9.8.tgz#9eefcb777a8607d7f41fdea3c6899da10fecd3fb"
+  integrity sha512-RoThHr0d4wV5Nzf+nltD24fK5Hl/XKld1XAt3a/JW2RybGIFQK+7PW5LQ2F9WJ+cM+C9cSq8eHqoOYCvY2Yl5w==
   dependencies:
     on-change "^4.0.0"
 
