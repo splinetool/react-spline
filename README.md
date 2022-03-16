@@ -48,7 +48,7 @@ Drafts are generated each time you press on "**Generate Draft**". This will crea
 
 You can use the drafts to try ideas, and once you are ready, you can **promote your drafts to production**.
 
-<img src="./.github/screenshots/react-export-pane.png" width="250">
+<img width="250" alt="react-export-pane" src="https://user-images.githubusercontent.com/44007726/158627901-a86e72ae-bd75-4dbe-9088-1d32870408d6.png">
 
 Once you have a draft or production URL, you can start using the react-spline component in React.
 
