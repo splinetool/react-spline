@@ -16,6 +16,8 @@
   - [Read and modify Spline objects](#read-and-modify-spline-objects)
   - [Listen to events](#listen-to-events)
   - [Trigger Spline events from outside](#trigger-spline-events-from-outside)
+  - [Nextjs](#nextjs)
+  - [Lazy loading](#lazy-loading)
 - [API](#api)
   - [Spline Component Props](#spline-component-props)
   - [Spline App Methods](#spline-app-methods)
@@ -186,6 +188,91 @@ function App() {
 
 You can find a list of all of the Spline Events you can pass to the `emitEvent` funtcion in the [Spline Events](#spline-events) section.
 
+### Next.js
+
+Because react-spline component only works on client-side, its needs to be registered as a client-side only component or be [lazy loaded](#lazy-loading). 
+
+You can use [next/dynamic](https://nextjs.org/docs/advanced-features/dynamic-import) to import it as client-side only component:
+
+```jsx
+const Spline = dynamic<SplineProps>(
+  () => import("@splinetool/react-spline").then((mod) => mod.Spline),
+  {
+    ssr: false,
+  }
+)
+```
+
+However, if you want access to ref container and use [next/dynamic](https://nextjs.org/docs/advanced-features/dynamic-import), you will need to create a wrapped component and then import it dynamically: 
+
+1. Create a wrapped component.
+
+   ```jsx
+   import { Spline } from '@splinetool/react-spline'
+   export function WrappedSpline({ splineRef, ...props }) {
+     return <Spline ref={splineRef} {...props} />
+   }
+   ```
+
+2. Use [next/dynamic](https://nextjs.org/docs/advanced-features/dynamic-import) to import client-side component.
+
+   ```jsx
+   import dynamic from 'next/dynamic'
+
+   const WrappedSpline = dynamic(
+     () => import('./WrappedSpline').then((mod) => mod.WrappedSpline),
+     {
+       ssr: false,
+     }
+   )
+
+   const Spline = forwardRef((props, ref) => {
+     return <WrappedSpline {...props} splineRef={ref} />;
+   })
+   ```
+
+   ```jsx
+   function App() {
+     const ref = useRef()
+
+     useEffect(() => {
+       // you can access splineRef.current here
+     }, [])
+
+     return (
+       <main>
+         <Spline scene="[DRAFT OR PROD URL]" ref={ref} />
+       </main>
+     );
+   }
+   ```
+
+### Lazy loading
+
+To dynamically import react-spline component in React or Next.js, you can use [`import()`](https://reactjs.org/docs/code-splitting.html#import) with [`useEffect()`](https://reactjs.org/docs/hooks-effect.html) hook:
+```jsx
+function App() {
+  const [SplineComponent, setSplineComponent] = useState()
+  const ref = useRef(null);
+
+  useEffect(() => {
+    import("@splinetool/react-spline").then((mod) =>
+      setSplineComponent(mod.Spline)
+    )
+  }, [])
+
+  return (
+    <main>
+      {SplineComponent && (
+        <SplineComponent
+          ref={ref}
+          scene="https://draft-dev.spline.design/r0mogr0uC6EMdF7r/scene.spline"
+        />
+      )}
+    </main>
+  )
+}
+```
 ## API
 
 ### Spline Component Props
@@ -193,53 +280,6 @@ You can find a list of all of the Spline Events you can pass to the `emitEvent` 
 These are all the props you can pass to the `<Spline />` component.
 
 **NOTE**: if you're using [Next.js](https://nextjs.org/), to be albe to use the `ref` prop, you have to wrap `<Spline />` in a component and load it with [next/dynamic](https://nextjs.org/docs/advanced-features/dynamic-import).
-
-<details>
-<summary>See Next.js usage example</summary>
-
-1. Create a wrapped component.
-
-   ```jsx
-   import { Spline } from '@splinetool/react-spline';
-   export function WrappedSpline({ splineRef, ...props }) {
-     return <Spline ref={splineRef} {...props} />;
-   }
-   ```
-
-2. Use [next/dynamic](https://nextjs.org/docs/advanced-features/dynamic-import) to import client-side component.
-
-   ```jsx
-   import dynamic from 'next/dynamic';
-
-   const WrappedSpline = dynamic(
-     () => import('./WrappedSpline').then((mod) => mod.WrappedSpline),
-     {
-       ssr: false,
-     }
-   );
-
-   const Spline = forwardRef((props, ref) => {
-     return <WrappedSpline {...props} splineRef={ref} />;
-   });
-   ```
-
-   ```jsx
-   function App() {
-     const splineRef = useRef();
-
-     useEffect(() => {
-       // you can access splineRef.current here
-     }, []);
-
-     return (
-       <main>
-         <Spline scene="[DRAFT OR PROD URL]" ref={splineRef} />
-       </main>
-     );
-   }
-   ```
-
-</details>
 
 | Name            | Type                            | Description                                                                                                                   |
 | --------------- | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
