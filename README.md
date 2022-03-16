@@ -1,12 +1,14 @@
+![](./.github/screenshots/hero.png)
+
 # react-spline
+
+**react-spline** allows you to export and use Spline scenes directly in your React websites.
 
 🌈 [Spline](https://spline.design/) is a friendly 3d collaborative design tool for the web.
 
-**react-spline** allows you to export and use spline scenes directly in your React websites.
-
 [Website](https://spline.design/) &mdash;
 [Twitter](https://twitter.com/splinetool) &mdash;
-[Discord](https://discord.gg/M9hNDMqvnw) &mdash;
+[Community](https://discord.gg/M9hNDMqvnw) &mdash;
 [Documentation](https://docs.spline.design/)
 
 ## Table of Contents
@@ -16,6 +18,8 @@
   - [Read and modify Spline objects](#read-and-modify-spline-objects)
   - [Listen to events](#listen-to-events)
   - [Trigger Spline events from outside](#trigger-spline-events-from-outside)
+  - [Usage with Next.js](#usage-with-nextjs)
+  - [Lazy loading](#lazy-loading)
 - [API](#api)
   - [Spline Component Props](#spline-component-props)
   - [Spline App Methods](#spline-app-methods)
@@ -44,7 +48,7 @@ Drafts are generated each time you press on "**Generate Draft**". This will crea
 
 You can use the drafts to try ideas, and once you are ready, you can **promote your drafts to production**.
 
-<img src="./.github/screenshots/react-export-pane.png" width="250">
+<img width="250" src="./.github/screenshots/react-export-pane.png">
 
 Once you have a draft or production URL, you can start using the react-spline component in React.
 
@@ -53,9 +57,9 @@ import { Spline } from '@splinetool/react-spline';
 
 function App() {
   return (
-    <main>
+    <div>
       <Spline scene="[DRAFT OR PROD URL]" />
-    </main>
+    </div>
   );
 }
 ```
@@ -73,28 +77,28 @@ function App() {
   const [myObj, setMyObj] = useState(null)
 
   function onLoad(spline) {
-    const obj = spline.findObjectById('8E8C2DDD-18B6-4C54-861D-7ED2519DE20E')
+    const obj = spline.findObjectById('8E8C2DDD-18B6-4C54-861D-7ED2519DE20E');
     // or
-    // const obj = spline.findObjectByName('my object')
+    // const obj = spline.findObjectByName('my object');
 
-    setMyObj(obj)
+    setMyObj(obj);
   }
 
   function moveObj() {
-    console.log(myObj) // Spline Object => { name: 'my object', id: '8E8C2DDD-18B6-4C54-861D-7ED2519DE20E', position: {}, ... }
+    console.log(myObj); // Spline Object => { name: 'my object', id: '8E8C2DDD-18B6-4C54-861D-7ED2519DE20E', position: {}, ... }
 
     // move the object in 3D space
-    myObj.position.x += 10
+    myObj.position.x += 10;
   }
 
   return (
-    <main>
+    <div>
       <Spline scene="[DRAFT OR PROD URL]" onLoad={onLoad}/>
       <button type="button" onClick={moveObj}/>
         Move {myObj.name}
       </button>
-    </main>
-  )
+    </div>
+  );
 }
 ```
 
@@ -113,9 +117,9 @@ function App() {
   }
 
   return (
-    <main>
+    <div>
       <Spline scene="[DRAFT OR PROD URL]" onMouseDown={onMouseDown} />
-    </main>
+    </div>
   );
 }
 ```
@@ -131,27 +135,27 @@ You can use the `emitEvent` function via the spline ref, passing the [event type
 _(You can get the ID of the object in the `Develop` pane of the right sidebar)._
 
 ```jsx
-import { Spline } from '@splinetool/react-spline'
+import { Spline } from '@splinetool/react-spline';
 
 function App() {
-  const [spline, setSpline] = useState()
+  const [spline, setSpline] = useState();
 
   function onLoad(spline) {
-    setSpline(spline)
+    setSpline(spline);
   }
 
   function triggerAnimation() {
-    spline.emitEvent('mouseHover', '8E8C2DDD-18B6-4C54-861D-7ED2519DE20E')
+    spline.emitEvent('mouseHover', '8E8C2DDD-18B6-4C54-861D-7ED2519DE20E');
   }
 
   return (
-    <main>
+    <div>
       <Spline scene="[DRAFT OR PROD URL]" onLoad={onLoad} />
       <button type="button" onClick={triggerAnimation}/>
         Trigger Spline Animation
       </button>
-    </main>
-  )
+    </div>
+  );
 }
 
 ```
@@ -162,45 +166,60 @@ Or you can query the spline object first, and then trigger the event:
 import { Spline } from '@splinetool/react-spline'
 
 function App() {
-  const [objectToAnimate, setObjectToAnimate] = useState(null)
+  const [objectToAnimate, setObjectToAnimate] = useState(null);
 
   function onLoad(spline) {
-    const obj = spline.findObjectById('8E8C2DDD-18B6-4C54-861D-7ED2519DE20E')
-    setObjectToAnimate(obj)
+    const obj = spline.findObjectById('8E8C2DDD-18B6-4C54-861D-7ED2519DE20E');
+    setObjectToAnimate(obj);
   }
 
   function triggerAnimation() {
-    objectToAnimate.emitEvent('mouseHover')
+    objectToAnimate.emitEvent('mouseHover');
   }
 
   return (
-    <main>
+    <div>
       <Spline scene="[DRAFT OR PROD URL]" onLoad={onLoad} />
       <button type="button" onClick={triggerAnimation}/>
         Trigger Spline Animation
       </button>
-    </main>
+    </div>
   )
 }
 ```
 
-You can find a list of all of the Spline Events you can pass to the `emitEvent` funtcion in the [Spline Events](#spline-events) section.
+You can find a list of all of the Spline Events you can pass to the `emitEvent` function in the [Spline Events](#spline-events) section.
 
-## API
+### Usage with Next.js
 
-### Spline Component Props
+Because react-spline only works on client-side, it needs to be registered as a client-side only component or be [lazy loaded](#lazy-loading).
 
-These are all the props you can pass to the `<Spline />` component.
+You can use [next/dynamic](https://nextjs.org/docs/advanced-features/dynamic-import) to import it as client-side only component:
 
-**NOTE**: if you're using [Next.js](https://nextjs.org/), to be albe to use the `ref` prop, you have to wrap `<Spline />` in a component and load it with [next/dynamic](https://nextjs.org/docs/advanced-features/dynamic-import).
+```jsx
+import dynamic from 'next/dynamic';
 
-<details>
-<summary>See Next.js usage example</summary>
+const Spline = dynamic(
+  () => import('@splinetool/react-spline').then((mod) => mod.Spline),
+  { ssr: false }
+);
+
+function App() {
+  return (
+    <div>
+      <Spline scene="[DRAFT OR PROD URL]" />
+    </div>
+  );
+}
+```
+
+However, if you need to use the `ref` prop, you will need to create a wrapped component and import it dynamically:
 
 1. Create a wrapped component.
 
    ```jsx
    import { Spline } from '@splinetool/react-spline';
+
    export function WrappedSpline({ splineRef, ...props }) {
      return <Spline ref={splineRef} {...props} />;
    }
@@ -213,9 +232,7 @@ These are all the props you can pass to the `<Spline />` component.
 
    const WrappedSpline = dynamic(
      () => import('./WrappedSpline').then((mod) => mod.WrappedSpline),
-     {
-       ssr: false,
-     }
+     { ssr: false }
    );
 
    const Spline = forwardRef((props, ref) => {
@@ -225,21 +242,50 @@ These are all the props you can pass to the `<Spline />` component.
 
    ```jsx
    function App() {
-     const splineRef = useRef();
+     const ref = useRef();
 
      useEffect(() => {
        // you can access splineRef.current here
      }, []);
 
      return (
-       <main>
-         <Spline scene="[DRAFT OR PROD URL]" ref={splineRef} />
-       </main>
+       <div>
+         <Spline scene="[DRAFT OR PROD URL]" ref={ref} />
+       </div>
      );
    }
    ```
 
-</details>
+### Lazy loading
+
+To dynamically import react-spline component in React or Next.js, you can use [`import()`](https://reactjs.org/docs/code-splitting.html#import) with [`useEffect()`](https://reactjs.org/docs/hooks-effect.html) hook:
+
+```jsx
+function App() {
+  const [SplineComponent, setSplineComponent] = useState();
+  const ref = useRef(null);
+
+  useEffect(() => {
+    import('@splinetool/react-spline').then((mod) =>
+      setSplineComponent(mod.Spline)
+    );
+  }, []);
+
+  return (
+    <div>
+      {SplineComponent && (
+        <SplineComponent ref={ref} scene="[DRAFT OR PROD URL]" />
+      )}
+    </div>
+  );
+}
+```
+
+## API
+
+### Spline Component Props
+
+These are all the props you can pass to the `<Spline />` component.
 
 | Name            | Type                            | Description                                                                                                                   |
 | --------------- | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
