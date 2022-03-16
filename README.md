@@ -186,7 +186,7 @@ function App() {
 }
 ```
 
-You can find a list of all of the Spline Events you can pass to the `emitEvent` funtcion in the [Spline Events](#spline-events) section.
+You can find a list of all of the Spline Events you can pass to the `emitEvent` function in the [Spline Events](#spline-events) section.
 
 ### Next.js
 
