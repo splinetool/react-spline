@@ -266,7 +266,7 @@ function App() {
       {SplineComponent && (
         <SplineComponent
           ref={ref}
-          scene="https://draft-dev.spline.design/r0mogr0uC6EMdF7r/scene.spline"
+          scene="[DRAFT OR PROD URL]"
         />
       )}
     </main>
