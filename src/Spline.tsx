@@ -1,11 +1,4 @@
-import {
-  useEffect,
-  useImperativeHandle,
-  useRef,
-  useState,
-  forwardRef,
-  CSSProperties,
-} from 'react';
+import { useEffect, useRef, useState, forwardRef, CSSProperties } from 'react';
 import { Application } from '@splinetool/runtime';
 import type {
   SPEObject,
@@ -33,7 +26,7 @@ export interface SplineProps {
   autoRender?: boolean;
 }
 
-export const Spline = forwardRef<HTMLDivElement, SplineProps>(
+const Spline = forwardRef<HTMLDivElement, SplineProps>(
   (
     {
       scene,
@@ -107,10 +100,8 @@ export const Spline = forwardRef<HTMLDivElement, SplineProps>(
       if (canvasRef.current) {
         speApp = new Application(canvasRef.current, { autoRender });
 
-        const init = async function () {
-          const response = await fetch(scene);
-          const buffer = await response.arrayBuffer();
-          speApp.start(buffer);
+        async function init() {
+          await speApp.load(scene);
 
           for (let event of events) {
             if (event.cb) {
@@ -120,7 +111,7 @@ export const Spline = forwardRef<HTMLDivElement, SplineProps>(
 
           setIsLoading(false);
           onLoad?.(speApp);
-        };
+        }
 
         init();
       }
@@ -150,3 +141,5 @@ export const Spline = forwardRef<HTMLDivElement, SplineProps>(
     );
   }
 );
+
+export default Spline;
