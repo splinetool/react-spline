@@ -1,3 +1,5 @@
+![spline_react_banner_4x](https://user-images.githubusercontent.com/44007726/158626908-c619b2d6-3d4b-4f9c-ba18-682ca767f86e.png)
+
 # react-spline
 
 🌈 [Spline](https://spline.design/) is a friendly 3d collaborative design tool for the web.
