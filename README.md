@@ -1,4 +1,4 @@
-![](https://user-images.githubusercontent.com/7217420/158852111-a9923960-e52e-490c-8e90-d6bd520867cc.png)
+![](https://raw.githubusercontent.com/splinetool/react-spline/main/.github/screenshots/hero.png)
 
 # react-spline
 
@@ -48,7 +48,7 @@ Drafts are generated each time you press on "**Generate Draft**". This will crea
 
 You can use the drafts to try ideas, and once you are ready, you can **promote your drafts to production**.
 
-<img width="250" src="https://user-images.githubusercontent.com/7217420/158852460-93932aba-bbd9-4ee1-8254-75c682222052.png">
+<img width="250" src="https://raw.githubusercontent.com/splinetool/react-spline/main/.github/screenshots/react-export-pane.png">
 
 Once you have a draft or production URL, you can start using the react-spline component in React.
 
@@ -66,7 +66,7 @@ export default function App() {
 
 You should be able to see the scene you exported in your React app.
 
-[![](https://user-images.githubusercontent.com/7217420/158852278-cb9ebba3-b26c-4b45-a9bc-f92d10ff6353.png)](https://codesandbox.io/s/sweet-rain-28pcxt?file=/src/App.js)
+[![](https://raw.githubusercontent.com/splinetool/react-spline/main/.github/screenshots/example-basic.png)](https://codesandbox.io/s/sweet-rain-28pcxt?file=/src/App.js)
 
 ### Read and modify Spline objects
 
