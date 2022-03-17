@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import type { Application, SPEObject } from '@splinetool/runtime';
-import { Spline } from '../src/Spline';
+import Spline from '../src/Spline';
 import anime from 'animejs';
 
 function App() {

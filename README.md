@@ -53,7 +53,7 @@ You can use the drafts to try ideas, and once you are ready, you can **promote y
 Once you have a draft or production URL, you can start using the react-spline component in React.
 
 ```jsx
-import { Spline } from '@splinetool/react-spline';
+import Spline from '@splinetool/react-spline';
 
 function App() {
   return (
@@ -107,7 +107,7 @@ function App() {
 You can listen to any Spline Event you set in the Events panel of the editor by attaching a listener to the Spline component.
 
 ```jsx
-import { Spline } from '@splinetool/react-spline';
+import Spline from '@splinetool/react-spline';
 
 function App() {
   function onMouseDown(e) {
@@ -199,10 +199,9 @@ You can use [next/dynamic](https://nextjs.org/docs/advanced-features/dynamic-imp
 ```jsx
 import dynamic from 'next/dynamic';
 
-const Spline = dynamic(
-  () => import('@splinetool/react-spline').then((mod) => mod.Spline),
-  { ssr: false }
-);
+const Spline = dynamic(() => import('@splinetool/react-spline'), {
+  ssr: false,
+});
 
 function App() {
   return (
@@ -218,7 +217,7 @@ However, if you need to use the `ref` prop, you will need to create a wrapped co
 1. Create a wrapped component.
 
    ```jsx
-   import { Spline } from '@splinetool/react-spline';
+   import Spline from '@splinetool/react-spline';
 
    export function WrappedSpline({ splineRef, ...props }) {
      return <Spline ref={splineRef} {...props} />;
@@ -230,10 +229,9 @@ However, if you need to use the `ref` prop, you will need to create a wrapped co
    ```jsx
    import dynamic from 'next/dynamic';
 
-   const WrappedSpline = dynamic(
-     () => import('./WrappedSpline').then((mod) => mod.WrappedSpline),
-     { ssr: false }
-   );
+   const WrappedSpline = dynamic(() => import('./WrappedSpline'), {
+     ssr: false,
+   });
 
    const Spline = forwardRef((props, ref) => {
      return <WrappedSpline {...props} splineRef={ref} />;
@@ -258,28 +256,25 @@ However, if you need to use the `ref` prop, you will need to create a wrapped co
 
 ### Lazy loading
 
-To dynamically import react-spline component in React or Next.js, you can use [`import()`](https://reactjs.org/docs/code-splitting.html#import) with [`useEffect()`](https://reactjs.org/docs/hooks-effect.html) hook:
+To start loading react-spline after the whole website has finished loading, we can use lazy-loading. This technique can be achieved using [`React.lazy()`](https://it.reactjs.org/docs/code-splitting.html#reactlazy) in combination with dynamic imports:
 
 ```jsx
+import React, { Suspense } from 'react';
+
+const Spline = React.lazy(() => import('@splinetool/react-spline'));
+
 function App() {
-  const [SplineComponent, setSplineComponent] = useState();
-  const ref = useRef(null);
-
-  useEffect(() => {
-    import('@splinetool/react-spline').then((mod) =>
-      setSplineComponent(mod.Spline)
-    );
-  }, []);
-
   return (
     <div>
-      {SplineComponent && (
-        <SplineComponent ref={ref} scene="[DRAFT OR PROD URL]" />
-      )}
+      <Suspense fallback={<div>Loading...</div>}>
+        <Spline scene="[DRAFT OR PROD URL]" />
+      </Suspense>
     </div>
   );
 }
 ```
+
+More info in the [relative React documentation](https://it.reactjs.org/docs/code-splitting.html).
 
 ## API
 
