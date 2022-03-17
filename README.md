@@ -1,4 +1,4 @@
-![](https://raw.githubusercontent.com/splinetool/react-spline/main/.github/screenshots/hero.png)
+[![](https://raw.githubusercontent.com/splinetool/react-spline/main/.github/screenshots/hero.png)](https://my.spline.design/splinereactlogocopycopy-eaa074bf6b2cc82d870c96e262a625ae/)
 
 # react-spline
 
