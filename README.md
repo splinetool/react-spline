@@ -40,7 +40,7 @@ npm install @splinetool/react-spline @splinetool/runtime
 
 ## Usage
 
-To use react-spline, first you have to go to the Spline editor, click on the Export button and select "**React Component**".
+To use react-spline, first you have to go to the Spline editor, click on the **Export** button and select "**React Component**".
 
 Spline generates links for Development (Drafts) and Production.
 
@@ -64,7 +64,7 @@ export default function App() {
 }
 ```
 
-You should be able to see the scene in your React app.
+You should be able to see the scene you exported in your React app.
 
 [![](.github/screenshots/example-basic.png)](https://codesandbox.io/s/sweet-rain-28pcxt?file=/src/App.js)
 
@@ -75,10 +75,10 @@ You can query any Spline object via `findObjectById` or `findObjectByName`.
 _(You can get the ID of the object in the `Develop` pane of the right sidebar)._
 
 ```jsx
-import Spline from '@splinetool/react-spline'
+import Spline from '@splinetool/react-spline';
 
 export default function App() {
-  const [myObj, setMyObj] = useState(null)
+  const [myObj, setMyObj] = useState(null);
 
   function onLoad(spline) {
     const obj = spline.findObjectById('8E8C2DDD-18B6-4C54-861D-7ED2519DE20E');
@@ -101,7 +101,7 @@ export default function App() {
         scene="https://prod.spline.design/TRfTj83xgjIdHPmT/scene.spline"
         onLoad={onLoad}
       />
-      <button type="button" onClick={moveObj} />
+      <button type="button" onClick={moveObj}>
         Move {myObj.name}
       </button>
     </div>
@@ -164,19 +164,18 @@ export default function App() {
         scene="https://prod.spline.design/TRfTj83xgjIdHPmT/scene.spline"
         onLoad={onLoad}
       />
-      <button type="button" onClick={triggerAnimation} />
+      <button type="button" onClick={triggerAnimation}>
         Trigger Spline Animation
       </button>
     </div>
   );
 }
-
 ```
 
 Or you can query the spline object first, and then trigger the event:
 
 ```jsx
-import Spline from '@splinetool/react-spline'
+import Spline from '@splinetool/react-spline';
 
 export default function App() {
   const [objectToAnimate, setObjectToAnimate] = useState(null);
@@ -196,11 +195,11 @@ export default function App() {
         scene="https://prod.spline.design/TRfTj83xgjIdHPmT/scene.spline"
         onLoad={onLoad}
       />
-      <button type="button" onClick={triggerAnimation} />
+      <button type="button" onClick={triggerAnimation}>
         Trigger Spline Animation
       </button>
     </div>
-  )
+  );
 }
 ```
 
