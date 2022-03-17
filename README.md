@@ -58,10 +58,7 @@ import Spline from '@splinetool/react-spline';
 export default function App() {
   return (
     <div>
-      <Spline
-        scene="https://prod.spline.design/
-TRfTj83xgjIdHPmT/scene.spline"
-      />
+      <Spline scene="https://prod.spline.design/TRfTj83xgjIdHPmT/scene.spline" />
     </div>
   );
 }
@@ -100,8 +97,10 @@ export default function App() {
 
   return (
     <div>
-      <Spline scene="https://prod.spline.design/
-TRfTj83xgjIdHPmT/scene.spline" onLoad={onLoad} />
+      <Spline
+        scene="https://prod.spline.design/TRfTj83xgjIdHPmT/scene.spline"
+        onLoad={onLoad}
+      />
       <button type="button" onClick={moveObj} />
         Move {myObj.name}
       </button>
@@ -127,8 +126,7 @@ export default function App() {
   return (
     <div>
       <Spline
-        scene="https://prod.spline.design/
-TRfTj83xgjIdHPmT/scene.spline"
+        scene="https://prod.spline.design/TRfTj83xgjIdHPmT/scene.spline"
         onMouseDown={onMouseDown}
       />
     </div>
@@ -162,8 +160,10 @@ export default function App() {
 
   return (
     <div>
-      <Spline scene="https://prod.spline.design/
-TRfTj83xgjIdHPmT/scene.spline" onLoad={onLoad} />
+      <Spline
+        scene="https://prod.spline.design/TRfTj83xgjIdHPmT/scene.spline"
+        onLoad={onLoad}
+      />
       <button type="button" onClick={triggerAnimation} />
         Trigger Spline Animation
       </button>
@@ -192,8 +192,10 @@ export default function App() {
 
   return (
     <div>
-      <Spline scene="https://prod.spline.design/
-TRfTj83xgjIdHPmT/scene.spline" onLoad={onLoad} />
+      <Spline
+        scene="https://prod.spline.design/TRfTj83xgjIdHPmT/scene.spline"
+        onLoad={onLoad}
+      />
       <button type="button" onClick={triggerAnimation} />
         Trigger Spline Animation
       </button>
@@ -220,10 +222,7 @@ const Spline = dynamic(() => import('@splinetool/react-spline'), {
 export default function App() {
   return (
     <div>
-      <Spline
-        scene="https://prod.spline.design/
-TRfTj83xgjIdHPmT/scene.spline"
-      />
+      <Spline scene="https://prod.spline.design/TRfTj83xgjIdHPmT/scene.spline" />
     </div>
   );
 }
@@ -266,8 +265,7 @@ However, if you need to use the `ref` prop, you will need to create a wrapped co
      return (
        <div>
          <Spline
-           scene="https://prod.spline.design/
-   TRfTj83xgjIdHPmT/scene.spline"
+           scene="https://prod.spline.design/TRfTj83xgjIdHPmT/scene.spline"
            ref={ref}
          />
        </div>
@@ -288,10 +286,7 @@ export default function App() {
   return (
     <div>
       <Suspense fallback={<div>Loading...</div>}>
-        <Spline
-          scene="https://prod.spline.design/
-TRfTj83xgjIdHPmT/scene.spline"
-        />
+        <Spline scene="https://prod.spline.design/TRfTj83xgjIdHPmT/scene.spline" />
       </Suspense>
     </div>
   );
