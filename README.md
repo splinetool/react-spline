@@ -78,7 +78,7 @@ You can query any Spline object via `findObjectById` or `findObjectByName`.
 _(You can get the ID of the object in the `Develop` pane of the right sidebar)._
 
 ```jsx
-import { Spline } from '@splinetool/react-spline'
+import Spline from '@splinetool/react-spline'
 
 export default function App() {
   const [myObj, setMyObj] = useState(null)
@@ -147,7 +147,7 @@ You can use the `emitEvent` function via the spline ref, passing the [event type
 _(You can get the ID of the object in the `Develop` pane of the right sidebar)._
 
 ```jsx
-import { Spline } from '@splinetool/react-spline';
+import Spline from '@splinetool/react-spline';
 
 export default function App() {
   const [spline, setSpline] = useState();
@@ -176,7 +176,7 @@ TRfTj83xgjIdHPmT/scene.spline" onLoad={onLoad} />
 Or you can query the spline object first, and then trigger the event:
 
 ```jsx
-import { Spline } from '@splinetool/react-spline'
+import Spline from '@splinetool/react-spline'
 
 export default function App() {
   const [objectToAnimate, setObjectToAnimate] = useState(null);
