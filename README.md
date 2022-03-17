@@ -55,14 +55,21 @@ Once you have a draft or production URL, you can start using the react-spline co
 ```jsx
 import Spline from '@splinetool/react-spline';
 
-function App() {
+export default function App() {
   return (
     <div>
-      <Spline scene="[DRAFT OR PROD URL]" />
+      <Spline
+        scene="https://prod.spline.design/
+TRfTj83xgjIdHPmT/scene.spline"
+      />
     </div>
   );
 }
 ```
+
+You should be able to see the scene in your React app.
+
+[![](.github/screenshots/example-basic.png)](https://codesandbox.io/s/sweet-rain-28pcxt?file=/src/App.js)
 
 ### Read and modify Spline objects
 
@@ -73,7 +80,7 @@ _(You can get the ID of the object in the `Develop` pane of the right sidebar)._
 ```jsx
 import { Spline } from '@splinetool/react-spline'
 
-function App() {
+export default function App() {
   const [myObj, setMyObj] = useState(null)
 
   function onLoad(spline) {
@@ -93,8 +100,9 @@ function App() {
 
   return (
     <div>
-      <Spline scene="[DRAFT OR PROD URL]" onLoad={onLoad}/>
-      <button type="button" onClick={moveObj}/>
+      <Spline scene="https://prod.spline.design/
+TRfTj83xgjIdHPmT/scene.spline" onLoad={onLoad} />
+      <button type="button" onClick={moveObj} />
         Move {myObj.name}
       </button>
     </div>
@@ -109,7 +117,7 @@ You can listen to any Spline Event you set in the Events panel of the editor by 
 ```jsx
 import Spline from '@splinetool/react-spline';
 
-function App() {
+export default function App() {
   function onMouseDown(e) {
     if (e.target.id === '8E8C2DDD-18B6-4C54-861D-7ED2519DE20E') {
       // doSomething();
@@ -118,7 +126,11 @@ function App() {
 
   return (
     <div>
-      <Spline scene="[DRAFT OR PROD URL]" onMouseDown={onMouseDown} />
+      <Spline
+        scene="https://prod.spline.design/
+TRfTj83xgjIdHPmT/scene.spline"
+        onMouseDown={onMouseDown}
+      />
     </div>
   );
 }
@@ -137,7 +149,7 @@ _(You can get the ID of the object in the `Develop` pane of the right sidebar)._
 ```jsx
 import { Spline } from '@splinetool/react-spline';
 
-function App() {
+export default function App() {
   const [spline, setSpline] = useState();
 
   function onLoad(spline) {
@@ -150,8 +162,9 @@ function App() {
 
   return (
     <div>
-      <Spline scene="[DRAFT OR PROD URL]" onLoad={onLoad} />
-      <button type="button" onClick={triggerAnimation}/>
+      <Spline scene="https://prod.spline.design/
+TRfTj83xgjIdHPmT/scene.spline" onLoad={onLoad} />
+      <button type="button" onClick={triggerAnimation} />
         Trigger Spline Animation
       </button>
     </div>
@@ -165,7 +178,7 @@ Or you can query the spline object first, and then trigger the event:
 ```jsx
 import { Spline } from '@splinetool/react-spline'
 
-function App() {
+export default function App() {
   const [objectToAnimate, setObjectToAnimate] = useState(null);
 
   function onLoad(spline) {
@@ -179,8 +192,9 @@ function App() {
 
   return (
     <div>
-      <Spline scene="[DRAFT OR PROD URL]" onLoad={onLoad} />
-      <button type="button" onClick={triggerAnimation}/>
+      <Spline scene="https://prod.spline.design/
+TRfTj83xgjIdHPmT/scene.spline" onLoad={onLoad} />
+      <button type="button" onClick={triggerAnimation} />
         Trigger Spline Animation
       </button>
     </div>
@@ -203,10 +217,13 @@ const Spline = dynamic(() => import('@splinetool/react-spline'), {
   ssr: false,
 });
 
-function App() {
+export default function App() {
   return (
     <div>
-      <Spline scene="[DRAFT OR PROD URL]" />
+      <Spline
+        scene="https://prod.spline.design/
+TRfTj83xgjIdHPmT/scene.spline"
+      />
     </div>
   );
 }
@@ -239,7 +256,7 @@ However, if you need to use the `ref` prop, you will need to create a wrapped co
    ```
 
    ```jsx
-   function App() {
+   export default function App() {
      const ref = useRef();
 
      useEffect(() => {
@@ -248,7 +265,11 @@ However, if you need to use the `ref` prop, you will need to create a wrapped co
 
      return (
        <div>
-         <Spline scene="[DRAFT OR PROD URL]" ref={ref} />
+         <Spline
+           scene="https://prod.spline.design/
+   TRfTj83xgjIdHPmT/scene.spline"
+           ref={ref}
+         />
        </div>
      );
    }
@@ -263,11 +284,14 @@ import React, { Suspense } from 'react';
 
 const Spline = React.lazy(() => import('@splinetool/react-spline'));
 
-function App() {
+export default function App() {
   return (
     <div>
       <Suspense fallback={<div>Loading...</div>}>
-        <Spline scene="[DRAFT OR PROD URL]" />
+        <Spline
+          scene="https://prod.spline.design/
+TRfTj83xgjIdHPmT/scene.spline"
+        />
       </Suspense>
     </div>
   );
