@@ -2,8 +2,7 @@
   "name": "@splinetool/react-spline",
   "version": "1.0.0",
   "files": [
-    "dist",
-    ".github/screenshots"
+    "dist"
   ],
   "types": "./dist/Spline.d.ts",
   "main": "./dist/react-spline.umd.js",
