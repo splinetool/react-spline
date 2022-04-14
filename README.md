@@ -370,5 +370,5 @@ yarn build
 ### Publish on npm
 
 ```bash
-yarn deploy
+yarn publish
 ```

@@ -1,6 +1,7 @@
 {
   "name": "@splinetool/react-spline",
   "version": "2.0.0",
+  "packageManager": "yarn@3.2.0",
   "files": [
     "dist"
   ],
@@ -14,10 +15,16 @@
     }
   },
   "scripts": {
+    "start": "vite",
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "vite build && tsc",
     "serve": "vite preview",
-    "deploy": "yarn build && np"
+    "publish": "yarn build && np"
+  },
+  "peerDependencies": {
+    "@splinetool/runtime": "*",
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0"
   },
   "devDependencies": {
     "@splinetool/runtime": "^0.9.15",
@@ -32,10 +39,5 @@
     "react-dom": "^17.0.0",
     "typescript": "^4.3.2",
     "vite": "^2.6.4"
-  },
-  "peerDependencies": {
-    "@splinetool/runtime": "*",
-    "react": "^17.0.0",
-    "react-dom": "^17.0.0"
   }
 }
