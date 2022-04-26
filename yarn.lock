@@ -462,11 +462,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@splinetool/react-spline@workspace:."
   dependencies:
-    "@splinetool/runtime": ^0.9.32
+    "@splinetool/runtime": ^0.9.35
     "@types/animejs": ^3.1.4
-    "@types/node": ^17.0.24
-    "@types/react": ^18.0.5
-    "@types/react-dom": ^18.0.0
+    "@types/node": ^17.0.27
+    "@types/react": ^18.0.7
+    "@types/react-dom": ^18.0.2
     "@vitejs/plugin-react": ^1.3.1
     animejs: ^3.2.1
     np: ^7.6.1
@@ -476,17 +476,17 @@ __metadata:
     vite: ^2.9.5
   peerDependencies:
     "@splinetool/runtime": "*"
-    react: ^17.0.0
-    react-dom: ^17.0.0
+    react: ">=17.0.0"
+    react-dom: ">=17.0.0"
   languageName: unknown
   linkType: soft
 
-"@splinetool/runtime@npm:^0.9.32":
-  version: 0.9.32
-  resolution: "@splinetool/runtime@npm:0.9.32"
+"@splinetool/runtime@npm:^0.9.35":
+  version: 0.9.35
+  resolution: "@splinetool/runtime@npm:0.9.35"
   dependencies:
     on-change: ^4.0.0
-  checksum: 53080511b02aefb499e0a029dcf97ec5643725380228c346bdb1d26e46ad97b983771782184e09e68f5d9f4cecdf54e9b4d8c3f8779f499665a9b6380af8c2df
+  checksum: a146fb84b6962866bd4fb9c3f31b3844c009a11a3bc084f59b3075eb976b0e89bac14fb0e9a7644ea850775689d18d36cb7b952b9f2f223fbd7d9ba1284fea1d
   languageName: node
   linkType: hard
 
@@ -564,10 +564,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^17.0.24":
-  version: 17.0.24
-  resolution: "@types/node@npm:17.0.24"
-  checksum: 9e7c4f863601b2430b4c2429a89935f22eba692956f5013c90a4c7fb0e1401ed8add8c4307453c5d6b8b985384500f8c3f644427ab88632640cc396159af479a
+"@types/node@npm:^17.0.27":
+  version: 17.0.27
+  resolution: "@types/node@npm:17.0.27"
+  checksum: 6645ca813c24dcb9893729ed6f87a9e415d6df03cb3e1ececa3a03ca845d3324c3808b4dc79c08a4b3c7d1ccd515e6d7e004db9c9123c9333e963675238e39fc
   languageName: node
   linkType: hard
 
@@ -592,12 +592,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:^18.0.0":
-  version: 18.0.0
-  resolution: "@types/react-dom@npm:18.0.0"
+"@types/react-dom@npm:^18.0.2":
+  version: 18.0.2
+  resolution: "@types/react-dom@npm:18.0.2"
   dependencies:
     "@types/react": "*"
-  checksum: 0d8c9cb3e72aefe0dd2b58a49845a200369f01ae92f3f11f642e04efc95dfd1c9380b6592d4273dd6113fb8707947d15b66d56c75c41f39f28bd897f0c08dfa9
+  checksum: 2b0b138d8634ccfd8a86b17cb5414b122ee0cb6f650377d772f6008761a27e4c2531c08e3cab71aaa19b6893af6a508c664aa314db3ebcff5b8179173c9c9307
   languageName: node
   linkType: hard
 
@@ -612,14 +612,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^18.0.5":
-  version: 18.0.5
-  resolution: "@types/react@npm:18.0.5"
+"@types/react@npm:^18.0.7":
+  version: 18.0.7
+  resolution: "@types/react@npm:18.0.7"
   dependencies:
     "@types/prop-types": "*"
     "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: 70d3336d43ef25509fa89ef3278f57fdf1945fc921e69b7890a78ab9a52a55ee38e2f13aa71eb4f6032b7311e7557860ce8836c1acf3028304989571c9736a96
+  checksum: 0cbbfc118227a8bd25cbec253f6ace46c1af0c9b1a4abfe5a51ed1977b93c3e82af2a70d38ba77fc36075e886d303dd57f3302447b70152702028f20a4675e32
   languageName: node
   linkType: hard
 
