@@ -1,5 +1,5 @@
 {
   "cleanup": false,
-  "testScript": false,
+  "tests": false,
   "yarn": false
 }
