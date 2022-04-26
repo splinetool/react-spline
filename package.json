@@ -17,8 +17,9 @@
   "scripts": {
     "start": "vite",
     "dev": "vite",
-    "build": "vite build && tsc",
     "serve": "vite preview",
+    "build": "vite build && yarn build-types",
+    "build-types": "tsc --skipLibCheck --isolatedModules false --noEmit false --emitDeclarationOnly --declaration --outDir dist/",
     "publish": "yarn build && np"
   },
   "peerDependencies": {
