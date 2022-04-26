@@ -18,6 +18,7 @@
     "start": "vite",
     "dev": "vite",
     "serve": "vite preview",
+    "test": "",
     "build": "vite build && yarn build-types",
     "build-types": "tsc --skipLibCheck --isolatedModules false --noEmit false --emitDeclarationOnly --declaration --outDir dist/",
     "publish": "yarn build && np"
