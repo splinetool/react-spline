@@ -40,17 +40,13 @@ npm install @splinetool/react-spline @splinetool/runtime
 
 ## Usage
 
-To use react-spline, first you have to go to the Spline editor, click on the **Export** button and select "**React Component**".
+To use react-spline, first you have to go to the Spline editor, click on the **Export** button, select "**Code**" and then "**React**".
 
-Spline generates links for Development (Drafts) and Production.
-
-Drafts are generated each time you press on "**Generate Draft**". This will create a new link with the current content of the scene. All previous drafts are stored under the "**Drafts**" tab.
-
-You can use the drafts to try ideas, and once you are ready, you can **promote your drafts to production**.
+You should see this:
 
 <img width="250" src="https://raw.githubusercontent.com/splinetool/react-spline/main/.github/screenshots/react-export-pane.png">
 
-Once you have a draft or production URL, you can start using the react-spline component in React.
+You can copy the URL and pass it to the `<Spline />` component in react:
 
 ```jsx
 import Spline from '@splinetool/react-spline';
