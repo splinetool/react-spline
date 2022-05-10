@@ -453,19 +453,19 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@splinetool/react-spline@workspace:."
   dependencies:
-    "@splinetool/runtime": "link:/Users/marcofugaro/Code/spline/packages/runtime"
+    "@splinetool/runtime": ^0.9.46
     "@types/animejs": ^3.1.4
-    "@types/node": ^17.0.27
-    "@types/react": ^18.0.7
-    "@types/react-dom": ^18.0.2
-    "@vitejs/plugin-react": ^1.3.1
+    "@types/node": ^17.0.31
+    "@types/react": ^18.0.9
+    "@types/react-dom": ^18.0.3
+    "@vitejs/plugin-react": ^1.3.2
     animejs: ^3.2.1
     np: ^7.6.1
-    react: ^18.0.0
-    react-dom: ^18.0.0
+    react: ^18.1.0
+    react-dom: ^18.1.0
     react-merge-refs: ^1.1.0
-    typescript: ^4.6.3
-    vite: ^2.9.5
+    typescript: ^4.6.4
+    vite: ^2.9.8
   peerDependencies:
     "@splinetool/runtime": "*"
     react: ">=17.0.0"
@@ -473,11 +473,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@splinetool/runtime@link:/Users/marcofugaro/Code/spline/packages/runtime::locator=%40splinetool%2Freact-spline%40workspace%3A.":
-  version: 0.0.0-use.local
-  resolution: "@splinetool/runtime@link:/Users/marcofugaro/Code/spline/packages/runtime::locator=%40splinetool%2Freact-spline%40workspace%3A."
+"@splinetool/runtime@npm:^0.9.46":
+  version: 0.9.46
+  resolution: "@splinetool/runtime@npm:0.9.46"
+  dependencies:
+    on-change: ^4.0.0
+  checksum: 83cfbbac34ec6d40d5471ccd3fa38a21a168a08d613cb93e2e57a8e52757dec0f161b50430178e0b1ec5caad06cfad1b533bd916fc0ac0ff57a5c19d54faede4
   languageName: node
-  linkType: soft
+  linkType: hard
 
 "@szmarczak/http-timer@npm:^1.1.2":
   version: 1.1.2
@@ -553,7 +556,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^17.0.27":
+"@types/node@npm:*, @types/node@npm:^17.0.31":
   version: 17.0.31
   resolution: "@types/node@npm:17.0.31"
   checksum: 704618350f8420d5c47db0f7778398e821b7724369946f5c441a7e6b9343295553936400eb8309f0b07d5e39c240988ab3456b983712ca86265dabc9aee4ad3d
@@ -581,7 +584,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:^18.0.2":
+"@types/react-dom@npm:^18.0.3":
   version: 18.0.3
   resolution: "@types/react-dom@npm:18.0.3"
   dependencies:
@@ -590,7 +593,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:^18.0.7":
+"@types/react@npm:*, @types/react@npm:^18.0.9":
   version: 18.0.9
   resolution: "@types/react@npm:18.0.9"
   dependencies:
@@ -617,7 +620,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitejs/plugin-react@npm:^1.3.1":
+"@vitejs/plugin-react@npm:^1.3.2":
   version: 1.3.2
   resolution: "@vitejs/plugin-react@npm:1.3.2"
   dependencies:
@@ -3328,6 +3331,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"on-change@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "on-change@npm:4.0.0"
+  checksum: 9db8fea776655b3d7ff5c9f3d0f54ff92c972bb3b72374ad5f6d8abf77823d8c474334cff6c7f3f68e3a80b8d437f7c10c70075c55f62cdb6f785c15299fc93b
+  languageName: node
+  linkType: hard
+
 "once@npm:^1.3.0, once@npm:^1.3.1, once@npm:^1.4.0":
   version: 1.4.0
   resolution: "once@npm:1.4.0"
@@ -3724,7 +3734,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:^18.0.0":
+"react-dom@npm:^18.1.0":
   version: 18.1.0
   resolution: "react-dom@npm:18.1.0"
   dependencies:
@@ -3750,7 +3760,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:^18.0.0":
+"react@npm:^18.1.0":
   version: 18.1.0
   resolution: "react@npm:18.1.0"
   dependencies:
@@ -4476,7 +4486,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^4.6.3":
+"typescript@npm:^4.6.4":
   version: 4.6.4
   resolution: "typescript@npm:4.6.4"
   bin:
@@ -4486,7 +4496,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@^4.6.3#~builtin<compat/typescript>":
+"typescript@patch:typescript@^4.6.4#~builtin<compat/typescript>":
   version: 4.6.4
   resolution: "typescript@patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=bda367"
   bin:
@@ -4587,7 +4597,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^2.9.5":
+"vite@npm:^2.9.8":
   version: 2.9.8
   resolution: "vite@npm:2.9.8"
   dependencies:
