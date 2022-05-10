@@ -5,14 +5,23 @@ import type {
   SplineEvent,
   SplineEventName,
 } from '@splinetool/runtime';
+import mergeRefs from 'react-merge-refs';
 
 export type { SPEObject, SplineEvent, SplineEventName };
 
-export interface SplineProps {
+type CanvasAttributes = React.CanvasHTMLAttributes<HTMLCanvasElement>;
+export interface SplineProps
+  extends Omit<
+    CanvasAttributes,
+    | 'onLoad'
+    | 'onMouseDown'
+    | 'onMouseUp'
+    | 'onMouseHover'
+    | 'onKeyDown'
+    | 'onKeyUp'
+    | 'onWheel'
+  > {
   scene: string;
-  id?: string;
-  style?: CSSProperties;
-  className?: string;
   onLoad?: (e: Application) => void;
   onMouseDown?: (e: SplineEvent) => void;
   onMouseUp?: (e: SplineEvent) => void;
@@ -26,13 +35,11 @@ export interface SplineProps {
   autoRender?: boolean;
 }
 
-const Spline = forwardRef<HTMLDivElement, SplineProps>(
+const Spline = forwardRef<HTMLCanvasElement, SplineProps>(
   (
     {
       scene,
-      id,
       style,
-      className,
       onMouseDown,
       onMouseUp,
       onMouseHover,
@@ -44,6 +51,7 @@ const Spline = forwardRef<HTMLDivElement, SplineProps>(
       onWheel,
       onLoad,
       autoRender = false,
+      ...props
     },
     ref
   ) => {
@@ -128,16 +136,14 @@ const Spline = forwardRef<HTMLDivElement, SplineProps>(
     }, [scene]);
 
     return (
-      <div
+      <canvas
+        ref={mergeRefs<HTMLCanvasElement>([ref, canvasRef])}
         style={{
-          display: `${isLoading ? 'none' : 'flex'}`,
+          display: isLoading ? 'none' : undefined,
           ...style,
         }}
-        className={className}
-        ref={ref}
-      >
-        <canvas ref={canvasRef} id={id} />
-      </div>
+        {...props}
+      />
     );
   }
 );
