@@ -5,16 +5,13 @@ import anime from 'animejs';
 
 function App() {
   const [spline, setSpline] = useState<Application>(null);
-  const canvasParent = useRef<HTMLDivElement>(null);
   const tileRef = useRef<SPEObject>();
 
   useEffect(() => {
-    if (spline) {
-      const tile = spline.findObjectById(
-        '7ba78968-2a55-48f2-b14c-5191da3e075e'
-      );
-      tileRef.current = tile;
-    }
+    if (!spline) return;
+
+    const tile = spline.findObjectByName('Rectangle');
+    tileRef.current = tile;
   }, [spline]);
 
   function handleLoad(e: Application) {
@@ -63,9 +60,7 @@ function App() {
         </button>
       </div>
       <Spline
-        ref={canvasParent}
-        autoRender
-        scene="https://prod.spline.design/ft9KFAMYebCiRXbC/scene.spline"
+        scene="https://prod.spline.design/2fzdsSVagfszNxsd/scene.splinecode"
         onLoad={handleLoad}
       />
     </>
