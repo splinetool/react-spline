@@ -6,13 +6,13 @@
     "dist"
   ],
   "types": "./dist/Spline.d.ts",
-  "main": "./dist/react-spline.umd.js",
+  "main": "./dist/react-spline.cjs.js",
   "module": "./dist/react-spline.es.js",
   "react-native": "./dist/react-spline.es.js",
   "exports": {
     ".": {
       "import": "./dist/react-spline.es.js",
-      "require": "./dist/react-spline.umd.js"
+      "require": "./dist/react-spline.cjs.js"
     }
   },
   "scripts": {

@@ -10,6 +10,7 @@ export default defineConfig({
     lib: {
       entry: path.resolve(__dirname, './src/Spline.tsx'),
       name: 'react-spline',
+      formats: ['es', 'cjs'],
       fileName: (format) => `react-spline.${format}.js`,
     },
     rollupOptions: {
@@ -19,12 +20,6 @@ export default defineConfig({
       output: {
         // Override dist folder because root is in the example/ folder
         dir: 'dist',
-        // Provide global variables to use in the UMD build
-        // for externalized deps
-        globals: {
-          react: 'React',
-          '@splinetool/runtime': 'SPRuntime',
-        },
       },
     },
   },
