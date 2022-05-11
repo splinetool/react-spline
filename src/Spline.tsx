@@ -139,7 +139,7 @@ const Spline = forwardRef<HTMLCanvasElement, SplineProps>(
       <canvas
         ref={mergeRefs<HTMLCanvasElement>([ref, canvasRef])}
         style={{
-          display: isLoading ? 'none' : undefined,
+          display: isLoading ? 'none' : 'block',
           ...style,
         }}
         {...props}
