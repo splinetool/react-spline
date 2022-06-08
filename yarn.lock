@@ -453,13 +453,14 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@splinetool/react-spline@workspace:."
   dependencies:
-    "@splinetool/runtime": ^0.9.46
+    "@splinetool/runtime": ^0.9.65
     "@types/animejs": ^3.1.4
     "@types/node": ^17.0.31
     "@types/react": ^18.0.9
     "@types/react-dom": ^18.0.3
     "@vitejs/plugin-react": ^1.3.2
     animejs: ^3.2.1
+    modern-normalize: ^1.1.0
     np: ^7.6.1
     react: ^18.1.0
     react-dom: ^18.1.0
@@ -473,12 +474,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@splinetool/runtime@npm:^0.9.46":
-  version: 0.9.46
-  resolution: "@splinetool/runtime@npm:0.9.46"
+"@splinetool/runtime@npm:^0.9.65":
+  version: 0.9.65
+  resolution: "@splinetool/runtime@npm:0.9.65"
   dependencies:
     on-change: ^4.0.0
-  checksum: 83cfbbac34ec6d40d5471ccd3fa38a21a168a08d613cb93e2e57a8e52757dec0f161b50430178e0b1ec5caad06cfad1b533bd916fc0ac0ff57a5c19d54faede4
+  checksum: 245e96c365937eb518739b88df1490451a8005356938567b51bdc7a4139fa85aed4f304154e6b39dedb545379fc317453b5d2da74b3020960dd47bc6445a8a78
   languageName: node
   linkType: hard
 
@@ -3101,6 +3102,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"modern-normalize@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "modern-normalize@npm:1.1.0"
+  checksum: edfd40650bd7250eb4761651886a02ca3c524effca41b9832932eab9ccf9f2cfa7e5da8491c7c8bc2d58e1696e5e765adebeaf90cd9d3376444bd6bc0b0f2c99
+  languageName: node
+  linkType: hard
+
 "ms@npm:2.1.2":
   version: 2.1.2
   resolution: "ms@npm:2.1.2"
@@ -3332,9 +3340,9 @@ __metadata:
   linkType: hard
 
 "on-change@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "on-change@npm:4.0.0"
-  checksum: 9db8fea776655b3d7ff5c9f3d0f54ff92c972bb3b72374ad5f6d8abf77823d8c474334cff6c7f3f68e3a80b8d437f7c10c70075c55f62cdb6f785c15299fc93b
+  version: 4.0.1
+  resolution: "on-change@npm:4.0.1"
+  checksum: 23038d603859eafcd8e7ecd7ab682551e2c33c6e12e90dc53c83e453dcb263f5b36c24a945d3e91805273804a2bd6b78f9f91c9bb05dd11771fa626a05d8fb18
   languageName: node
   linkType: hard
 

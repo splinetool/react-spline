@@ -53,7 +53,7 @@ import Spline from '@splinetool/react-spline';
 export default function App() {
   return (
     <div>
-      <Spline scene="https://prod.spline.design/olfPPmV6N5UTP0oR/scene.splinecode" />
+      <Spline scene="https://prod.spline.design/6Wq1Q7YGyM-iab9i/scene.splinecode" />
     </div>
   );
 }
@@ -95,7 +95,7 @@ export default function App() {
   return (
     <div>
       <Spline
-        scene="https://prod.spline.design/olfPPmV6N5UTP0oR/scene.splinecode"
+        scene="https://prod.spline.design/6Wq1Q7YGyM-iab9i/scene.splinecode"
         onLoad={onLoad}
       />
       <button type="button" onClick={moveObj}>
@@ -123,7 +123,7 @@ export default function App() {
   return (
     <div>
       <Spline
-        scene="https://prod.spline.design/olfPPmV6N5UTP0oR/scene.splinecode"
+        scene="https://prod.spline.design/6Wq1Q7YGyM-iab9i/scene.splinecode"
         onMouseDown={onMouseDown}
       />
     </div>
@@ -160,7 +160,7 @@ export default function App() {
   return (
     <div>
       <Spline
-        scene="https://prod.spline.design/olfPPmV6N5UTP0oR/scene.splinecode"
+        scene="https://prod.spline.design/6Wq1Q7YGyM-iab9i/scene.splinecode"
         onLoad={onLoad}
       />
       <button type="button" onClick={triggerAnimation}>
@@ -193,7 +193,7 @@ export default function App() {
   return (
     <div>
       <Spline
-        scene="https://prod.spline.design/olfPPmV6N5UTP0oR/scene.splinecode"
+        scene="https://prod.spline.design/6Wq1Q7YGyM-iab9i/scene.splinecode"
         onLoad={onLoad}
       />
       <button type="button" onClick={triggerAnimation}>
@@ -219,7 +219,7 @@ export default function App() {
   return (
     <div>
       <Suspense fallback={<div>Loading...</div>}>
-        <Spline scene="https://prod.spline.design/olfPPmV6N5UTP0oR/scene.splinecode" />
+        <Spline scene="https://prod.spline.design/6Wq1Q7YGyM-iab9i/scene.splinecode" />
       </Suspense>
     </div>
   );
