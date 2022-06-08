@@ -53,7 +53,7 @@ import Spline from '@splinetool/react-spline';
 export default function App() {
   return (
     <div>
-      <Spline scene="https://prod.spline.design/TRfTj83xgjIdHPmT/scene.spline" />
+      <Spline scene="https://prod.spline.design/6Wq1Q7YGyM-iab9i/scene.splinecode" />
     </div>
   );
 }
@@ -65,39 +65,41 @@ You should be able to see the scene you exported in your React app.
 
 ### Read and modify Spline objects
 
-You can query any Spline object via `findObjectById` or `findObjectByName`.
+You can query any Spline object via `findObjectByName` or `findObjectById`.
 
 _(You can get the ID of the object in the `Develop` pane of the right sidebar)._
 
 ```jsx
+import { useRef } from 'react';
 import Spline from '@splinetool/react-spline';
 
 export default function App() {
-  const [myObj, setMyObj] = useState(null);
+  const cube = useRef();
 
   function onLoad(spline) {
-    const obj = spline.findObjectById('8E8C2DDD-18B6-4C54-861D-7ED2519DE20E');
+    const obj = spline.findObjectByName('Cube');
     // or
-    // const obj = spline.findObjectByName('my object');
+    // const obj = spline.findObjectById('8E8C2DDD-18B6-4C54-861D-7ED2519DE20E');
 
-    setMyObj(obj);
+    // save it in a ref for later use
+    cube.current = obj;
   }
 
   function moveObj() {
-    console.log(myObj); // Spline Object => { name: 'my object', id: '8E8C2DDD-18B6-4C54-861D-7ED2519DE20E', position: {}, ... }
+    console.log(cube.current); // Spline Object => { name: 'Cube', id: '8E8C2DDD-18B6-4C54-861D-7ED2519DE20E', position: {}, ... }
 
     // move the object in 3D space
-    myObj.position.x += 10;
+    cube.current.position.x += 10;
   }
 
   return (
     <div>
       <Spline
-        scene="https://prod.spline.design/TRfTj83xgjIdHPmT/scene.spline"
+        scene="https://prod.spline.design/6Wq1Q7YGyM-iab9i/scene.splinecode"
         onLoad={onLoad}
       />
       <button type="button" onClick={moveObj}>
-        Move {myObj.name}
+        Move Cube
       </button>
     </div>
   );
@@ -113,15 +115,15 @@ import Spline from '@splinetool/react-spline';
 
 export default function App() {
   function onMouseDown(e) {
-    if (e.target.id === '8E8C2DDD-18B6-4C54-861D-7ED2519DE20E') {
-      // doSomething();
+    if (e.target.name === 'Cube') {
+      console.log('I have been clicked!');
     }
   }
 
   return (
     <div>
       <Spline
-        scene="https://prod.spline.design/TRfTj83xgjIdHPmT/scene.spline"
+        scene="https://prod.spline.design/6Wq1Q7YGyM-iab9i/scene.splinecode"
         onMouseDown={onMouseDown}
       />
     </div>
@@ -140,23 +142,25 @@ You can use the `emitEvent` function via the spline ref, passing the [event type
 _(You can get the ID of the object in the `Develop` pane of the right sidebar)._
 
 ```jsx
+import { useRef } from 'react';
 import Spline from '@splinetool/react-spline';
 
 export default function App() {
-  const [spline, setSpline] = useState();
+  const spline = useRef();
 
-  function onLoad(spline) {
-    setSpline(spline);
+  function onLoad(splineApp) {
+    // save the app in a ref for later use
+    spline.current = splineApp;
   }
 
   function triggerAnimation() {
-    spline.emitEvent('mouseHover', '8E8C2DDD-18B6-4C54-861D-7ED2519DE20E');
+    spline.current.emitEvent('mouseHover', 'Cube');
   }
 
   return (
     <div>
       <Spline
-        scene="https://prod.spline.design/TRfTj83xgjIdHPmT/scene.spline"
+        scene="https://prod.spline.design/6Wq1Q7YGyM-iab9i/scene.splinecode"
         onLoad={onLoad}
       />
       <button type="button" onClick={triggerAnimation}>
@@ -170,24 +174,26 @@ export default function App() {
 Or you can query the spline object first, and then trigger the event:
 
 ```jsx
+import { useRef } from 'react';
 import Spline from '@splinetool/react-spline';
 
 export default function App() {
-  const [objectToAnimate, setObjectToAnimate] = useState(null);
+  const objectToAnimate = useRef();
 
   function onLoad(spline) {
-    const obj = spline.findObjectById('8E8C2DDD-18B6-4C54-861D-7ED2519DE20E');
-    setObjectToAnimate(obj);
+    const obj = spline.findObjectByName('Cube');
+    // save the object in a ref for later use
+    objectToAnimate.current = obj;
   }
 
   function triggerAnimation() {
-    objectToAnimate.emitEvent('mouseHover');
+    objectToAnimate.current.emitEvent('mouseHover');
   }
 
   return (
     <div>
       <Spline
-        scene="https://prod.spline.design/TRfTj83xgjIdHPmT/scene.spline"
+        scene="https://prod.spline.design/6Wq1Q7YGyM-iab9i/scene.splinecode"
         onLoad={onLoad}
       />
       <button type="button" onClick={triggerAnimation}>
@@ -213,7 +219,7 @@ export default function App() {
   return (
     <div>
       <Suspense fallback={<div>Loading...</div>}>
-        <Spline scene="https://prod.spline.design/TRfTj83xgjIdHPmT/scene.spline" />
+        <Spline scene="https://prod.spline.design/6Wq1Q7YGyM-iab9i/scene.splinecode" />
       </Suspense>
     </div>
   );
@@ -234,7 +240,7 @@ These are all the props you can pass to the `<Spline />` component.
 | `className?`    | `string`                        | CSS classes                                                                                                                   |
 | `style?`        | `string`                        | CSS style                                                                                                                     |
 | `id?`           | `string`                        | Canvas id                                                                                                                     |
-| `ref?`          | `React.Ref<HTMLDivElement>`     | A ref pointing to the container `div`.                                                                                        |
+| `ref?`          | `React.Ref<HTMLDivElement>`     | A ref pointing to canvas element.                                                                                             |
 | `onLoad?`       | `(spline: Application) => void` | Gets called once the scene has loaded. The `spline` parameter is an instance of the [Spline Application](#spline-app-methods) |
 | `onWheel?`      | `(e: SplineEvent) => void`      | Gets called on the [`wheel`](https://developer.mozilla.org/en-US/docs/Web/API/Element/wheel_event) event on the canvas        |
 | `onMouseDown?`  | `(e: SplineEvent) => void`      | Gets called once a Spline `Mouse Down` event is fired                                                                         |
@@ -250,13 +256,13 @@ These are all the props you can pass to the `<Spline />` component.
 
 The object exposed as a first argument of the `onLoad` function, is a Spline Application. You can call all these different methods on it.
 
-| Name               | Type                                                 | Description                                                                                                                 |
-| ------------------ | ---------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| `emitEvent`        | `(eventName: SplineEventName, uuid: string) => void` | Triggers a Spline event associated to an object with provided uuid in reverse order. Starts from first state to last state. |
-| `emitEventReverse` | `(eventName: SplineEventName, uuid: string) => void` | Triggers a Spline event associated to an object with provided uuid in reverse order. Starts from last state to first state. |
-| `findObjectById`   | `(uuid: string) => SPEObject`                        | Searches through scene's children and returns the object with that uuid.                                                    |
-| `findObjectByName` | `(name: string) => SPEObject`                        | Searches through scene's children and returns the first object with that name                                               |
-| `setZoom`          | `(zoom: number) => void`                             | Sets the initial zoom of the scene.                                                                                         |
+| Name               | Type                                                       | Description                                                                                                                 |
+| ------------------ | ---------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `emitEvent`        | `(eventName: SplineEventName, nameOrUuid: string) => void` | Triggers a Spline event associated to an object with provided name or uuid.                                                 |
+| `emitEventReverse` | `(eventName: SplineEventName, nameOrUuid: string) => void` | Triggers a Spline event associated to an object with provided uuid in reverse order. Starts from last state to first state. |
+| `findObjectById`   | `(uuid: string) => SPEObject`                              | Searches through scene's children and returns the object with that uuid.                                                    |
+| `findObjectByName` | `(name: string) => SPEObject`                              | Searches through scene's children and returns the first object with that name.                                              |
+| `setZoom`          | `(zoom: number) => void`                                   | Sets the initial zoom of the scene.                                                                                         |
 
 ### Spline Events
 

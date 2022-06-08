@@ -1,67 +1,54 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 import type { Application, SPEObject } from '@splinetool/runtime';
 import Spline from '../src/Spline';
 import anime from 'animejs';
 
 function App() {
-  const [spline, setSpline] = useState<Application>(null);
-  const tileRef = useRef<SPEObject>();
+  const cube = useRef<SPEObject>();
 
-  useEffect(() => {
-    if (!spline) return;
-
-    const tile = spline.findObjectByName('Rectangle');
-    tileRef.current = tile;
-  }, [spline]);
-
-  function handleLoad(e: Application) {
-    setSpline(e);
-  }
-
-  function handleMoveTile(direction: 'left' | 'right' | 'up' | 'down') {
-    if (tileRef.current) {
-      const newPosition = { ...tileRef.current.position };
-      switch (direction) {
-        case 'left':
-          newPosition.x -= 100;
-          break;
-        case 'right':
-          newPosition.x += 100;
-          break;
-        case 'up':
-          newPosition.y += 100;
-          break;
-        case 'down':
-          newPosition.y -= 100;
-          break;
-      }
-      anime({
-        targets: tileRef.current.position,
-        ...newPosition,
-        duration: 500,
-      });
+  function moveCube(direction: 'x' | 'y' | 'z') {
+    if (!cube.current) {
+      return;
     }
+
+    const newPosition = { ...cube.current.position };
+    switch (direction) {
+      case 'x':
+        newPosition.x += 100;
+        break;
+      case 'y':
+        newPosition.y += 100;
+        break;
+      case 'z':
+        newPosition.z += 100;
+        break;
+    }
+
+    anime({
+      targets: cube.current.position,
+      ...newPosition,
+      duration: 500,
+    });
   }
 
   return (
     <>
       <div className="buttons">
-        <button type="button" onClick={() => handleMoveTile('left')}>
-          Move tile to left
+        <button type="button" onClick={() => moveCube('x')}>
+          Move in x axis
         </button>
-        <button type="button" onClick={() => handleMoveTile('right')}>
-          Move tile to right
+        <button type="button" onClick={() => moveCube('y')}>
+          Move in y axis
         </button>
-        <button type="button" onClick={() => handleMoveTile('up')}>
-          Move tile up
-        </button>
-        <button type="button" onClick={() => handleMoveTile('down')}>
-          Move tile down
+        <button type="button" onClick={() => moveCube('z')}>
+          Move in z axis
         </button>
       </div>
       <Spline
-        scene="https://prod.spline.design/2fzdsSVagfszNxsd/scene.splinecode"
-        onLoad={handleLoad}
+        scene="https://prod.spline.design/6Wq1Q7YGyM-iab9i/scene.splinecode"
+        onLoad={(spline: Application) => {
+          cube.current = spline.findObjectByName('Cube');
+        }}
       />
     </>
   );
