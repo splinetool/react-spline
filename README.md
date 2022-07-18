@@ -238,7 +238,7 @@ These are all the props you can pass to the `<Spline />` component.
 | --------------- | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
 | `scene`         | `string`                        | Scene file                                                                                                                    |
 | `className?`    | `string`                        | CSS classes                                                                                                                   |
-| `style?`        | `string`                        | CSS style                                                                                                                     |
+| `style?`        | `object`                        | CSS style                                                                                                                     |
 | `id?`           | `string`                        | Canvas id                                                                                                                     |
 | `ref?`          | `React.Ref<HTMLDivElement>`     | A ref pointing to canvas element.                                                                                             |
 | `onLoad?`       | `(spline: Application) => void` | Gets called once the scene has loaded. The `spline` parameter is an instance of the [Spline Application](#spline-app-methods) |
