@@ -1,6 +1,6 @@
 {
   "name": "@splinetool/react-spline",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "packageManager": "yarn@3.2.0",
   "files": [
     "dist"
