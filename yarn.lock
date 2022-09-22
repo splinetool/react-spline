@@ -453,7 +453,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@splinetool/react-spline@workspace:."
   dependencies:
-    "@splinetool/runtime": ^0.9.65
+    "@splinetool/runtime": ^0.9.109
     "@types/animejs": ^3.1.4
     "@types/node": ^17.0.31
     "@types/react": ^18.0.9
@@ -474,12 +474,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@splinetool/runtime@npm:^0.9.65":
-  version: 0.9.65
-  resolution: "@splinetool/runtime@npm:0.9.65"
+"@splinetool/runtime@npm:^0.9.109":
+  version: 0.9.109
+  resolution: "@splinetool/runtime@npm:0.9.109"
   dependencies:
     on-change: ^4.0.0
-  checksum: 245e96c365937eb518739b88df1490451a8005356938567b51bdc7a4139fa85aed4f304154e6b39dedb545379fc317453b5d2da74b3020960dd47bc6445a8a78
+  checksum: c038dbb06e1dbe94307b4a68d4801e68b2555d3a887dcf44ecd4be7097f80ff03aefd9dc2baf79c0aa7d775c89ff123ccff96d7fe67b8be54186ae45290c6cc1
   languageName: node
   linkType: hard
 

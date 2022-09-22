@@ -32,7 +32,7 @@ export interface SplineProps
   onLookAt?: (e: SplineEvent) => void;
   onFollow?: (e: SplineEvent) => void;
   onWheel?: (e: SplineEvent) => void;
-  autoRender?: boolean;
+  renderOnDemand?: boolean;
 }
 
 const Spline = forwardRef<HTMLCanvasElement, SplineProps>(
@@ -50,7 +50,7 @@ const Spline = forwardRef<HTMLCanvasElement, SplineProps>(
       onFollow,
       onWheel,
       onLoad,
-      autoRender = false,
+      renderOnDemand = true,
       ...props
     },
     ref
@@ -106,7 +106,7 @@ const Spline = forwardRef<HTMLCanvasElement, SplineProps>(
       ];
 
       if (canvasRef.current) {
-        speApp = new Application(canvasRef.current, { autoRender });
+        speApp = new Application(canvasRef.current, { renderOnDemand });
 
         async function init() {
           await speApp.load(scene);

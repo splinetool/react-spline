@@ -234,23 +234,24 @@ More info in the [relative React documentation](https://it.reactjs.org/docs/code
 
 These are all the props you can pass to the `<Spline />` component.
 
-| Name            | Type                            | Description                                                                                                                   |
-| --------------- | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| `scene`         | `string`                        | Scene file                                                                                                                    |
-| `className?`    | `string`                        | CSS classes                                                                                                                   |
-| `style?`        | `object`                        | CSS style                                                                                                                     |
-| `id?`           | `string`                        | Canvas id                                                                                                                     |
-| `ref?`          | `React.Ref<HTMLDivElement>`     | A ref pointing to canvas element.                                                                                             |
-| `onLoad?`       | `(spline: Application) => void` | Gets called once the scene has loaded. The `spline` parameter is an instance of the [Spline Application](#spline-app-methods) |
-| `onWheel?`      | `(e: SplineEvent) => void`      | Gets called on the [`wheel`](https://developer.mozilla.org/en-US/docs/Web/API/Element/wheel_event) event on the canvas        |
-| `onMouseDown?`  | `(e: SplineEvent) => void`      | Gets called once a Spline `Mouse Down` event is fired                                                                         |
-| `onMouseHover?` | `(e: SplineEvent) => void`      | Gets called once a Spline `Mouse Hover` event is fired                                                                        |
-| `onMouseUp?`    | `(e: SplineEvent) => void`      | Gets called once a Spline `Mouse Up` event is fired                                                                           |
-| `onKeyDown?`    | `(e: SplineEvent) => void`      | Gets called once a Spline `Key Down` event is fired                                                                           |
-| `onKeyUp?`      | `(e: SplineEvent) => void`      | Gets called once a Spline `Key Up` event is fired                                                                             |
-| `onStart?`      | `(e: SplineEvent) => void`      | Gets called once a Spline `Start` event is fired                                                                              |
-| `onLookAt?`     | `(e: SplineEvent) => void`      | Gets called once a Spline `Look At` event is fired                                                                            |
-| `onFollow?`     | `(e: SplineEvent) => void`      | Gets called once a Spline `Mouse Up` event is fired                                                                           |
+| Name              | Type                            | Description                                                                                                                   |
+| ----------------- | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `scene`           | `string`                        | Scene file                                                                                                                    |
+| `onLoad?`         | `(spline: Application) => void` | Gets called once the scene has loaded. The `spline` parameter is an instance of the [Spline Application](#spline-app-methods) |
+| `renderOnDemand?` | `boolean`                       | Wether or not to enable [on demand rendering](https://threejs.org/manual/#en/rendering-on-demand). Default `true`.            |
+| `className?`      | `string`                        | CSS classes                                                                                                                   |
+| `style?`          | `object`                        | CSS style                                                                                                                     |
+| `id?`             | `string`                        | Canvas id                                                                                                                     |
+| `ref?`            | `React.Ref<HTMLDivElement>`     | A ref pointing to canvas element.                                                                                             |
+| `onWheel?`        | `(e: SplineEvent) => void`      | Gets called on the [`wheel`](https://developer.mozilla.org/en-US/docs/Web/API/Element/wheel_event) event on the canvas        |
+| `onMouseDown?`    | `(e: SplineEvent) => void`      | Gets called once a Spline `Mouse Down` event is fired                                                                         |
+| `onMouseHover?`   | `(e: SplineEvent) => void`      | Gets called once a Spline `Mouse Hover` event is fired                                                                        |
+| `onMouseUp?`      | `(e: SplineEvent) => void`      | Gets called once a Spline `Mouse Up` event is fired                                                                           |
+| `onKeyDown?`      | `(e: SplineEvent) => void`      | Gets called once a Spline `Key Down` event is fired                                                                           |
+| `onKeyUp?`        | `(e: SplineEvent) => void`      | Gets called once a Spline `Key Up` event is fired                                                                             |
+| `onStart?`        | `(e: SplineEvent) => void`      | Gets called once a Spline `Start` event is fired                                                                              |
+| `onLookAt?`       | `(e: SplineEvent) => void`      | Gets called once a Spline `Look At` event is fired                                                                            |
+| `onFollow?`       | `(e: SplineEvent) => void`      | Gets called once a Spline `Mouse Up` event is fired                                                                           |
 
 ### Spline App Methods
 

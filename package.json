@@ -33,7 +33,7 @@
     "react-merge-refs": "^1.1.0"
   },
   "devDependencies": {
-    "@splinetool/runtime": "^0.9.65",
+    "@splinetool/runtime": "^0.9.109",
     "@types/animejs": "^3.1.4",
     "@types/node": "^17.0.31",
     "@types/react": "^18.0.9",
