@@ -11,7 +11,7 @@ export default defineConfig({
       entry: path.resolve(__dirname, './src/Spline.tsx'),
       name: 'react-spline',
       formats: ['es', 'cjs'],
-      fileName: (format) => `react-spline.${format}.js`,
+      fileName: (format) => `react-spline.${format === 'es' ? 'js' : 'cjs'}`,
     },
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled
