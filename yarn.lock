@@ -461,7 +461,7 @@ __metadata:
     "@vitejs/plugin-react": ^1.3.2
     animejs: ^3.2.1
     modern-normalize: ^1.1.0
-    np: ^7.6.1
+    np: ^7.6.2
     react: ^18.1.0
     react-dom: ^18.1.0
     react-merge-refs: ^1.1.0
@@ -3238,9 +3238,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"np@npm:^7.6.1":
-  version: 7.6.1
-  resolution: "np@npm:7.6.1"
+"np@npm:^7.6.2":
+  version: 7.6.2
+  resolution: "np@npm:7.6.2"
   dependencies:
     "@samverschueren/stream-to-observable": ^0.3.1
     any-observable: ^0.5.1
@@ -3283,7 +3283,7 @@ __metadata:
     update-notifier: ^5.0.1
   bin:
     np: source/cli.js
-  checksum: 388e7f218a4ffb676f45333ce035ce134d1f44a69908e747d568e19b64bca2184fb42a3ba75a9d3c4825693470c56fbc07e4dfdc6ee1aae34b7f9f830a8755d4
+  checksum: 736e7434e2fceeffa8fa805d6882dcda020ee882bfe8a0f4d39abaec7016fa9bf12e4daa42649dd21533caa3bfad6acdefe5cf8d7bf177699fa0aedff8083c04
   languageName: node
   linkType: hard
 

@@ -1,7 +1,7 @@
 {
   "name": "@splinetool/react-spline",
   "version": "2.2.3",
-  "packageManager": "yarn@3.2.0",
+  "packageManager": "yarn@3.3.0",
   "files": [
     "dist"
   ],
@@ -42,7 +42,7 @@
     "@vitejs/plugin-react": "^1.3.2",
     "animejs": "^3.2.1",
     "modern-normalize": "^1.1.0",
-    "np": "^7.6.1",
+    "np": "^7.6.2",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "typescript": "^4.6.4",
