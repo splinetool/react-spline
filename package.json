@@ -5,6 +5,7 @@
   "files": [
     "dist"
   ],
+  "type": "module",
   "types": "./dist/Spline.d.ts",
   "main": "./dist/react-spline.cjs.js",
   "module": "./dist/react-spline.es.js",
