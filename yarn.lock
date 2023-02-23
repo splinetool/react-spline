@@ -638,17 +638,17 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@splinetool/react-spline@workspace:."
   dependencies:
-    "@splinetool/runtime": ^0.9.231
-    "@types/animejs": ^3.1.4
+    "@splinetool/runtime": ^0.9.232
+    "@types/animejs": ^3.1.7
     "@types/lodash.debounce": ^4.0.7
-    "@types/node": ^18.14.0
+    "@types/node": ^18.14.1
     "@types/react": ^18.0.28
     "@types/react-dom": ^18.0.11
     "@vitejs/plugin-react": ^3.1.0
     animejs: ^3.2.1
     lodash.debounce: ^4.0.8
     modern-normalize: ^1.1.0
-    np: ^7.6.2
+    np: ^7.6.3
     react: ^18.2.0
     react-dom: ^18.2.0
     react-merge-refs: ^2.0.1
@@ -661,12 +661,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@splinetool/runtime@npm:^0.9.231":
-  version: 0.9.231
-  resolution: "@splinetool/runtime@npm:0.9.231"
+"@splinetool/runtime@npm:^0.9.232":
+  version: 0.9.232
+  resolution: "@splinetool/runtime@npm:0.9.232"
   dependencies:
     on-change: ^4.0.0
-  checksum: 8ebdef45bc326f43163bb88fbebd58ee124e3cd6a30fafa8e7edda5741f1d622e1a0c4b8f25d66353dcccdb060b38ef0675465f0693b1e74a5c7e258d5ab8819
+  checksum: 28e992ce5c99513ead979bb3a9e31937df7405fddcfe94d2cf2b7121e4bdc13f1c501dea38096244942e895acd072835d08bd5d7ab90992d8210e6c3a3a85eed
   languageName: node
   linkType: hard
 
@@ -695,10 +695,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/animejs@npm:^3.1.4":
-  version: 3.1.4
-  resolution: "@types/animejs@npm:3.1.4"
-  checksum: 707d34867ecb2b2ae1ce2368ab78c1cba302a487ef7297c3e544cbecadc48273d3d6511cf98bc0550f0412891c5f68ca9e3a7fe5556fff0c5ac7025371a27b96
+"@types/animejs@npm:^3.1.7":
+  version: 3.1.7
+  resolution: "@types/animejs@npm:3.1.7"
+  checksum: 0b7669d7d86015c989990cc2594973097a2db5b1705bbc6b8b54cd667b57b21d9e0345090f7adc96a7d519e136b05a25660eab6bd67fd2037a7717030b063fc2
   languageName: node
   linkType: hard
 
@@ -767,10 +767,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^18.14.0":
-  version: 18.14.0
-  resolution: "@types/node@npm:18.14.0"
-  checksum: d83fcf5e4ed544755dd9028f5cbb6b9d46235043159111bb2ad62223729aee581c0144a9f6df8ba73d74011db9ed4ebd7af2fd5e0996714e3beb508a5da8ac5c
+"@types/node@npm:^18.14.1":
+  version: 18.14.1
+  resolution: "@types/node@npm:18.14.1"
+  checksum: 58556bbdb0050e44a4934742c1da2530812782c06d266a758e669e44c5aa196166c5fce45fdb03f016876717e3840478b3220129bb77367f979607564047f0a3
   languageName: node
   linkType: hard
 
@@ -3350,9 +3350,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"np@npm:^7.6.2":
-  version: 7.6.2
-  resolution: "np@npm:7.6.2"
+"np@npm:^7.6.3":
+  version: 7.6.3
+  resolution: "np@npm:7.6.3"
   dependencies:
     "@samverschueren/stream-to-observable": ^0.3.1
     any-observable: ^0.5.1
@@ -3395,7 +3395,7 @@ __metadata:
     update-notifier: ^5.0.1
   bin:
     np: source/cli.js
-  checksum: 736e7434e2fceeffa8fa805d6882dcda020ee882bfe8a0f4d39abaec7016fa9bf12e4daa42649dd21533caa3bfad6acdefe5cf8d7bf177699fa0aedff8083c04
+  checksum: e887adf79269640629400ffba2c21c19262d79431076508195f0ca7e3f0e3a9c4f50f058402d0bf05f63c9eac840015c0d20386f67a3498961a206051b3d2dcb
   languageName: node
   linkType: hard
 
