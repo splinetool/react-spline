@@ -1,18 +1,17 @@
-import { useEffect, useRef, useState, forwardRef, CSSProperties } from 'react';
+import { useEffect, useRef, useState, forwardRef } from 'react';
 import { Application } from '@splinetool/runtime';
 import type {
   SPEObject,
   SplineEvent,
   SplineEventName,
 } from '@splinetool/runtime';
-import mergeRefs from 'react-merge-refs';
+import ParentSize from './ParentSize';
 
 export type { SPEObject, SplineEvent, SplineEventName };
 
-type CanvasAttributes = React.CanvasHTMLAttributes<HTMLCanvasElement>;
 export interface SplineProps
   extends Omit<
-    CanvasAttributes,
+    React.HTMLAttributes<HTMLDivElement>,
     | 'onLoad'
     | 'onMouseDown'
     | 'onMouseUp'
@@ -35,7 +34,7 @@ export interface SplineProps
   renderOnDemand?: boolean;
 }
 
-const Spline = forwardRef<HTMLCanvasElement, SplineProps>(
+const Spline = forwardRef<HTMLDivElement, SplineProps>(
   (
     {
       scene,
@@ -136,14 +135,23 @@ const Spline = forwardRef<HTMLCanvasElement, SplineProps>(
     }, [scene]);
 
     return (
-      <canvas
-        ref={mergeRefs<HTMLCanvasElement>([ref, canvasRef])}
-        style={{
-          display: isLoading ? 'none' : 'block',
-          ...style,
-        }}
+      <ParentSize
+        ref={ref}
+        parentSizeStyles={style}
+        debounceTime={50}
         {...props}
-      />
+      >
+        {() => {
+          return (
+            <canvas
+              ref={canvasRef}
+              style={{
+                display: isLoading ? 'none' : 'block',
+              }}
+            />
+          );
+        }}
+      </ParentSize>
     );
   }
 );

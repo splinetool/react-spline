@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import React, { useRef } from 'react';
 import type { Application, SPEObject } from '@splinetool/runtime';
 import Spline from '../src/Spline';
 import anime from 'animejs';

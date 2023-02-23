@@ -242,7 +242,7 @@ These are all the props you can pass to the `<Spline />` component.
 | `className?`      | `string`                        | CSS classes                                                                                                                   |
 | `style?`          | `object`                        | CSS style                                                                                                                     |
 | `id?`             | `string`                        | Canvas id                                                                                                                     |
-| `ref?`            | `React.Ref<HTMLDivElement>`     | A ref pointing to canvas element.                                                                                             |
+| `ref?`            | `React.Ref<HTMLDivElement>`     | A ref pointing to div container element.                                                                                      |
 | `onWheel?`        | `(e: SplineEvent) => void`      | Gets called on the [`wheel`](https://developer.mozilla.org/en-US/docs/Web/API/Element/wheel_event) event on the canvas        |
 | `onMouseDown?`    | `(e: SplineEvent) => void`      | Gets called once a Spline `Mouse Down` event is fired                                                                         |
 | `onMouseHover?`   | `(e: SplineEvent) => void`      | Gets called once a Spline `Mouse Hover` event is fired                                                                        |
