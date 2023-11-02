@@ -67,7 +67,7 @@ You should be able to see the scene you exported in your React app.
 
 You can query any Spline object via `findObjectByName` or `findObjectById`.
 
-_(You can get the ID of the object in the `Develop` pane of the right sidebar)._
+_(You can get the ID of the object by right-clicking on it and selecting `Copy Development Object ID`)._
 
 ```jsx
 import { useRef } from 'react';
