@@ -141,16 +141,14 @@ const Spline = forwardRef<HTMLDivElement, SplineProps>(
         debounceTime={50}
         {...props}
       >
-        {() => {
-          return (
-            <canvas
-              ref={canvasRef}
-              style={{
-                display: isLoading ? 'none' : 'block',
-              }}
-            />
-          );
-        }}
+        {() => (
+          <canvas
+            ref={canvasRef}
+            style={{
+              display: isLoading ? 'none' : 'block',
+            }}
+          />
+        )}
       </ParentSize>
     );
   }
