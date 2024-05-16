@@ -1,13 +1,13 @@
 {
     "version": "0.2.0",
     "configurations": [
-        {
-            // Add your configuration here
-            {
-                // Add your configuration properties here
-            }
-        }
+      {
+        "type": "node",
+        "request": "launch",
+        "name": "Launch Program",
+        "skipFiles": ["<node_internals>/**"],
+        "program": "${workspaceFolder}/app.js",
+        "runtimeExecutable": "node"
+      }
     ]
-    "version": "0.2.0",
-    "configurations": []
-}
+  }

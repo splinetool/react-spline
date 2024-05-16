@@ -1,0 +1,71 @@
+{
+	"settings": {
+		"react-native.workspace.exclude": [
+			"ProjectFolderName1",
+			"ProjectFolderName2"
+		]
+	},
+	"compile-hero.sass-output-directory": "./dist",
+	"compile-hero.less-output-directory": "./dist",
+	"compile-hero.html-output-directory": "./dist",
+	"compile-hero.pug-output-directory": "./dist",
+	"compile-hero.jade-output-directory": "./dist",
+	"compile-hero.javascript-output-directory": "./dist",
+	"compile-hero.typescript-output-directory": "./dist",
+	"compile-hero.typescriptx-output-directory": "./dist",
+	"compile-hero.sass-output-toggle": true,
+	"compile-hero.less-output-toggle": true,
+	"compile-hero.html-output-toggle": true,
+	"compile-hero.pug-output-toggle": true,
+	"compile-hero.jade-output-toggle": true,
+	"compile-hero.javascript-output-toggle": true,
+	"compile-hero.typescript-output-toggle": true,
+	"compile-hero.typescriptx-output-toggle": true,
+	"compile-hero.x-show-compile-error-messages": true,
+	"compile-hero.x-generate-minified-html": false,
+	"compile-hero.x-generate-html-ext": ".html",
+	"compile-hero.x-compile-files-in-mixin-folders": false,
+	"compile-hero.x-compile-files-on-save": true,
+	"compile-hero.x-generate-minified-css": true,
+	"compile-hero.x-generate-minified-js": true,
+	"compile-hero.x-generate-sourcemap-css": true,
+	"compile-hero.x-generate-sourcemap-js": true,
+	"compile-hero.x-omit-dev-ext-js": false,
+	"compile-hero.disable-compile-files-on-did-save-code": true,
+	"compile-hero.scss-output-directory": "./dist",
+	"compile-hero.stylus-output-directory": "./dist",
+	"compile-hero.scss-output-toggle": true,
+	"compile-hero.stylus-output-toggle": true,
+	"compile-hero.notification-toggle": true,
+	"compile-hero.generate-minified-html": false,
+	"compile-hero.generate-minified-html-only": false,
+	"compile-hero.generate-minified-css": false,
+	"compile-hero.generate-minified-css-only": false,
+	"compile-hero.generate-minified-javascript": false,
+	"compile-hero.generate-minified-javascript-only": false,
+	"compile-hero.ignore": [],
+	"compile-hero.watch": [],
+	"compile-hero.config": null,
+	"compile-hero.language": {
+		"js": {
+			"type": [
+				"javascript",
+				"json",
+				"jsonc"
+			],
+			"filename": [
+				".jshintrc",
+				".jsbeautifyrc"
+			]
+		},
+		"css": [
+			"css",
+			"less",
+			"scss"
+		],
+		"html": [
+			"htm",
+			"html"
+		]
+	}
+}
