@@ -8,11 +8,6 @@ interface ResizeObserverPolyfill {
   new (callback: ResizeObserverCallback): ResizeObserver;
 }
 
-// @TODO remove when upgraded to TS 4 which has its own declaration
-interface PrivateWindow {
-  ResizeObserver: ResizeObserverPolyfill;
-}
-
 export type ParentSizeProps = {
   /** Optional `className` to add to the parent `div` wrapper used for size measurement. */
   className?: string;
@@ -96,9 +91,7 @@ export default forwardRef<HTMLDivElement, ParentSizeProps>(function ParentSize(
   }, [debounceTime, enableDebounceLeadingCall, ignoreDimensions]);
 
   useEffect(() => {
-    const LocalResizeObserver =
-      resizeObserverPolyfill ||
-      (window as unknown as PrivateWindow).ResizeObserver;
+    const LocalResizeObserver = resizeObserverPolyfill || window.ResizeObserver;
 
     const observer = new LocalResizeObserver((entries) => {
       entries.forEach((entry) => {
