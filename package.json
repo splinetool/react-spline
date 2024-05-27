@@ -6,9 +6,6 @@
     "dist"
   ],
   "type": "module",
-  "types": "./dist/Spline.d.ts",
-  "main": "./dist/react-spline.cjs",
-  "module": "./dist/react-spline.js",
   "react-native": "./dist/react-spline.js",
   "exports": {
     ".": {
