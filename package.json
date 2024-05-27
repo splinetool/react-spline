@@ -6,9 +6,6 @@
     "dist"
   ],
   "type": "module",
-  "types": "./dist/Spline.d.ts",
-  "main": "./dist/react-spline.cjs",
-  "module": "./dist/react-spline.js",
   "react-native": "./dist/react-spline.js",
   "exports": {
     ".": {
@@ -31,23 +28,23 @@
     "react-dom": ">=17.0.0"
   },
   "devDependencies": {
-    "@splinetool/runtime": "^0.9.232",
+    "@splinetool/runtime": "^1.3.10",
     "@types/animejs": "^3.1.7",
-    "@types/lodash.debounce": "^4.0.7",
-    "@types/node": "^18.14.1",
-    "@types/react": "^18.0.28",
-    "@types/react-dom": "^18.0.11",
-    "@vitejs/plugin-react": "^3.1.0",
+    "@types/lodash.debounce": "^4.0.9",
+    "@types/node": "^20.12.12",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.0",
     "animejs": "^3.2.1",
     "modern-normalize": "^1.1.0",
-    "np": "^7.6.3",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "typescript": "^4.9.5",
-    "vite": "^4.1.4"
+    "np": "^10.0.5",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "typescript": "^5.4.5",
+    "vite": "^5.2.11"
   },
   "dependencies": {
     "lodash.debounce": "^4.0.8",
-    "react-merge-refs": "^2.0.1"
+    "react-merge-refs": "^2.1.1"
   }
 }
