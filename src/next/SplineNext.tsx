@@ -1,34 +1,25 @@
-import { blurHashToDataURL } from "./decodePreview";
-import Image from "next/image";
-import { SplineClient } from "./SplineClient";
-import type { SplineProps } from "../Spline";
+import { blurHashToDataURL } from './decodePreview';
+import Image from 'next/image';
+import Spline, { SplineProps } from '../Spline';
 
-export function SplineNext({
-  hash,
-  ...props
-}: SplineProps & {
-  hash?: string;
-}) {
-  const img = hash && blurHashToDataURL(hash);
+export default function SplineNext({ placeholder, ...props }: SplineProps) {
+  const img = placeholder && blurHashToDataURL(placeholder);
   return (
-    <div style={{ width: "100%", height: "100%", position: "relative" }}>
+    <>
       {img && (
         <Image
           src={img}
-          id={hash}
+          id={placeholder}
           alt="Spline preview"
           style={{
-            position: "absolute",
-            width: "100%",
-            height: "100%",
-            top: 0,
-            left: 0,
+            width: '100%',
+            height: '100%',
           }}
           width={100}
           height={100}
         />
       )}
-      <SplineClient imageId={hash} {...props} />
-    </div>
+      <Spline placeholder={placeholder} {...props} />
+    </>
   );
 }

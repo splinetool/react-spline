@@ -12,20 +12,31 @@
       "types": "./dist/Spline.d.ts",
       "import": "./dist/react-spline.js",
       "require": "./dist/react-spline.cjs"
+    },
+    "./next": {
+      "types": "./dist/next/SplineNext.d.ts",
+      "import": "./dist/react-spline-next.js",
+      "require": "./dist/react-spline-next.cjs"
     }
   },
   "scripts": {
     "start": "vite",
     "dev": "vite",
     "serve": "vite preview",
-    "build": "vite build && yarn build-types",
+    "build": "rimraf dist/ && vite build && yarn build-types",
     "build-types": "tsc --skipLibCheck --isolatedModules false --noEmit false --emitDeclarationOnly --declaration --outDir dist/",
     "publish": "yarn build && np --no-tests"
   },
   "peerDependencies": {
     "@splinetool/runtime": "*",
     "react": "*",
-    "react-dom": "*"
+    "react-dom": "*",
+    "next": "*"
+  },
+  "peerDependenciesMeta": {
+    "next": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@splinetool/runtime": "^1.3.10",
@@ -37,10 +48,12 @@
     "@vitejs/plugin-react": "^4.3.0",
     "animejs": "^3.2.1",
     "modern-normalize": "^1.1.0",
-    "next": "rc",
+    "next": "15.0.0-rc.0",
     "np": "^10.0.5",
     "react": "19.0.0-rc-f994737d14-20240522",
     "react-dom": "19.0.0-rc-f994737d14-20240522",
+    "rimraf": "^5.0.7",
+    "rollup-preserve-directives": "^1.1.1",
     "typescript": "^5.4.5",
     "vite": "^5.2.11"
   },

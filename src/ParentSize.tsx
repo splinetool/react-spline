@@ -1,5 +1,6 @@
 // Modified version of
 // https://github.com/airbnb/visx/blob/master/packages/visx-responsive/src/components/ParentSize.tsx
+'use client';
 import debounce from 'lodash.debounce';
 import { forwardRef, useEffect, useMemo, useRef, useState } from 'react';
 import { mergeRefs } from 'react-merge-refs';

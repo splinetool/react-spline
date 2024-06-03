@@ -1,3 +1,4 @@
+'use client';
 import { useEffect, useRef, useState, forwardRef } from 'react';
 import { Application } from '@splinetool/runtime';
 import type {
@@ -32,6 +33,7 @@ export interface SplineProps
   onFollow?: (e: SplineEvent) => void;
   onWheel?: (e: SplineEvent) => void;
   renderOnDemand?: boolean;
+  placeholder?: string;
 }
 
 const Spline = forwardRef<HTMLDivElement, SplineProps>(
@@ -50,6 +52,7 @@ const Spline = forwardRef<HTMLDivElement, SplineProps>(
       onWheel,
       onLoad,
       renderOnDemand = true,
+      placeholder,
       ...props
     },
     ref
@@ -118,6 +121,11 @@ const Spline = forwardRef<HTMLDivElement, SplineProps>(
 
           setIsLoading(false);
           onLoad?.(speApp);
+
+          if (placeholder) {
+            const img = document.getElementById(placeholder);
+            img?.parentElement?.removeChild(img);
+          }
         }
 
         init();
