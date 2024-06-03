@@ -10,10 +10,13 @@ export default defineConfig({
   root: 'example',
   build: {
     lib: {
-      entry: path.resolve(__dirname, './src/Spline.tsx'),
+      entry: {
+        ['react-spline']: path.resolve(__dirname, './src/Spline.tsx'),
+        ['react-spline-next']: path.resolve(__dirname, './src/SplineNext.tsx'),
+      },
       name: 'react-spline',
       formats: ['es', 'cjs'],
-      fileName: (format) => `react-spline.${format === 'es' ? 'js' : 'cjs'}`,
+      fileName: (format, alias) => `${alias}.${format === 'es' ? 'js' : 'cjs'}`,
     },
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled
@@ -33,7 +36,7 @@ function prependString(stringToPrepend: string = ''): Plugin {
     generateBundle(options, bundle) {
       for (const fileName in bundle) {
         const file = bundle[fileName];
-        if (file.type === 'chunk') {
+        if (file.type === 'chunk' && !fileName.includes('next')) {
           const chunk = file as OutputChunk;
           chunk.code = `${stringToPrepend}${chunk.code}`;
         }

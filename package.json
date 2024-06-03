@@ -37,6 +37,7 @@
     "@vitejs/plugin-react": "^4.3.0",
     "animejs": "^3.2.1",
     "modern-normalize": "^1.1.0",
+    "next": "rc",
     "np": "^10.0.5",
     "react": "19.0.0-rc-f994737d14-20240522",
     "react-dom": "19.0.0-rc-f994737d14-20240522",
@@ -44,6 +45,7 @@
     "vite": "^5.2.11"
   },
   "dependencies": {
+    "blurhash": "^2.0.5",
     "lodash.debounce": "^4.0.8",
     "react-merge-refs": "^2.1.1"
   }
