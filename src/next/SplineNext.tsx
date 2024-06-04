@@ -45,7 +45,7 @@ export default async function SplineNext({ ...props }: SplineProps) {
     height,
   } = await getPreview(props.scene);
   return (
-    <>
+    <div style={{ position: 'relative' }}>
       {img && (
         <Image
           src={img}
@@ -60,6 +60,6 @@ export default async function SplineNext({ ...props }: SplineProps) {
         />
       )}
       <Spline placeholder={placeholder} {...props} />
-    </>
+    </div>
   );
 }

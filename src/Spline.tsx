@@ -145,10 +145,7 @@ const Spline = forwardRef<HTMLDivElement, SplineProps>(
     return (
       <ParentSize
         ref={ref}
-        parentSizeStyles={{
-          ...style,
-          ...(isLoading ? { display: 'none' } : {}),
-        }}
+        parentSizeStyles={style}
         debounceTime={50}
         {...props}
       >
