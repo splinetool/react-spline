@@ -15,6 +15,7 @@
 
 - [Install](#install)
 - [Usage](#usage)
+  - [Next.js](#nextjs)
   - [Read and modify Spline objects](#read-and-modify-spline-objects)
   - [Listen to events](#listen-to-events)
   - [Trigger Spline events from outside](#trigger-spline-events-from-outside)
@@ -62,6 +63,27 @@ export default function App() {
 You should be able to see the scene you exported in your React app.
 
 [![](https://raw.githubusercontent.com/splinetool/react-spline/main/.github/screenshots/example-basic.png)](https://codesandbox.io/s/sweet-rain-28pcxt?file=/src/App.js)
+
+## Next.js
+
+You can use this library in Next.js as well to take advantage of Server Side Rendering. By default the library will render on the client only, but if you use the import `@splinetool/react/next` you can optionally pass in a `placeholder` prop containing the [blurhash](https://blurha.sh/) placeholder to render on the server and display while the scene is being mounted on the client.
+
+Here is an example. You can generate the blurhash in the Spline editor by choosing the Next.js export option.
+
+```js
+import Spline from '@splinetool/react-spline/next';
+
+export default function App() {
+  return (
+    <div>
+      <Spline
+        scene="https://prod.spline.design/KFonZGtsoUXP-qx7/scene.splinecode"
+        placeholder="rJQc6@n3-rFPL0%GvhogV=$%%0xtNeS#WBV@RiNG%%JWE0wFvhN3THxVkEx^S5RiaJVsR+S#R.a~MvaJxcWHE{t2xIS%bExuR*jcs:W-n%V[X7j?"
+      />
+    </div>
+  );
+}
+```
 
 ### Read and modify Spline objects
 
