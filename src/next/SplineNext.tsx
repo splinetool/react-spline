@@ -46,20 +46,20 @@ export default async function SplineNext({ ...props }: SplineProps) {
   } = await getPreview(props.scene);
   return (
     <>
-      {img && (
-        <Image
-          src={img}
-          id={placeholder}
-          alt="Spline preview"
-          style={{
-            width: frameWidth ? frameWidth + 'px' : '100%',
-            height: frameHeight ? frameHeight + 'px' : '100%',
-          }}
-          width={width ?? 100}
-          height={height ?? 100}
-        />
-      )}
-      <Spline placeholder={placeholder} {...props} />
+      <Spline {...props}>
+        {img && (
+          <Image
+            src={img}
+            alt="Spline preview"
+            style={{
+              width: frameWidth ? frameWidth + 'px' : '100%',
+              height: frameHeight ? frameHeight + 'px' : '100%',
+            }}
+            width={width ?? 100}
+            height={height ?? 100}
+          />
+        )}
+      </Spline>
     </>
   );
 }

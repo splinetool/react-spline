@@ -33,7 +33,6 @@ export interface SplineProps
   onFollow?: (e: SplineEvent) => void;
   onWheel?: (e: SplineEvent) => void;
   renderOnDemand?: boolean;
-  placeholder?: string;
 }
 
 const Spline = forwardRef<HTMLDivElement, SplineProps>(
@@ -52,18 +51,16 @@ const Spline = forwardRef<HTMLDivElement, SplineProps>(
       onWheel,
       onLoad,
       renderOnDemand = true,
-      placeholder,
+      children,
       ...props
     },
     ref
   ) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const [isLoading, setIsLoading] = useState(true);
-    const [isSSR, setIsSSR] = useState(true);
 
     // Initialize runtime when component is mounted
     useEffect(() => {
-      setIsSSR(false);
       setIsLoading(true);
 
       let speApp: Application;
@@ -123,11 +120,6 @@ const Spline = forwardRef<HTMLDivElement, SplineProps>(
 
           setIsLoading(false);
           onLoad?.(speApp);
-
-          if (placeholder) {
-            const img = document.getElementById(placeholder);
-            img?.parentElement?.removeChild(img);
-          }
         }
 
         init();
@@ -147,20 +139,20 @@ const Spline = forwardRef<HTMLDivElement, SplineProps>(
     return (
       <ParentSize
         ref={ref}
-        parentSizeStyles={{
-          ...style,
-          ...(isSSR ? { display: 'none' } : {}),
-        }}
+        parentSizeStyles={style}
         debounceTime={50}
         {...props}
       >
         {() => (
-          <canvas
-            ref={canvasRef}
-            style={{
-              display: isLoading ? 'none' : 'block',
-            }}
-          />
+          <>
+            {isLoading && children}
+            <canvas
+              ref={canvasRef}
+              style={{
+                display: isLoading ? 'none' : 'block',
+              }}
+            />
+          </>
         )}
       </ParentSize>
     );
