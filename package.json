@@ -59,6 +59,7 @@
   "dependencies": {
     "blurhash": "^2.0.5",
     "lodash.debounce": "^4.0.8",
-    "react-merge-refs": "^2.1.1"
+    "react-merge-refs": "^2.1.1",
+    "thumbhash": "^0.1.1"
   }
 }

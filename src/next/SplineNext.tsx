@@ -1,9 +1,14 @@
-import { blurHashToDataURL } from './decodePreview';
+import { decodePreview } from './decodePreview';
 import Image from 'next/image';
 import Spline, { SplineProps } from '../Spline';
 
-export default function SplineNext({ placeholder, ...props }: SplineProps) {
-  const img = placeholder && blurHashToDataURL(placeholder);
+export default function SplineNext({
+  placeholder,
+  width,
+  height,
+  ...props
+}: SplineProps) {
+  const img = placeholder && decodePreview(placeholder);
   return (
     <>
       {img && (
@@ -12,11 +17,11 @@ export default function SplineNext({ placeholder, ...props }: SplineProps) {
           id={placeholder}
           alt="Spline preview"
           style={{
-            width: '100%',
-            height: '100%',
+            width: width ? width + 'px' : '100%',
+            height: height ? height + 'px' : '100%',
           }}
-          width={100}
-          height={100}
+          width={width ?? 100}
+          height={height ?? 100}
         />
       )}
       <Spline placeholder={placeholder} {...props} />
