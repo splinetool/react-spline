@@ -66,9 +66,9 @@ You should be able to see the scene you exported in your React app.
 
 ## Next.js
 
-You can use this library in Next.js as well to take advantage of Server Side Rendering. By default the library will render on the client only, but if you use the import `@splinetool/react/next` you can optionally pass in a `placeholder` prop containing the [blurhash](https://blurha.sh/) placeholder to render on the server and display while the scene is being mounted on the client.
+You can use this library in Next.js as well to take advantage of Server Side Rendering. By default the library will render on the client only, but if you use the import `@splinetool/react/next` the server will try to render a preview image if it find ones in Spline servers for the scene you passed.
 
-Here is an example. You can generate the blurhash in the Spline editor by choosing the Next.js export option.
+Here is an example. Try to export as `Next.js` from spline to auto generate the server image preview.
 
 ```js
 import Spline from '@splinetool/react-spline/next';
@@ -78,7 +78,6 @@ export default function App() {
     <div>
       <Spline
         scene="https://prod.spline.design/KFonZGtsoUXP-qx7/scene.splinecode"
-        placeholder="rJQc6@n3-rFPL0%GvhogV=$%%0xtNeS#WBV@RiNG%%JWE0wFvhN3THxVkEx^S5RiaJVsR+S#R.a~MvaJxcWHE{t2xIS%bExuR*jcs:W-n%V[X7j?"
       />
     </div>
   );
