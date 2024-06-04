@@ -59,9 +59,11 @@ const Spline = forwardRef<HTMLDivElement, SplineProps>(
   ) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const [isLoading, setIsLoading] = useState(true);
+    const [isSSR, setIsSSR] = useState(true);
 
     // Initialize runtime when component is mounted
     useEffect(() => {
+      setIsSSR(false);
       setIsLoading(true);
 
       let speApp: Application;
@@ -147,12 +149,19 @@ const Spline = forwardRef<HTMLDivElement, SplineProps>(
         ref={ref}
         parentSizeStyles={{
           ...style,
-          ...(isLoading ? { display: 'none' } : {}),
+          ...(isSSR ? { display: 'none' } : {}),
         }}
         debounceTime={50}
         {...props}
       >
-        {() => <canvas ref={canvasRef} />}
+        {() => (
+          <canvas
+            ref={canvasRef}
+            style={{
+              display: isLoading ? 'none' : 'block',
+            }}
+          />
+        )}
       </ParentSize>
     );
   }
