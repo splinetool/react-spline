@@ -59,14 +59,7 @@ export default async function SplineNext({ ...props }: SplineProps) {
           height={height ?? 100}
         />
       )}
-      <Spline
-        placeholder={placeholder}
-        {...props}
-        style={{
-          ...props.style,
-          ...(typeof window === 'undefined' ? { display: 'none' } : {}),
-        }}
-      />
+      <Spline placeholder={placeholder} {...props} />
     </>
   );
 }
