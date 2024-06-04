@@ -1110,13 +1110,18 @@ __metadata:
     react-dom: 19.0.0-rc-f994737d14-20240522
     react-merge-refs: ^2.1.1
     rimraf: ^5.0.7
+    rollup-plugin-rename-node-modules: ^1.3.1
     rollup-preserve-directives: ^1.1.1
     typescript: ^5.4.5
     vite: ^5.2.11
   peerDependencies:
     "@splinetool/runtime": "*"
+    next: "*"
     react: "*"
     react-dom: "*"
+  peerDependenciesMeta:
+    next:
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -2343,6 +2348,13 @@ __metadata:
   version: 1.0.5
   resolution: "escape-string-regexp@npm:1.0.5"
   checksum: 6092fda75c63b110c706b6a9bfde8a612ad595b628f0bd2147eea1d3406723020810e591effc7db1da91d80a71a737a313567c5abb3813e8d9c71f4aa595b410
+  languageName: node
+  linkType: hard
+
+"estree-walker@npm:^2.0.1":
+  version: 2.0.2
+  resolution: "estree-walker@npm:2.0.2"
+  checksum: 6151e6f9828abe2259e57f5fd3761335bb0d2ebd76dc1a01048ccee22fabcfef3c0859300f6d83ff0d1927849368775ec5a6d265dde2f6de5a1be1721cd94efc
   languageName: node
   linkType: hard
 
@@ -3632,6 +3644,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"magic-string@npm:^0.25.7":
+  version: 0.25.9
+  resolution: "magic-string@npm:0.25.9"
+  dependencies:
+    sourcemap-codec: ^1.4.8
+  checksum: 9a0e55a15c7303fc360f9572a71cffba1f61451bc92c5602b1206c9d17f492403bf96f946dfce7483e66822d6b74607262e24392e87b0ac27b786e69a40e9b1a
+  languageName: node
+  linkType: hard
+
 "magic-string@npm:^0.30.5":
   version: 0.30.10
   resolution: "magic-string@npm:0.30.10"
@@ -4729,6 +4750,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"rollup-plugin-rename-node-modules@npm:^1.3.1":
+  version: 1.3.1
+  resolution: "rollup-plugin-rename-node-modules@npm:1.3.1"
+  dependencies:
+    estree-walker: ^2.0.1
+    magic-string: ^0.25.7
+  peerDependencies:
+    rollup: ^2.28.2
+  checksum: ef64fca4ae6e3b5f45d438315a34c368b259b7024f3f6a2f73c6fd819fdf98d7623327abdd0d641694ce030641312d4e91ce4cb171e195fc9f580a3a02f303ff
+  languageName: node
+  linkType: hard
+
 "rollup-preserve-directives@npm:^1.1.1":
   version: 1.1.1
   resolution: "rollup-preserve-directives@npm:1.1.1"
@@ -5099,6 +5132,13 @@ __metadata:
   version: 1.2.0
   resolution: "source-map-js@npm:1.2.0"
   checksum: 791a43306d9223792e84293b00458bf102a8946e7188f3db0e4e22d8d530b5f80a4ce468eb5ec0bf585443ad55ebbd630bf379c98db0b1f317fd902500217f97
+  languageName: node
+  linkType: hard
+
+"sourcemap-codec@npm:^1.4.8":
+  version: 1.4.8
+  resolution: "sourcemap-codec@npm:1.4.8"
+  checksum: b57981c05611afef31605732b598ccf65124a9fcb03b833532659ac4d29ac0f7bfacbc0d6c5a28a03e84c7510e7e556d758d0bb57786e214660016fb94279316
   languageName: node
   linkType: hard
 
