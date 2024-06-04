@@ -21,7 +21,10 @@ async function getPreview(scene: string) {
     const scope = matches[1]; // prod or draft
     const id = matches[2];
     try {
-      const res = await fetch(`https://${scope}.spline.design/${id}/hash`);
+      const res = await fetch(`https://${scope}.spline.design/${id}/hash`, {
+        cache:
+          process.env.NODE_ENV === 'production' ? 'force-cache' : 'no-store',
+      });
       const data = (await res.json()) as Required<Hash>;
       Object.assign(hash, data);
       hash.img = decodePreview(data.hash, data.alpha, data.width, data.height);
