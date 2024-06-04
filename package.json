@@ -22,8 +22,7 @@
     "dev": "vite",
     "serve": "vite preview",
     "build": "rimraf dist/ && vite build && yarn build-types",
-    "build-types": "tsc --skipLibCheck --isolatedModules false --noEmit false --emitDeclarationOnly --declaration --outDir dist/",
-    "publish": "yarn build && np --no-tests"
+    "build-types": "tsc --skipLibCheck --isolatedModules false --noEmit false --emitDeclarationOnly --declaration --outDir dist/"
   },
   "peerDependencies": {
     "@splinetool/runtime": "*",
