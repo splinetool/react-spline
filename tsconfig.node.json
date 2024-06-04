@@ -5,5 +5,5 @@
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true
   },
-  "include": ["vite.config.ts"]
+  "include": ["vite.config.ts", "rollup-plugin-rename-node-modules.d.ts"]
 }

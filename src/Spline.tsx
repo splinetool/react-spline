@@ -1,3 +1,4 @@
+'use client';
 import { useEffect, useRef, useState, forwardRef } from 'react';
 import { Application } from '@splinetool/runtime';
 import type {
@@ -50,6 +51,7 @@ const Spline = forwardRef<HTMLDivElement, SplineProps>(
       onWheel,
       onLoad,
       renderOnDemand = true,
+      children,
       ...props
     },
     ref
@@ -137,17 +139,20 @@ const Spline = forwardRef<HTMLDivElement, SplineProps>(
     return (
       <ParentSize
         ref={ref}
-        parentSizeStyles={style}
+        parentSizeStyles={{ overflow: 'hidden', ...style }}
         debounceTime={50}
         {...props}
       >
         {() => (
-          <canvas
-            ref={canvasRef}
-            style={{
-              display: isLoading ? 'none' : 'block',
-            }}
-          />
+          <>
+            {isLoading && children}
+            <canvas
+              ref={canvasRef}
+              style={{
+                display: isLoading ? 'none' : 'block',
+              }}
+            />
+          </>
         )}
       </ParentSize>
     );
