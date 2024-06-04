@@ -31,6 +31,11 @@ export default defineConfig({
         'react-dom/client',
         '@splinetool/runtime',
         'next/image',
+        // these are the dependencies, they are listed in the package.json already
+        'blurhash',
+        'lodash.debounce',
+        'react-merge-refs',
+        'thumbhash',
       ],
       output: {
         // Override dist folder because root is in the example/ folder

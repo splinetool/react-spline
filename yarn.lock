@@ -1094,27 +1094,27 @@ __metadata:
   resolution: "@splinetool/react-spline@workspace:."
   dependencies:
     "@splinetool/runtime": ^1.3.10
-    "@types/animejs": ^3.1.7
+    "@types/animejs": ^3.1.12
     "@types/lodash.debounce": ^4.0.9
-    "@types/node": ^20.12.12
+    "@types/node": ^20.14.1
     "@types/react": ^18.3.3
     "@types/react-dom": ^18.3.0
     "@vitejs/plugin-react": ^4.3.0
-    animejs: ^3.2.1
-    blurhash: ^2.0.5
-    lodash.debounce: ^4.0.8
+    animejs: ^3.2.2
+    blurhash: 2.0.5
+    lodash.debounce: 4.0.8
     modern-normalize: ^1.1.0
     next: 15.0.0-rc.0
     np: ^10.0.5
     react: 19.0.0-rc-f994737d14-20240522
     react-dom: 19.0.0-rc-f994737d14-20240522
-    react-merge-refs: ^2.1.1
+    react-merge-refs: 2.1.1
     rimraf: ^5.0.7
     rollup-plugin-rename-node-modules: ^1.3.1
     rollup-preserve-directives: ^1.1.1
-    thumbhash: ^0.1.1
+    thumbhash: 0.1.1
     typescript: ^5.4.5
-    vite: ^5.2.11
+    vite: ^5.2.12
   peerDependencies:
     "@splinetool/runtime": "*"
     next: "*"
@@ -1161,10 +1161,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/animejs@npm:^3.1.7":
-  version: 3.1.7
-  resolution: "@types/animejs@npm:3.1.7"
-  checksum: 0b7669d7d86015c989990cc2594973097a2db5b1705bbc6b8b54cd667b57b21d9e0345090f7adc96a7d519e136b05a25660eab6bd67fd2037a7717030b063fc2
+"@types/animejs@npm:^3.1.12":
+  version: 3.1.12
+  resolution: "@types/animejs@npm:3.1.12"
+  checksum: 82ac4c32e87cdeb771bb4af087c21c64ba2dde8f74c7c64b549aee18fb984b5f6ca9652733d8e649b8e121f9f38361c77a852e4ab14166797fcfa622a8fec2dc
   languageName: node
   linkType: hard
 
@@ -1239,12 +1239,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^20.12.12":
-  version: 20.12.12
-  resolution: "@types/node@npm:20.12.12"
+"@types/node@npm:^20.14.1":
+  version: 20.14.1
+  resolution: "@types/node@npm:20.14.1"
   dependencies:
     undici-types: ~5.26.4
-  checksum: 5373983874b9af7c216e7ca5d26b32a8d9829c703a69f1e66f2113598b5be8582c0e009ca97369f1ec9a6282b3f92812208d06eb1e9fc3bd9b939b022303d042
+  checksum: 268d8ca09ce2bd6106af5eca118b06ec4c781be5b43ed1865371d0d09c5f4892353d2069bfcaf4cecc3d68a2016d730e44d9793a574c7e49bec2ba68871b94c8
   languageName: node
   linkType: hard
 
@@ -1361,10 +1361,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"animejs@npm:^3.2.1":
-  version: 3.2.1
-  resolution: "animejs@npm:3.2.1"
-  checksum: 6939171bed17d6b28307747e564d33e93312c26169b98498c833117d86f174ce7a318469bfd81716c223860a6d13bd76b761e79e765b86b2a2f851963caaa851
+"animejs@npm:^3.2.2":
+  version: 3.2.2
+  resolution: "animejs@npm:3.2.2"
+  checksum: 0ada37b8d432910d6fa983903dd5db0a9548bd62169de4302315b828a55ada82ae73e2ede119351e5f117af0c2376eee00c55d961b559a641faf72abcab03255
   languageName: node
   linkType: hard
 
@@ -1525,7 +1525,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"blurhash@npm:^2.0.5":
+"blurhash@npm:2.0.5":
   version: 2.0.5
   resolution: "blurhash@npm:2.0.5"
   checksum: aa4d6855bbaae116065b118a7b1e889648c15047e72048c28bab3db426a042ce1dc032a30c55a52da6140c314534841b984ab11cc68303668dde446d6ca53bc6
@@ -3545,7 +3545,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash.debounce@npm:^4.0.8":
+"lodash.debounce@npm:4.0.8":
   version: 4.0.8
   resolution: "lodash.debounce@npm:4.0.8"
   checksum: a3f527d22c548f43ae31c861ada88b2637eb48ac6aa3eb56e82d44917971b8aa96fbb37aa60efea674dc4ee8c42074f90f7b1f772e9db375435f6c83a19b3bc6
@@ -4571,7 +4571,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-merge-refs@npm:^2.1.1":
+"react-merge-refs@npm:2.1.1":
   version: 2.1.1
   resolution: "react-merge-refs@npm:2.1.1"
   checksum: 40564bc4c16520ef830d4fe7a2bd298c23a42d644a8fcb2353cdc6cf16aa82eac681c554df4c849397b25af9dbe728086566e1a01f65f95d2301dc8fc8f6809f
@@ -5400,7 +5400,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"thumbhash@npm:^0.1.1":
+"thumbhash@npm:0.1.1":
   version: 0.1.1
   resolution: "thumbhash@npm:0.1.1"
   checksum: cd97dc8faecb82cf872ca1be89488f7b6b4a14d4faa3b42e5e86a553d1f6f71d6ed6f561c0ddbbb54e064a221f882e909b6ad24af2e21fb87a0741df28fb2dbd
@@ -5609,9 +5609,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^5.2.11":
-  version: 5.2.11
-  resolution: "vite@npm:5.2.11"
+"vite@npm:^5.2.12":
+  version: 5.2.12
+  resolution: "vite@npm:5.2.12"
   dependencies:
     esbuild: ^0.20.1
     fsevents: ~2.3.3
@@ -5645,7 +5645,7 @@ __metadata:
       optional: true
   bin:
     vite: bin/vite.js
-  checksum: 3f9f976cc6ada93aca56abcc683a140e807725b351abc241a1ec0763ec561a4bf5760e1ad94de4e59505904ddaa88727de66af02f61ecf540c7720045de55d0a
+  checksum: 908b8a09460c031fe94c2038a46743a73a70fe76fd1991ae8b51a56eb88dec75128bc7da7ab37d8f84c0e1e3063ce268bdd81cc27d79229f8ea756e752bc83d9
   languageName: node
   linkType: hard
 
