@@ -34,8 +34,6 @@ export interface SplineProps
   onWheel?: (e: SplineEvent) => void;
   renderOnDemand?: boolean;
   placeholder?: string;
-  width?: number;
-  height?: number;
 }
 
 const Spline = forwardRef<HTMLDivElement, SplineProps>(

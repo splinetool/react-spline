@@ -1,13 +1,16 @@
 import { decode } from 'blurhash';
 import * as ThumbHash from 'thumbhash';
 
-export function decodePreview(hash: string) {
-  const alpha = hash[0] === '0';
-  hash = hash.slice(1);
+export function decodePreview(
+  hash: string,
+  alpha: boolean = false,
+  width = 100,
+  height = 100
+) {
   if (alpha) {
     return ThumbHash.thumbHashToDataURL(base64ToBinary(hash));
   } else {
-    return blurHashToDataURL(hash);
+    return blurHashToDataURL(hash, width, height);
   }
 }
 
@@ -21,8 +24,8 @@ function base64ToBinary(base64: string) {
 
 function blurHashToDataURL(
   hash: string | undefined,
-  width: number = 32,
-  height: number = 32
+  width: number = 100,
+  height: number = 100
 ): string | undefined {
   if (!hash) return undefined;
 
