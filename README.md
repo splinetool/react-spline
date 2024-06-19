@@ -64,7 +64,7 @@ You should be able to see the scene you exported in your React app.
 
 [![](https://raw.githubusercontent.com/splinetool/react-spline/main/.github/screenshots/example-basic.png)](https://codesandbox.io/s/sweet-rain-28pcxt?file=/src/App.js)
 
-**NOTE**: If you are experiencing CORS issues, you can download the .splinecode file and self-host it. This workaround will fix any CORS issue with your prod.spline links. To download, go to Spline's code export panel and click on the download icon visible in the prod.spline textarea.
+**NOTE**: If you are experiencing CORS issues, you can download the .splinecode file and self-host it; this will fix any CORS issue. To download, go to Spline's code export panel and click on the download icon visible in the prod.spline textarea.
 
 ### Next.js
 
