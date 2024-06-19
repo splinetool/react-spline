@@ -7,6 +7,7 @@
   ],
   "type": "module",
   "react-native": "./dist/react-spline.js",
+  "types": "./dist/Spline.d.ts",
   "exports": {
     ".": {
       "types": "./dist/Spline.d.ts",
