@@ -1117,7 +1117,7 @@ __metadata:
     vite: ^5.2.12
   peerDependencies:
     "@splinetool/runtime": "*"
-    next: "*"
+    next: ">=14.2.0"
     react: "*"
     react-dom: "*"
   peerDependenciesMeta:
