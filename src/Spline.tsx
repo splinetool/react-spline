@@ -11,27 +11,18 @@ import ParentSize from './ParentSize';
 export type { SPEObject, SplineEvent, SplineEventName };
 
 export interface SplineProps
-  extends Omit<
-    React.HTMLAttributes<HTMLDivElement>,
-    | 'onLoad'
-    | 'onMouseDown'
-    | 'onMouseUp'
-    | 'onMouseHover'
-    | 'onKeyDown'
-    | 'onKeyUp'
-    | 'onWheel'
-  > {
+  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onLoad'> {
   scene: string;
   onLoad?: (e: Application) => void;
-  onMouseDown?: (e: SplineEvent) => void;
-  onMouseUp?: (e: SplineEvent) => void;
-  onMouseHover?: (e: SplineEvent) => void;
-  onKeyDown?: (e: SplineEvent) => void;
-  onKeyUp?: (e: SplineEvent) => void;
-  onStart?: (e: SplineEvent) => void;
-  onLookAt?: (e: SplineEvent) => void;
-  onFollow?: (e: SplineEvent) => void;
-  onWheel?: (e: SplineEvent) => void;
+  onSplineMouseDown?: (e: SplineEvent) => void;
+  onSplineMouseUp?: (e: SplineEvent) => void;
+  onSplineMouseHover?: (e: SplineEvent) => void;
+  onSplineKeyDown?: (e: SplineEvent) => void;
+  onSplineKeyUp?: (e: SplineEvent) => void;
+  onSplineStart?: (e: SplineEvent) => void;
+  onSplineLookAt?: (e: SplineEvent) => void;
+  onSplineFollow?: (e: SplineEvent) => void;
+  onSplineScroll?: (e: SplineEvent) => void;
   renderOnDemand?: boolean;
 }
 
@@ -40,15 +31,15 @@ const Spline = forwardRef<HTMLDivElement, SplineProps>(
     {
       scene,
       style,
-      onMouseDown,
-      onMouseUp,
-      onMouseHover,
-      onKeyDown,
-      onKeyUp,
-      onStart,
-      onLookAt,
-      onFollow,
-      onWheel,
+      onSplineMouseDown,
+      onSplineMouseUp,
+      onSplineMouseHover,
+      onSplineKeyDown,
+      onSplineKeyUp,
+      onSplineStart,
+      onSplineLookAt,
+      onSplineFollow,
+      onSplineScroll,
       onLoad,
       renderOnDemand = true,
       children,
@@ -70,39 +61,39 @@ const Spline = forwardRef<HTMLDivElement, SplineProps>(
       }[] = [
         {
           name: 'mouseDown',
-          cb: onMouseDown,
+          cb: onSplineMouseDown,
         },
         {
           name: 'mouseUp',
-          cb: onMouseUp,
+          cb: onSplineMouseUp,
         },
         {
           name: 'mouseHover',
-          cb: onMouseHover,
+          cb: onSplineMouseHover,
         },
         {
           name: 'keyDown',
-          cb: onKeyDown,
+          cb: onSplineKeyDown,
         },
         {
           name: 'keyUp',
-          cb: onKeyUp,
+          cb: onSplineKeyUp,
         },
         {
           name: 'start',
-          cb: onStart,
+          cb: onSplineStart,
         },
         {
           name: 'lookAt',
-          cb: onLookAt,
+          cb: onSplineLookAt,
         },
         {
           name: 'follow',
-          cb: onFollow,
+          cb: onSplineFollow,
         },
         {
           name: 'scroll',
-          cb: onWheel,
+          cb: onSplineScroll,
         },
       ];
 
