@@ -49,6 +49,12 @@ const Spline = forwardRef<HTMLDivElement, SplineProps>(
   ) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState<Error>();
+
+    // We throw the error so ErrorBoundary can catch it
+    if (error) {
+      throw error;
+    }
 
     // Initialize runtime when component is mounted
     useEffect(() => {
@@ -113,7 +119,9 @@ const Spline = forwardRef<HTMLDivElement, SplineProps>(
           onLoad?.(speApp);
         }
 
-        init();
+        init().catch((err) => {
+          setError(err as Error);
+        });
       }
 
       return () => {
