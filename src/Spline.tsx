@@ -24,6 +24,7 @@ export interface SplineProps
   onSplineFollow?: (e: SplineEvent) => void;
   onSplineScroll?: (e: SplineEvent) => void;
   renderOnDemand?: boolean;
+  wasmPath?: string; // Optional path to the wasm file
 }
 
 const Spline = forwardRef<HTMLDivElement, SplineProps>(
@@ -42,6 +43,7 @@ const Spline = forwardRef<HTMLDivElement, SplineProps>(
       onSplineScroll,
       onLoad,
       renderOnDemand = true,
+      wasmPath,
       children,
       ...props
     },
@@ -104,7 +106,10 @@ const Spline = forwardRef<HTMLDivElement, SplineProps>(
       ];
 
       if (canvasRef.current) {
-        speApp = new Application(canvasRef.current, { renderOnDemand });
+        speApp = new Application(canvasRef.current, {
+          renderOnDemand,
+          wasmPath,
+        });
 
         async function init() {
           await speApp.load(scene);
