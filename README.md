@@ -17,7 +17,7 @@
 - [Usage](#usage)
   - [Next.js](#nextjs)
   - [Read and modify Spline objects](#read-and-modify-spline-objects)
-  - [Listen to events](#listen-to-events)
+  - [Listen to events](#listen-to-spline-events)
   - [Trigger Spline events from outside](#trigger-spline-events-from-outside)
   - [Lazy loading](#lazy-loading)
 - [API](#api)
