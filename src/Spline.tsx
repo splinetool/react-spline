@@ -66,42 +66,52 @@ const Spline = forwardRef<HTMLDivElement, SplineProps>(
       const events: {
         name: SplineEventName;
         cb?: (e: SplineEvent) => void;
+        options: AddEventListenerOptions;
       }[] = [
         {
           name: 'mouseDown',
           cb: onSplineMouseDown,
+          options: {},
         },
         {
           name: 'mouseUp',
           cb: onSplineMouseUp,
+          options: {},
         },
         {
           name: 'mouseHover',
           cb: onSplineMouseHover,
+          options: {},
         },
         {
           name: 'keyDown',
           cb: onSplineKeyDown,
+          options: {},
         },
         {
           name: 'keyUp',
           cb: onSplineKeyUp,
+          options: {},
         },
         {
           name: 'start',
           cb: onSplineStart,
+          options: {},
         },
         {
           name: 'lookAt',
           cb: onSplineLookAt,
+          options: { passive: true },
         },
         {
           name: 'follow',
           cb: onSplineFollow,
+          options: { passive: true },
         },
         {
           name: 'scroll',
           cb: onSplineScroll,
+          options: { passive: true },
         },
       ];
 
@@ -116,7 +126,8 @@ const Spline = forwardRef<HTMLDivElement, SplineProps>(
 
           for (let event of events) {
             if (event.cb) {
-              speApp.addEventListener(event.name, event.cb);
+              // @ts-expect-error: @splinetool/runtime doesn't have types for addEventListener options
+              speApp.addEventListener(event.name, event.cb, event.options);
             }
           }
 
@@ -132,7 +143,8 @@ const Spline = forwardRef<HTMLDivElement, SplineProps>(
       return () => {
         for (let event of events) {
           if (event.cb) {
-            speApp.removeEventListener(event.name, event.cb);
+            // @ts-expect-error: @splinetool/runtime doesn't have types for addEventListener options
+            speApp.removeEventListener(event.name, event.cb, event.options);
           }
         }
         speApp.dispose();
