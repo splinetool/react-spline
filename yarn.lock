@@ -1095,14 +1095,12 @@ __metadata:
   dependencies:
     "@splinetool/runtime": ^1.10.29
     "@types/animejs": ^3.1.12
-    "@types/lodash.debounce": ^4.0.9
     "@types/node": ^20.14.1
     "@types/react": ^18.3.3
     "@types/react-dom": ^18.3.0
     "@vitejs/plugin-react": ^4.3.0
     animejs: ^3.2.2
     blurhash: 2.0.5
-    lodash.debounce: 4.0.8
     modern-normalize: ^1.1.0
     next: 15.0.0-rc.0
     np: ^10.0.5
@@ -1220,22 +1218,6 @@ __metadata:
   version: 4.0.4
   resolution: "@types/http-cache-semantics@npm:4.0.4"
   checksum: 7f4dd832e618bc1e271be49717d7b4066d77c2d4eed5b81198eb987e532bb3e1c7e02f45d77918185bad936f884b700c10cebe06305f50400f382ab75055f9e8
-  languageName: node
-  linkType: hard
-
-"@types/lodash.debounce@npm:^4.0.9":
-  version: 4.0.9
-  resolution: "@types/lodash.debounce@npm:4.0.9"
-  dependencies:
-    "@types/lodash": "*"
-  checksum: 8183a152e01928e3b97ca773f6ae6038b8695e76493ba8bf6b743ec143948a62294fbc9d49fa4a78b52265b3ba4892ef57534e0c13d04aa0f111671b5a944feb
-  languageName: node
-  linkType: hard
-
-"@types/lodash@npm:*":
-  version: 4.14.191
-  resolution: "@types/lodash@npm:4.14.191"
-  checksum: ba0d5434e10690869f32d5ea49095250157cae502f10d57de0a723fd72229ce6c6a4979576f0f13e0aa9fbe3ce2457bfb9fa7d4ec3d6daba56730a51906d1491
   languageName: node
   linkType: hard
 
@@ -3542,13 +3524,6 @@ __metadata:
   dependencies:
     p-locate: ^4.1.0
   checksum: 83e51725e67517287d73e1ded92b28602e3ae5580b301fe54bfb76c0c723e3f285b19252e375712316774cf52006cb236aed5704692c32db0d5d089b69696e30
-  languageName: node
-  linkType: hard
-
-"lodash.debounce@npm:4.0.8":
-  version: 4.0.8
-  resolution: "lodash.debounce@npm:4.0.8"
-  checksum: a3f527d22c548f43ae31c861ada88b2637eb48ac6aa3eb56e82d44917971b8aa96fbb37aa60efea674dc4ee8c42074f90f7b1f772e9db375435f6c83a19b3bc6
   languageName: node
   linkType: hard
 
