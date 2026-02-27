@@ -2,6 +2,20 @@ type DebouncedFunction<T extends (...args: any[]) => void> = T & {
   cancel: () => void;
 };
 
+/**
+ * Lightweight debounce utility replacing lodash.debounce.
+ *
+ * Supports:
+ *   - Trailing-only (default): fires after `delay` ms of inactivity
+ *   - Leading+trailing: fires immediately on first call, then once more
+ *     on trailing edge if additional calls occurred during the delay
+ *   - cancel(): clears pending invocation and resets all state
+ *
+ * NOT supported (not needed by ParentSize):
+ *   - { trailing: false } option
+ *   - maxWait
+ *   - flush() / pending()
+ */
 export default function debounce<T extends (...args: any[]) => void>(
   fn: T,
   delay: number,
@@ -34,8 +48,8 @@ export default function debounce<T extends (...args: any[]) => void>(
       timeoutId = undefined;
       lastArgs = undefined;
 
-      if (!leading) {
-        fn.apply(thisCtx, thisArgs!);
+      if (!leading && thisArgs !== undefined) {
+        fn.apply(thisCtx, thisArgs);
       } else if (thisArgs !== undefined) {
         // Leading+trailing: only fire trailing if there were calls after the leading
         fn.apply(thisCtx, thisArgs);
@@ -50,6 +64,7 @@ export default function debounce<T extends (...args: any[]) => void>(
     timeoutId = undefined;
     isLeadingInvoked = false;
     lastArgs = undefined;
+    lastThis = undefined;
   };
 
   return debounced;
