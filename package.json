@@ -39,14 +39,12 @@
   },
   "dependencies": {
     "blurhash": "2.0.5",
-    "lodash.debounce": "4.0.8",
     "react-merge-refs": "2.1.1",
     "thumbhash": "0.1.1"
   },
   "devDependencies": {
     "@splinetool/runtime": "^1.10.29",
     "@types/animejs": "^3.1.12",
-    "@types/lodash.debounce": "^4.0.9",
     "@types/node": "^20.14.1",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",

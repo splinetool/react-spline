@@ -33,7 +33,6 @@ export default defineConfig({
         'next/image',
         // these are the dependencies, they are listed in the package.json already
         'blurhash',
-        'lodash.debounce',
         'react-merge-refs',
         'thumbhash',
       ],
