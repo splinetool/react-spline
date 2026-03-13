@@ -1093,7 +1093,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@splinetool/react-spline@workspace:."
   dependencies:
-    "@splinetool/runtime": ^1.10.29
+    "@splinetool/runtime": ^1.12.58
     "@types/animejs": ^3.1.12
     "@types/lodash.debounce": ^4.0.9
     "@types/node": ^20.14.1
@@ -1126,13 +1126,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@splinetool/runtime@npm:^1.10.29":
-  version: 1.10.29
-  resolution: "@splinetool/runtime@npm:1.10.29"
+"@splinetool/runtime@npm:^1.12.58":
+  version: 1.12.58
+  resolution: "@splinetool/runtime@npm:1.12.58"
   dependencies:
-    on-change: ^4.0.0
-    semver-compare: ^1.0.0
-  checksum: 9a75512a5bef30fdcc12520e52141b8a36ff7c73b66671598d0ee23724f194fa949bbb3f4e85438012f479f3c4fc045747cca172c8a8039ec943a323f7d7be91
+    on-change: 4.0.0
+    semver-compare: 1.0.0
+  checksum: f4bb63e2d37531c871675d79fc394856d705033f03d2f99f926775272bc98b69083f0afa389094388d778dbd6c9dd001d7b7eb8153267f9fe7be4effda5e18a6
   languageName: node
   linkType: hard
 
@@ -4166,10 +4166,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"on-change@npm:^4.0.0":
-  version: 4.0.1
-  resolution: "on-change@npm:4.0.1"
-  checksum: 23038d603859eafcd8e7ecd7ab682551e2c33c6e12e90dc53c83e453dcb263f5b36c24a945d3e91805273804a2bd6b78f9f91c9bb05dd11771fa626a05d8fb18
+"on-change@npm:4.0.0":
+  version: 4.0.0
+  resolution: "on-change@npm:4.0.0"
+  checksum: 9db8fea776655b3d7ff5c9f3d0f54ff92c972bb3b72374ad5f6d8abf77823d8c474334cff6c7f3f68e3a80b8d437f7c10c70075c55f62cdb6f785c15299fc93b
   languageName: node
   linkType: hard
 
@@ -4913,7 +4913,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semver-compare@npm:^1.0.0":
+"semver-compare@npm:1.0.0":
   version: 1.0.0
   resolution: "semver-compare@npm:1.0.0"
   checksum: dd1d7e2909744cf2cf71864ac718efc990297f9de2913b68e41a214319e70174b1d1793ac16e31183b128c2b9812541300cb324db8168e6cf6b570703b171c68
