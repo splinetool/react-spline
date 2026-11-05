@@ -10,8 +10,33 @@ import ParentSize from './ParentSize';
 
 export type { SPEObject, SplineEvent, SplineEventName };
 
-export interface SplineProps
-  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onLoad'> {
+/**
+ * How the scene's HTML content (authored in the editor's HTML frame and
+ * shipped inside the .splinecode) is presented over the canvas:
+ * - `inline` (default): the content and its scripts run directly in this
+ *   page, with `window.spline` bound to the Application — no postMessage
+ *   latency. Same default as Spline's own exports. Only safe when this page's
+ *   author is also the scene's author: inline scripts run with the page's
+ *   origin.
+ * - `sandbox`: a sandboxed iframe with an opaque origin, so the content's
+ *   scripts can't touch the host page. Use it for scenes you didn't author.
+ * - `none`: don't present the HTML content.
+ *
+ * Needs a `@splinetool/runtime` version that supports HTML content; older
+ * runtimes ignore the option.
+ */
+export type HtmlContentMode = 'sandbox' | 'inline' | 'none';
+
+// `htmlContentMode` is typed here as well so the prop compiles against
+// runtime type definitions that predate it.
+type ApplicationOptions = NonNullable<
+  ConstructorParameters<typeof Application>[1]
+> & { htmlContentMode?: HtmlContentMode };
+
+export interface SplineProps extends Omit<
+  React.HTMLAttributes<HTMLDivElement>,
+  'onLoad'
+> {
   scene: string;
   onLoad?: (e: Application) => void;
   onSplineMouseDown?: (e: SplineEvent) => void;
@@ -25,6 +50,7 @@ export interface SplineProps
   onSplineScroll?: (e: SplineEvent) => void;
   renderOnDemand?: boolean;
   wasmPath?: string; // Optional path to the wasm file
+  htmlContentMode?: HtmlContentMode;
 }
 
 const Spline = forwardRef<HTMLDivElement, SplineProps>(
@@ -44,10 +70,11 @@ const Spline = forwardRef<HTMLDivElement, SplineProps>(
       onLoad,
       renderOnDemand = true,
       wasmPath,
+      htmlContentMode = 'inline',
       children,
       ...props
     },
-    ref
+    ref,
   ) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const [isLoading, setIsLoading] = useState(true);
@@ -106,10 +133,12 @@ const Spline = forwardRef<HTMLDivElement, SplineProps>(
       ];
 
       if (canvasRef.current) {
-        speApp = new Application(canvasRef.current, {
+        const options: ApplicationOptions = {
           renderOnDemand,
           wasmPath,
-        });
+          htmlContentMode,
+        };
+        speApp = new Application(canvasRef.current, options);
 
         async function init() {
           await speApp.load(scene);
@@ -160,7 +189,7 @@ const Spline = forwardRef<HTMLDivElement, SplineProps>(
         )}
       </ParentSize>
     );
-  }
+  },
 );
 
 export default Spline;
