@@ -255,24 +255,25 @@ More info in the [relative React documentation](https://it.reactjs.org/docs/code
 
 These are all the props you can pass to the `<Spline />` component.
 
-| Name                  | Type                            | Description                                                                                                                   |
-| --------------------- | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| `scene`               | `string`                        | Scene file                                                                                                                    |
-| `onLoad?`             | `(spline: Application) => void` | Gets called once the scene has loaded. The `spline` parameter is an instance of the [Spline Application](#spline-app-methods) |
-| `renderOnDemand?`     | `boolean`                       | Wether or not to enable [on demand rendering](https://threejs.org/manual/#en/rendering-on-demand). Default `true`.            |
-| `className?`          | `string`                        | CSS classes                                                                                                                   |
-| `style?`              | `object`                        | CSS style                                                                                                                     |
-| `id?`                 | `string`                        | Canvas id                                                                                                                     |
-| `ref?`                | `React.Ref<HTMLDivElement>`     | A ref pointing to div container element.                                                                                      |
-| `onSplineMouseDown?`  | `(e: SplineEvent) => void`      | Gets called once a Spline `Mouse Down` event is fired                                                                         |
-| `onSplineMouseHover?` | `(e: SplineEvent) => void`      | Gets called once a Spline `Mouse Hover` event is fired                                                                        |
-| `onSplineMouseUp?`    | `(e: SplineEvent) => void`      | Gets called once a Spline `Mouse Up` event is fired                                                                           |
-| `onSplineKeyDown?`    | `(e: SplineEvent) => void`      | Gets called once a Spline `Key Down` event is fired                                                                           |
-| `onSplineKeyUp?`      | `(e: SplineEvent) => void`      | Gets called once a Spline `Key Up` event is fired                                                                             |
-| `onSplineStart?`      | `(e: SplineEvent) => void`      | Gets called once a Spline `Start` event is fired                                                                              |
-| `onSplineLookAt?`     | `(e: SplineEvent) => void`      | Gets called once a Spline `Look At` event is fired                                                                            |
-| `onSplineFollow?`     | `(e: SplineEvent) => void`      | Gets called once a Spline `Mouse Up` event is fired                                                                           |
-| `onSplineScroll?`     | `(e: SplineEvent) => void`      | Gets called once a Spline `Scroll` event is fired                                                                             |
+| Name                  | Type                              | Description                                                                                                                                                                             |
+| --------------------- | --------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `scene`               | `string`                          | Scene file                                                                                                                                                                              |
+| `onLoad?`             | `(spline: Application) => void`   | Gets called once the scene has loaded. The `spline` parameter is an instance of the [Spline Application](#spline-app-methods)                                                           |
+| `renderOnDemand?`     | `boolean`                         | Wether or not to enable [on demand rendering](https://threejs.org/manual/#en/rendering-on-demand). Default `true`.                                                                      |
+| `htmlContentMode?`    | `'inline' \| 'sandbox' \| 'none'` | How the scene's HTML content is presented. `inline` (default) runs it in your page with no latency; use `sandbox` (isolated iframe) for scenes you didn't author, or `none` to hide it. |
+| `className?`          | `string`                          | CSS classes                                                                                                                                                                             |
+| `style?`              | `object`                          | CSS style                                                                                                                                                                               |
+| `id?`                 | `string`                          | Canvas id                                                                                                                                                                               |
+| `ref?`                | `React.Ref<HTMLDivElement>`       | A ref pointing to div container element.                                                                                                                                                |
+| `onSplineMouseDown?`  | `(e: SplineEvent) => void`        | Gets called once a Spline `Mouse Down` event is fired                                                                                                                                   |
+| `onSplineMouseHover?` | `(e: SplineEvent) => void`        | Gets called once a Spline `Mouse Hover` event is fired                                                                                                                                  |
+| `onSplineMouseUp?`    | `(e: SplineEvent) => void`        | Gets called once a Spline `Mouse Up` event is fired                                                                                                                                     |
+| `onSplineKeyDown?`    | `(e: SplineEvent) => void`        | Gets called once a Spline `Key Down` event is fired                                                                                                                                     |
+| `onSplineKeyUp?`      | `(e: SplineEvent) => void`        | Gets called once a Spline `Key Up` event is fired                                                                                                                                       |
+| `onSplineStart?`      | `(e: SplineEvent) => void`        | Gets called once a Spline `Start` event is fired                                                                                                                                        |
+| `onSplineLookAt?`     | `(e: SplineEvent) => void`        | Gets called once a Spline `Look At` event is fired                                                                                                                                      |
+| `onSplineFollow?`     | `(e: SplineEvent) => void`        | Gets called once a Spline `Mouse Up` event is fired                                                                                                                                     |
+| `onSplineScroll?`     | `(e: SplineEvent) => void`        | Gets called once a Spline `Scroll` event is fired                                                                                                                                       |
 
 ### Spline App Methods
 
